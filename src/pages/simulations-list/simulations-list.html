@@ -1,0 +1,106 @@
+<ion-header>
+
+	<ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+		<ion-title>{{img}}</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content class="separatingBG">
+
+	<!--
+	<ion-fab right bottom (click)="switch()">
+	 <button ion-fab color="primary">    <i class="glyphicon glyphicon-sort" style=" font-size: 2rem;color:#ffffff"></i></button>
+	</ion-fab>
+     -->
+
+
+	<div [ngSwitch]="colleage">
+		<ion-list *ngSwitchCase="'menu'">
+			<ion-card *ngFor="let simulation of items" (click)="sim_details(simulation)">
+				<ion-item>
+						<div class="row" style="padding-left: 1rem;">
+							<div style="width:72.5%;float:left;">
+								<h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{simulation.simulation_name}}</h2>
+							</div>
+							<div style="width:26.5%;float:right;">
+								<!--<h3 style="color:#32db64;font-weight:bold">{{x.price}} EGP</h3>-->
+								<h3 style="color:#32db64;font-weight:bold">NA</h3>
+							</div>
+						</div>
+						<div class="row" style="text-align:left;padding-left:5px;">
+							<div class="col col-sm-6">
+								<h5 *ngFor="let y of simulation.dates" style="color:black;font-size:1.2rem;">{{y.date}}</h5>
+							</div>
+						</div>
+				</ion-item>
+
+			</ion-card>
+		</ion-list>
+
+		<ion-list *ngSwitchCase="'filter'">
+
+			<ion-item>
+				<ion-label>
+					SIZE
+				</ion-label>
+				<ion-select [(ngModel)]="size" multiple="true">
+					<ion-option>Small</ion-option>
+					<ion-option>Medium</ion-option>
+					<ion-option>Corporate</ion-option>
+				</ion-select>
+			</ion-item>
+
+
+			<ion-item>
+				<ion-label>
+					CLASSIFICATION
+				</ion-label>
+				<ion-select [(ngModel)]="class" multiple="true">
+					<ion-option>Cloud</ion-option>
+					<ion-option>Bigdata</ion-option>
+					<ion-option>Mobile</ion-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>DATE/TIME</ion-label>
+
+				<ion-select [(ngModel)]="date" multiple="true">
+					<ion-option>JANUARY</ion-option>
+					<ion-option>FEBRAUARY</ion-option>
+					<ion-option>MARCH</ion-option>
+
+					<ion-option>APRIL</ion-option>
+					<ion-option>MAY</ion-option>
+					<ion-option>JUNE</ion-option>
+
+					<ion-option>JULY</ion-option>
+					<ion-option>AUGUST</ion-option>
+					<ion-option>SEPTEMPER</ion-option>
+
+					<ion-option>OCTOBER</ion-option>
+					<ion-option>NOVEMBER</ion-option>
+					<ion-option>DECEMBER</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-list-header>
+				PRICE RANGE
+			</ion-list-header>
+
+			<ion-item>
+
+				<ion-range dualKnobs="true" pin="true" step="100" max="1000" [(ngModel)]="setdage" color="danger">
+					<ion-label range-left color="primary">{{setdage.lower}} EGP</ion-label>
+					<ion-label range-right color="primary">{{setdage.upper}} EGP</ion-label>
+				</ion-range>
+
+			</ion-item>
+
+
+		</ion-list>
+	</div>
+
+
+
+</ion-content>

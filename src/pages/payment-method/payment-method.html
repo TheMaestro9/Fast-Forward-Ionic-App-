@@ -1,0 +1,32 @@
+<ion-header >
+    
+  <ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+		<ion-title>Payment</ion-title>
+	</ion-navbar>
+    </ion-header>
+    
+
+  <ion-content class=" cards-bg">
+      <ion-card class="cards-list-demo">
+      <ion-card-header>
+        <div class="question" style="text-align:center" > 
+        <strong style="color:black;">How would you like to Pay ??</strong>
+        </div>
+      </ion-card-header>
+  
+    <ion-list>
+     <button ion-item (click)="CardPayment()">
+        <ion-icon name="card" item-start></ion-icon>
+        <h3 style="color:black;"><strong> Card</strong></h3>
+      </button> 
+  
+      <button ion-item>
+        <ion-icon name="cash" color="grey" item-start></ion-icon>
+       <h3 style="color:grey;"> <strong>Cash</strong></h3>
+      </button>
+    </ion-list>
+
+    </ion-card>
+
+    
+</ion-content>

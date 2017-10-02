@@ -1,0 +1,29 @@
+page-applicants {
+ .slide-zoom {
+    height: 100%;
+}
+.slide-title {
+    margin-top: 2.8rem;
+   
+}
+.toolbar-background {
+    background: #fff;
+    border-color: transparent;
+}
+
+.rating  {
+  padding: 0px;
+color: #ffb400;
+  &.rating li {
+    padding: 5px 10px !important;
+    background: none;
+    color: #ffb400;
+ 
+    ion-icon {
+      font-size: 30px;
+    }
+  }
+}
+
+
+}

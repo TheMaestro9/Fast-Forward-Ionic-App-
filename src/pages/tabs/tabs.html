@@ -1,0 +1,27 @@
+<ion-header >
+
+ <ion-toolbar  [style.height]="ios?'70px':''">
+<ion-title style=" width:100%;display:inline-block;" [style.margin-top]="ios?'15px':''">
+	<!-- <div *ngIf="true" ></div> -->
+ <h3 style="color:#F84838;display:inline-block;font-weight:bold;font-size:1.4rem">FAST</h3>
+ <h3 style="color:black;display:inline-block;font-weight:bold;font-size:1.4rem"> FORWARD</h3>
+
+</ion-title>
+ </ion-toolbar>
+</ion-header>
+<ion-content>
+
+	<ion-nav [root]="root"></ion-nav>
+</ion-content>
+	<ion-footer>
+		<ion-toolbar>
+		<ion-tabs >
+			<ion-tab [root]="tab1Root"  tabIcon="contacts" (ionSelect)="switch1()" ></ion-tab>
+			<ion-tab [root]="tab2Root"  tabIcon="videocam" (ionSelect)="switch2()"></ion-tab>
+			<ion-tab [root]="tab3Root"  tabIcon="person" (ionSelect)="switch3()"></ion-tab>
+			<ion-tab *ngIf="company_or_not && company_or_not!='0'" [root]="tab4Root"  tabIcon="md-build" (ionSelect)="switch4()"> </ion-tab>
+ <ion-tab *ngIf="expo && expo!='0'" [root]="tab5Root"  tabIcon="md-timer" (ionSelect)="switch5()"></ion-tab>
+</ion-tabs>
+ 
+</ion-toolbar>
+	</ion-footer>

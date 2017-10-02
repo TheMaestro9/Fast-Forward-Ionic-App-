@@ -1,0 +1,45 @@
+page-company {
+	
+	.item-profile {
+		width: 100%;
+		background-position: center center;
+		background-size: cover;
+		height: 250px;
+	}
+
+	.item-detail {
+		width: 100%;
+		background: white;
+		position: absolute;
+	}
+
+	.circular-profile{
+	 background-color: white;
+		margin-top: 15px;
+		border: 5px solid color($colors, ffPrimary);
+		border-radius: 50%;
+		box-shadow: 0 0 25px gray;
+		margin-left: auto;
+		margin-right: auto;
+		width: 40vw;
+		height: 40vw;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		position: relative;
+		top:-25vw;
+		// background-repeat: no-repeat;
+		// background-position: 50%;
+		// background-size: contain;
+	}
+
+	.description{
+	
+		
+		
+	}
+
+}
+.toolbar-title.toolbar-title-md{
+	text-align: center;
+}

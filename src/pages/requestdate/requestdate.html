@@ -1,0 +1,47 @@
+<!--
+	Generated template for the Requestdate page.
+
+	See http://ionicframework.com/docs/components/#navigation for more info on
+	Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+		<ion-title>Request Date</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div class="list"> 
+		<ion-list>
+			<ion-item *ngFor="let x of date; let i = index" style="z-index: 10000;">
+				<div class="row" padding-left style="z-index: 10000;">
+					<div style="width:70.5%;padding-top:.5rem;">
+						<p style="font-size: 1.3rem;float: left;">{{x.date}}</p>
+					</div>
+					<div style="width:25.5%;float: right;"> <button ion-button block  color="black" (click)="vote(x.id ,i)" style="height: 2rem;font-size: 17px;z-index: 10000;"><strong>VOTEs</strong></button>
+						<p style="color:#32db64;font-size:1.8rem;">{{x.votes}}</p>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</div>
+	<!-- <ion-toolbar style="text-align:center;"><button color="ffPrimary" (click)="presentActionSheet()"><strong>VOTE</strong></button>
+	 													
+			 <span ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
+				<span color="primary" style="font-size:2rem;font-weight:bold;text-align:center;">{{nowDate | date:"dd MM yyyy HH:mm "}} <ion-icon name="clipboard" item-right color="primary" ></ion-icon> </span>
+		</span><i class="fa fa-users" style="color:#32db64;font-size: 2rem;"></i>
+</ion-toolbar> -->
+<!--
+	<button ion-button block ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" style="height: 50px;font-size: 17px;"
+	 color="ffPrimary" (click)="presentActionSheet()"><strong>REQUEST NEW TIME</strong></button>
+-->
+            <ion-item style="text-align:center">
+				<div style="text-align:center">
+						<ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="localDate" min={{minyear}} max={{maxyear}} (ionChange)="setDate()" placeholder="Dont like the timing?" style="color:red;font-weight:bold;text-align:center;"> </ion-datetime>
+				</div>		
+		    </ion-item>
+</ion-content>

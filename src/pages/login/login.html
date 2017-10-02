@@ -1,0 +1,59 @@
+
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/ff.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
+
+
+
+<ion-content padding style="text-align:center;">
+
+ <img src="assets/ff.png" class="ff-img"style="text-align:center;width:50%;margin:auto;" />
+ <div style="margin-top:2rem;">
+  <ion-list>
+	<ion-item >
+		<ion-input text-center style="font-size:1.4;" placeholder="Email" type="text" #us></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-input text-center style="font-size:1.4;" placeholder="Password" type="password" #pw></ion-input>
+	</ion-item>
+
+
+
+</ion-list>
+
+
+<div style="text-align:center;">
+ <p style="  display: inline-block;font-weight:bold;font-size:1.2rem;">Forget Password? </p>
+ <a  color="primary" style="font-weight:bold;font-size:1.2rem;" (click)="forgetpass(us.value)">Tap Here</a>
+</div>
+
+<div style="height:30%;">
+<br>
+
+
+</div>
+
+</div>
+<div item-end>
+<button ion-button color="primary" round style="width:100%;height:6rem;"(click)="nav(us.value,pw.value)">Login</button>
+
+<div style="margin:2% 0 2% 0;">
+  <p class="OR">OR</p>
+</div>
+
+<div>
+<!--
+<button ion-button color="primary" outline style="width:49%; border-radius:30px 0px 0px 30px;margin:0px;height:6rem;" (click)="get_details()"><img src="assets/facebook.png" width="15" height="15"></button>
+-->
+<button ion-button color="primary" outline round style="width:100%;height:6rem;" (click)="form()">Sign up </button>
+</div>
+</div>
+  
+
+</ion-content>

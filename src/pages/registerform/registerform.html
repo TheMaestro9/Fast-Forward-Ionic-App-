@@ -1,0 +1,490 @@
+
+<ion-header color="primary">
+
+  <ion-navbar color="primary" [style.height]="ios?'6rem':''" [style.padding-top]="ios?'3rem':''">
+    <ion-title style="margin-top:1rem;padding-right:6rem;">Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+  <ion-list>
+<ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="name" type="text" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
+      
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #pass type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #phone type="number" placeholder="Phone"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #school type="text" placeholder="School"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+
+      <ion-select [(ngModel)]="degree" style="  width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Degree">
+        <ion-option value="High School">in High School</ion-option>
+        <ion-option value="College">in College</ion-option>
+        <ion-option value="Graduate">Graduate</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="major" type="text" placeholder="Major (optional)" #promo></ion-input>
+    </ion-item>
+
+
+
+    <ion-item style="text-align:left;">
+     <ion-label style="text-align:left;font-weight:normal;font-size:1.5rem;" >Birthdate</ion-label>
+      <ion-select [(ngModel)]="day" >
+          <ion-option >1</ion-option>
+          <ion-option >2</ion-option>
+          <ion-option >3</ion-option>
+          <ion-option >4</ion-option>
+          <ion-option >5</ion-option>
+          <ion-option >6</ion-option>
+          <ion-option >7</ion-option>
+          <ion-option >8</ion-option>
+          <ion-option >9</ion-option>
+          <ion-option >10</ion-option>
+          <ion-option >11</ion-option>
+          <ion-option >12</ion-option>
+          <ion-option >13</ion-option>
+          <ion-option >14</ion-option>
+          <ion-option >15</ion-option>
+          <ion-option >16</ion-option>
+          <ion-option >17</ion-option>
+          <ion-option >18</ion-option>
+          <ion-option >19</ion-option>
+          <ion-option >20</ion-option>
+          <ion-option >21</ion-option>
+          <ion-option >22</ion-option> 
+          <ion-option >23</ion-option>
+          <ion-option >24</ion-option>
+          <ion-option >25</ion-option>
+          <ion-option >26</ion-option>
+          <ion-option >27</ion-option>
+          <ion-option >28</ion-option>
+          <ion-option >29</ion-option>
+          <ion-option >30</ion-option>
+          <ion-option >31</ion-option>
+
+        </ion-select>
+      <ion-select [(ngModel)]="month">
+        <ion-option value="00">January</ion-option>
+        <ion-option value="01">February</ion-option>
+        <ion-option value="02">March</ion-option>
+        <ion-option value="03">April</ion-option>
+        <ion-option value="04">May</ion-option>
+        <ion-option value="05">June</ion-option>
+        <ion-option value="06">July</ion-option>
+        <ion-option value="07">August</ion-option>
+        <ion-option value="08">September</ion-option>
+        <ion-option value="09">October</ion-option>
+        <ion-option value="10">November</ion-option>
+        <ion-option value="11" checked="true">December</ion-option>
+      </ion-select>
+      <ion-select [(ngModel)]="year">
+        <ion-option>1950</ion-option>
+        <ion-option>1951</ion-option>
+        <ion-option>1952</ion-option>
+        <ion-option>1953</ion-option>
+        <ion-option>1954</ion-option>
+        <ion-option>1955</ion-option>
+        <ion-option>1956</ion-option>
+        <ion-option>1957</ion-option>
+        <ion-option>1958</ion-option>
+        <ion-option>1959</ion-option>
+        <ion-option>1960</ion-option>
+        <ion-option>1961</ion-option>
+        <ion-option>1962</ion-option>
+        <ion-option>1963</ion-option>
+        <ion-option>1964</ion-option>
+        <ion-option>1965</ion-option>
+        <ion-option>1966</ion-option>
+        <ion-option>1967</ion-option>
+        <ion-option>1968</ion-option>
+        <ion-option>1969</ion-option>
+        <ion-option>1970</ion-option>
+        <ion-option>1971</ion-option>
+        <ion-option>1972</ion-option>
+        <ion-option>1973</ion-option>
+        <ion-option>1974</ion-option>
+        <ion-option>1975</ion-option>
+        <ion-option>1976</ion-option>
+        <ion-option>1977</ion-option>
+        <ion-option>1978</ion-option>
+        <ion-option>1979</ion-option>
+        <ion-option>1980</ion-option>
+        <ion-option>1981</ion-option>
+        <ion-option>1982</ion-option>
+        <ion-option>1983</ion-option>
+        <ion-option>1984</ion-option>
+        <ion-option>1985</ion-option>
+        <ion-option>1986</ion-option>
+        <ion-option>1987</ion-option>
+        <ion-option>1988</ion-option>
+        <ion-option>1989</ion-option>
+        <ion-option checked="true">1990</ion-option>
+        <ion-option>1991</ion-option>
+        <ion-option>1992</ion-option>
+        <ion-option>1993</ion-option>
+        <ion-option>1994</ion-option>
+        <ion-option>1995</ion-option>
+        <ion-option>1996</ion-option>
+        <ion-option>1997</ion-option>
+        <ion-option>1998</ion-option>
+        <ion-option>1999</ion-option>
+        <ion-option>2000</ion-option>
+        <ion-option>2001</ion-option>
+        <ion-option>2002</ion-option>
+        <ion-option>2003</ion-option>
+        <ion-option>2004</ion-option>
+        <ion-option>2005</ion-option>
+        <ion-option>2006</ion-option>
+        <ion-option>2007</ion-option>
+        
+</ion-select>
+    </ion-item>
+    <!-- <ion-grid>
+        <ion-row>
+    <ion-col col-7> <p style=" vertical-align: text-top;">{{age | date:'dd/MM/yyyy'}}</p></ion-col>
+      <ion-col col-5> 
+        <button ion-button outline ion-datepicker (ionChanged)="setDate($event);" [value]="age" [min]="localDate" style=""
+        color="ffPrimary" (click)="presentActionSheet()">Birthdate</button>
+      </ion-col>
+        </ion-row>
+      </ion-grid>-->
+   <ion-item style="text-align:left;">
+     
+      <ion-select style="  width:100%; max-width: 100% !important; padding-left:6px;" [(ngModel)]="interests" multiple="true" placeholder="Interests">
+          <ion-option value="Aircraft Spotting">Aircraft Spotting</ion-option>
+          <ion-option value="Airbrushing">Airbrushing</ion-option>
+          <ion-option value="Airsofting">Airsofting</ion-option>
+          <ion-option value="Acting">Acting</ion-option>
+          <ion-option value="Aeromodeling">Aeromodeling</ion-option>
+          <ion-option value="Amateur Astronomy">Amateur Astronomy</ion-option>
+          <ion-option value="Amateur Radio">Amateur Radio</ion-option>
+          <ion-option value="Animals/pets/dogs">Animals/pets/dogs</ion-option>
+          <ion-option value="Archery">Archery</ion-option>
+          <ion-option value="Arts">Arts</ion-option>
+          <ion-option value="Astrology">Astrology</ion-option>
+          <ion-option value="Astronomy">Astronomy</ion-option>
+          <ion-option value="Backgammon">Backgammon</ion-option>
+          <ion-option value="Badminton">Badminton</ion-option>
+          <ion-option value="Baseball">Baseball</ion-option>
+          <ion-option value="Base Jumping">Base Jumping</ion-option>
+          <ion-option value="Basketball">Basketball</ion-option>
+          <ion-option value="Beach/Sun tanning">Beach/Sun tanning</ion-option>
+          <ion-option value="Beachcombing">Beachcombing</ion-option>
+          <ion-option value="Beadwork">Beadwork</ion-option>
+          <ion-option value="Beatboxing">Beatboxing</ion-option>
+          <ion-option value="Becoming A Child Advocate">Becoming A Child Advocate</ion-option>
+          <ion-option value="Bell Ringing">Bell Ringing</ion-option>
+          <ion-option value="Belly Dancing">Belly Dancing</ion-option>
+          <ion-option value="Bicycling">Bicycling</ion-option>
+          <ion-option value="Bicycle Polo">Bicycle Polo</ion-option>
+          <ion-option value="Bird watching">Bird watching</ion-option>
+          <ion-option value="Birding">Birding</ion-option>
+          <ion-option value="BMX">BMX</ion-option>
+          <ion-option value="Blacksmithing">Blacksmithing</ion-option>
+          <ion-option value="Blogging">Blogging</ion-option>
+          <ion-option value="BoardGames">BoardGames</ion-option>
+          <ion-option value="Boating">Boating</ion-option>
+          <ion-option value="Body Building">Body Building</ion-option>
+          <ion-option value="Bonsai Tree">Bonsai Tree</ion-option>
+          <ion-option value="Bookbinding">Bookbinding</ion-option>
+          <ion-option value="Boomerangs">Boomerangs</ion-option>
+          <ion-option value="Bowling">Bowling</ion-option>
+          <ion-option value="Brewing Beer">Brewing Beer</ion-option>
+          <ion-option value="Bridge Building">Bridge Building</ion-option>
+          <ion-option value="Building Dollhouses">Building Dollhouses</ion-option>
+          <ion-option value="Butterfly Watching">Butterfly Watching</ion-option>
+          <ion-option value="Button Collecting">Button Collecting</ion-option>
+          <ion-option value="Cake Decorating">Cake Decorating</ion-option>
+          <ion-option value="Calligraphy">Calligraphy</ion-option>
+          <ion-option value="Camping">Camping</ion-option>
+          <ion-option value="Candle Making">Candle Making</ion-option>
+          <ion-option value="Canoeing">Canoeing</ion-option>
+          <ion-option value="Cartooning">Cartooning</ion-option>
+          <ion-option value="Car Racing">Car Racing</ion-option>
+          <ion-option value="Casino Gambling">Casino Gambling</ion-option>
+          <ion-option value="Cave Diving">Cave Diving</ion-option>
+          <ion-option value="Ceramics">Ceramics</ion-option>
+          <ion-option value="Cheerleading">Cheerleading</ion-option>
+          <ion-option value="Chess">Chess</ion-option>
+          <ion-option value="Church/church activities">Church/church activities</ion-option>
+          <ion-option value="Cigar Smoking">Cigar Smoking</ion-option>
+          <ion-option value="Cloud Watching">Cloud Watching</ion-option>
+          <ion-option value="Coin Collecting">Coin Collecting</ion-option>
+          <ion-option value="Collecting">Collecting</ion-option>
+          <ion-option value="Collecting Antiques">Collecting Antiques</ion-option>
+          <ion-option value="Collecting Artwork">Collecting Artwork</ion-option>
+          <ion-option value="Collecting Hats">Collecting Hats</ion-option>
+          <ion-option value="Collecting Music Albums">Collecting Music Albums</ion-option>
+          <ion-option value="Collecting RPM Records">Collecting RPM Records</ion-option>
+          <ion-option value="Collecting Swords">Collecting Swords</ion-option>
+          <ion-option value="Coloring">Coloring</ion-option>
+          <ion-option value="Compose Music">Compose Music</ion-option>
+          <ion-option value="Computer activities">Computer activities</ion-option>
+          <ion-option value="Conworlding">Conworlding</ion-option>
+          <ion-option value="Cooking">Cooking</ion-option>
+          <ion-option value="Cosplay">Cosplay</ion-option>
+          <ion-option value="Crafts">Crafts</ion-option>
+          <ion-option value="Crafts (unspecified)">Crafts (unspecified)</ion-option>
+          <ion-option value="Crochet">Crochet</ion-option>
+          <ion-option value="Crocheting">Crocheting</ion-option>
+          <ion-option value="Cross-Stitch">Cross-Stitch</ion-option>
+          <ion-option value="Crossword Puzzles">Crossword Puzzles</ion-option>
+          <ion-option value="Dancing">Dancing</ion-option>
+          <ion-option value="Darts">Darts</ion-option>
+          <ion-option value="Diecast Collectibles">Diecast Collectibles</ion-option>
+          <ion-option value="Digital Photography">Digital Photography</ion-option>
+          <ion-option value="Dodgeball">Dodgeball</ion-option>
+          <ion-option value="Dolls">Dolls</ion-option>
+          <ion-option value="Dominoes">Dominoes</ion-option>
+          <ion-option value="Drawing">Drawing</ion-option>
+          <ion-option value="Dumpster Diving">Dumpster Diving</ion-option>
+          <ion-option value="Eating out">Eating out</ion-option>
+          <ion-option value="Educational Courses">Educational Courses</ion-option>
+          <ion-option value="Electronics">Electronics</ion-option>
+          <ion-option value="Embroidery">Embroidery</ion-option>
+          <ion-option value="Entertaining">Entertaining</ion-option>
+          <ion-option value="Exercise (aerobics, weights)">Exercise (aerobics, weights)</ion-option>
+          <ion-option value="Falconry">Falconry</ion-option>
+          <ion-option value="Fast cars">Fast cars</ion-option>
+          <ion-option value="Felting">Felting</ion-option>
+          <ion-option value="Fencing">Fencing</ion-option>
+          <ion-option value="Fire Poi">Fire Poi</ion-option>
+          <ion-option value="Fishing">Fishing</ion-option>
+          <ion-option value="Floorball">Floorball</ion-option>
+          <ion-option value="Floral Arrangements">Floral Arrangements</ion-option>
+          <ion-option value="Fly Tying">Fly Tying</ion-option>
+          <ion-option value="Football">Football</ion-option>
+          <ion-option value="Four Wheeling">Four Wheeling</ion-option>
+          <ion-option value="Freshwater Aquariums">Freshwater Aquariums</ion-option>
+          <ion-option value="Frisbee Golf – Frolf">Frisbee Golf – Frolf</ion-option>
+          <ion-option value="Games">Games</ion-option>
+          <ion-option value="Gardening">Gardening</ion-option>
+          <ion-option value="Garage Saleing">Garage Saleing</ion-option>
+          <ion-option value="Genealogy">Genealogy</ion-option>
+          <ion-option value="Geocaching">Geocaching</ion-option>
+          <ion-option value="Ghost Hunting">Ghost Hunting</ion-option>
+          <ion-option value="Glowsticking">Glowsticking</ion-option>
+          <ion-option value="Gnoming">Gnoming</ion-option>
+          <ion-option value="Going to movies">Going to movies</ion-option>
+          <ion-option value="Golf">Golf</ion-option>
+          <ion-option value="Go Kart Racing">Go Kart Racing</ion-option>
+          <ion-option value="Grip Strength">Grip Strength</ion-option>
+          <ion-option value="Guitar">Guitar</ion-option>
+          <ion-option value="Gunsmithing">Gunsmithing</ion-option>
+          <ion-option value="Gun Collecting">Gun Collecting</ion-option>
+          <ion-option value="Gymnastics">Gymnastics</ion-option>
+          <ion-option value="Gyotaku">Gyotaku</ion-option>
+          <ion-option value="Handwriting Analysis">Handwriting Analysis</ion-option>
+          <ion-option value="Hang gliding">Hang gliding</ion-option>
+          <ion-option value="Herping">Herping</ion-option>
+          <ion-option value="Hiking">Hiking</ion-option>
+          <ion-option value="Home Brewing">Home Brewing</ion-option>
+          <ion-option value="Home Repair">Home Repair</ion-option>
+          <ion-option value="Home Theater">Home Theater</ion-option>
+          <ion-option value="Horse riding">Horse riding</ion-option>
+          <ion-option value="Hot air ballooning">Hot air ballooning</ion-option>
+          <ion-option value="Hula Hooping">Hula Hooping</ion-option>
+          <ion-option value="Hunting">Hunting</ion-option>
+          <ion-option value="Iceskating">Iceskating</ion-option>
+          <ion-option value="Illusion">Illusion</ion-option>
+          <ion-option value="Impersonations">Impersonations</ion-option>
+          <ion-option value="Internet">Internet</ion-option>
+          <ion-option value="Inventing">Inventing</ion-option>
+          <ion-option value="Jet Engines">Jet Engines</ion-option>
+          <ion-option value="Jewelry Making">Jewelry Making</ion-option>
+          <ion-option value="Jigsaw Puzzles">Jigsaw Puzzles</ion-option>
+          <ion-option value="Juggling">Juggling</ion-option>
+          <ion-option value="Keep A Journal">Keep A Journal</ion-option>
+          <ion-option value="Jump Roping">Jump Roping</ion-option>
+          <ion-option value="Kayaking">Kayaking</ion-option>
+          <ion-option value="Kitchen Chemistry">Kitchen Chemistry</ion-option>
+          <ion-option value="Kites">Kites</ion-option>
+          <ion-option value="Kite Boarding">Kite Boarding</ion-option>
+          <ion-option value="Knitting">Knitting</ion-option>
+          <ion-option value="Knotting">Knotting</ion-option>
+          <ion-option value="Lasers">Lasers</ion-option>
+          <ion-option value="Lawn Darts">Lawn Darts</ion-option>
+          <ion-option value="Learning A Foreign Language">Learning A Foreign Language</ion-option>
+          <ion-option value="Learning An Instrument">Learning An Instrument</ion-option>
+          <ion-option value="Learning To Pilot A Plane">Learning To Pilot A Plane</ion-option>
+          <ion-option value="Leathercrafting">Leathercrafting</ion-option>
+          <ion-option value="Legos">Legos</ion-option>
+          <ion-option value="Letterboxing">Letterboxing</ion-option>
+          <ion-option value="Listening to music">Listening to music</ion-option>
+          <ion-option value="Locksport">Locksport</ion-option>
+          <ion-option value="Lacrosse">Lacrosse</ion-option>
+          <ion-option value="Macramé">Macramé</ion-option>
+          <ion-option value="Magic">Magic</ion-option>
+          <ion-option value="Making Model Cars">Making Model Cars</ion-option>
+          <ion-option value="Marksmanship">Marksmanship</ion-option>
+          <ion-option value="Martial Arts">Martial Arts</ion-option>
+          <ion-option value="Matchstick Modeling">Matchstick Modeling</ion-option>
+          <ion-option value="Meditation">Meditation</ion-option>
+          <ion-option value="Microscopy">Microscopy</ion-option>
+          <ion-option value="Metal Detecting">Metal Detecting</ion-option>
+          <ion-option value="Model Railroading">Model Railroading</ion-option>
+          <ion-option value="Model Rockets">Model Rockets</ion-option>
+          <ion-option value="Modeling Ships">Modeling Ships</ion-option>
+          <ion-option value="Models">Models</ion-option>
+          <ion-option value="Motorcycles">Motorcycles</ion-option>
+          <ion-option value="Mountain Biking">Mountain Biking</ion-option>
+          <ion-option value="Mountain Climbing">Mountain Climbing</ion-option>
+          <ion-option value="Musical Instruments">Musical Instruments</ion-option>
+          <ion-option value="Nail Art">Nail Art</ion-option>
+          <ion-option value="Needlepoint">Needlepoint</ion-option>
+          <ion-option value="Owning An Antique Car">Owning An Antique Car</ion-option>
+          <ion-option value="Origami">Origami</ion-option>
+          <ion-option value="Painting">Painting</ion-option>
+          <ion-option value="Paintball">Paintball</ion-option>
+          <ion-option value="Papermaking">Papermaking</ion-option>
+          <ion-option value="Papermache">Papermache</ion-option>
+          <ion-option value="Parachuting">Parachuting</ion-option>
+          <ion-option value="Paragliding or Power Paragliding">Paragliding or Power Paragliding</ion-option>
+          <ion-option value="Parkour">Parkour</ion-option>
+          <ion-option value="People Watching">People Watching</ion-option>
+          <ion-option value="Photography">Photography</ion-option>
+          <ion-option value="Piano">Piano</ion-option>
+          <ion-option value="Pinochle">Pinochle</ion-option>
+          <ion-option value="Pipe Smoking">Pipe Smoking</ion-option>
+          <ion-option value="Planking">Planking</ion-option>
+          <ion-option value="Playing music">Playing music</ion-option>
+          <ion-option value="Playing team sports">Playing team sports</ion-option>
+          <ion-option value="Pole Dancing">Pole Dancing</ion-option>
+          <ion-option value="Pottery">Pottery</ion-option>
+          <ion-option value="Powerboking">Powerboking</ion-option>
+          <ion-option value="Protesting">Protesting</ion-option>
+          <ion-option value="Puppetry">Puppetry</ion-option>
+          <ion-option value="Pyrotechnics">Pyrotechnics</ion-option>
+          <ion-option value="Quilting">Quilting</ion-option>
+          <ion-option value="Racing Pigeons">Racing Pigeons</ion-option>
+          <ion-option value="Rafting">Rafting</ion-option>
+          <ion-option value="Railfans">Railfans</ion-option>
+          <ion-option value="Rapping">Rapping</ion-option>
+          <ion-option value="R/C Boats">R/C Boats</ion-option>
+          <ion-option value="R/C Cars">R/C Cars</ion-option>
+          <ion-option value="R/C Helicopters">R/C Helicopters</ion-option>
+          <ion-option value="R/C Planes">R/C Planes</ion-option>
+          <ion-option value="Reading">Reading</ion-option>
+          <ion-option value="Relaxing">Relaxing</ion-option>
+          <ion-option value="Renaissance Faire">Renaissance Faire</ion-option>
+          <ion-option value="Renting movies">Renting movies</ion-option>
+          <ion-option value="Robotics">Robotics</ion-option>
+          <ion-option value="Rock Balancing">Rock Balancing</ion-option>
+          <ion-option value="Rock Collecting">Rock Collecting</ion-option>
+          <ion-option value="Rockets">Rockets</ion-option>
+          <ion-option value="Roleplaying">Roleplaying</ion-option>
+          <ion-option value="Running">Running</ion-option>
+          <ion-option value="Sand Castles">Sand Castles</ion-option>
+          <ion-option value="Scrapbooking">Scrapbooking</ion-option>
+          <ion-option value="Scuba Diving">Scuba Diving</ion-option>
+          <ion-option value="Self Defense">Self Defense</ion-option>
+          <ion-option value="Sewing">Sewing</ion-option>
+          <ion-option value="Shark Fishing">Shark Fishing</ion-option>
+          <ion-option value="Skeet Shooting">Skeet Shooting</ion-option>
+          <ion-option value="Skiing">Skiing</ion-option>
+          <ion-option value="Shopping">Shopping</ion-option>
+          <ion-option value="Singing In Choir">Singing In Choir</ion-option>
+          <ion-option value="Skateboarding">Skateboarding</ion-option>
+          <ion-option value="Sketching">Sketching</ion-option>
+          <ion-option value="Sky Diving">Sky Diving</ion-option>
+          <ion-option value="Slack Lining">Slack Lining</ion-option>
+          <ion-option value="Sleeping">Sleeping</ion-option>
+          <ion-option value="Slingshots">Slingshots</ion-option>
+          <ion-option value="Slot Car Racing">Slot Car Racing</ion-option>
+          <ion-option value="Snorkeling">Snorkeling</ion-option>
+          <ion-option value="Snowboarding">Snowboarding</ion-option>
+          <ion-option value="Soap Making">Soap Making</ion-option>
+          <ion-option value="Soccer">Soccer</ion-option>
+          <ion-option value="Socializing with friends/neighbors">Socializing with friends/neighbors</ion-option>
+          <ion-option value="Speed Cubing (rubix cube)">Speed Cubing (rubix cube)</ion-option>
+          <ion-option value="Spelunkering">Spelunkering</ion-option>
+          <ion-option value="Spending time with family/kids">Spending time with family/kids</ion-option>
+          <ion-option value="Stamp Collecting">Stamp Collecting</ion-option>
+          <ion-option value="Storm Chasing">Storm Chasing</ion-option>
+          <ion-option value="Storytelling">Storytelling</ion-option>
+          <ion-option value="String Figures">String Figures</ion-option>
+          <ion-option value="Surfing">Surfing</ion-option>
+          <ion-option value="Surf Fishing">Surf Fishing</ion-option>
+          <ion-option value="Survival">Survival</ion-option>
+          <ion-option value="Swimming">Swimming</ion-option>
+          <ion-option value="Tatting">Tatting</ion-option>
+          <ion-option value="Taxidermy">Taxidermy</ion-option>
+          <ion-option value="Tea Tasting">Tea Tasting</ion-option>
+          <ion-option value="Tennis">Tennis</ion-option>
+          <ion-option value="Tesla Coils">Tesla Coils</ion-option>
+          <ion-option value="Tetris">Tetris</ion-option>
+          <ion-option value="Texting">Texting</ion-option>
+          <ion-option value="Textiles">Textiles</ion-option>
+          <ion-option value="Tombstone Rubbing">Tombstone Rubbing</ion-option>
+          <ion-option value="Tool Collecting">Tool Collecting</ion-option>
+          <ion-option value="Toy Collecting">Toy Collecting</ion-option>
+          <ion-option value="Train Collecting">Train Collecting</ion-option>
+          <ion-option value="Train Spotting">Train Spotting</ion-option>
+          <ion-option value="Traveling">Traveling</ion-option>
+          <ion-option value="Treasure Hunting">Treasure Hunting</ion-option>
+          <ion-option value="Trekkie">Trekkie</ion-option>
+          <ion-option value="Tutoring Children">Tutoring Children</ion-option>
+          <ion-option value="TV watching">TV watching</ion-option>
+          <ion-option value="Ultimate Frisbee">Ultimate Frisbee</ion-option>
+          <ion-option value="Urban Exploration">Urban Exploration</ion-option>
+          <ion-option value="Video Games">Video Games</ion-option>
+          <ion-option value="Violin">Violin</ion-option>
+          <ion-option value="Volunteer">Volunteer</ion-option>
+          <ion-option value="Walking">Walking</ion-option>
+          <ion-option value="Warhammer">Warhammer</ion-option>
+          <ion-option value="Watching sporting events">Watching sporting events</ion-option>
+          <ion-option value="Weather Watcher">Weather Watcher</ion-option>
+          <ion-option value="Weightlifting">Weightlifting</ion-option>
+          <ion-option value="Windsurfing">Windsurfing</ion-option>
+          <ion-option value="Wine Making">Wine Making</ion-option>
+          <ion-option value="Wingsuit Flying">Wingsuit Flying</ion-option>
+          <ion-option value="Woodworking">Woodworking</ion-option>
+          <ion-option value="Working In A Food Pantry">Working In A Food Pantry</ion-option>
+          <ion-option value="Working on cars">Working on cars</ion-option>
+          <ion-option value="World Record Breaking">World Record Breaking</ion-option>
+          <ion-option value="Wrestling">Wrestling</ion-option>
+          <ion-option value="Writing">Writing</ion-option>
+          <ion-option value="Writing Music">Writing Music</ion-option>
+          <ion-option value="Writing Songs">Writing Songs</ion-option>
+          <ion-option value="Yoga">Yoga</ion-option>
+          <ion-option value="YoYo">YoYo</ion-option>
+          <ion-option value="Ziplining">Ziplining</ion-option>
+          <ion-option value="Zumba">Zumba</ion-option>    
+      </ion-select>
+    </ion-item>
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="promo_code" type="text" placeholder="Promo code (optional)" #promo></ion-input>
+    </ion-item>
+  </ion-list>
+  <div >
+    
+    
+  <ion-item>
+      <ion-label color="primary">I would like to attend  Expo17</ion-label>
+      <ion-checkbox [(ngModel)]="expo"></ion-checkbox>
+    </ion-item>
+
+    <button ion-button color="primary" round block large (click)="register(pass.value,school.value,phone.value,promo.value)">Done</button>
+  </div>
+
+</ion-content>

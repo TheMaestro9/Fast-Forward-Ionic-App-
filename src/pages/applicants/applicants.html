@@ -1,0 +1,116 @@
+
+<ion-header   [style.height]="ios?'70px':''">
+
+  <ion-navbar [style.margin-top]="ios?'15px':''" align-title="center" color="ffPrimary" style="padding-right:5rem;">
+    <ion-title [style.margin-top]="ios?'15px':''"  >{{sim_name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding> 
+  	<ion-toolbar style="text-align:center;">
+        
+<button ion-button icon-left clear item-left  [color]="app_bool?'primary':'grey'"  (click)="switchapplied()"><ion-icon name="list" item-start></ion-icon>applied</button>
+<button ion-button icon-left clear  item-right  [color]="acc_bool?'primary':'grey'"  (click)="switchaccepted()"><ion-icon name="ios-checkbox-outline" item-start></ion-icon>accepted</button>
+    </ion-toolbar>
+
+    <ion-fab right bottom (click)="filterswitch()">
+        <button ion-fab color="primary">    <i class="glyphicon glyphicon-sort" style=" font-size: 1.5rem;color:#ffffff"></i></button>
+       </ion-fab>                 
+  
+   <div [ngSwitch]="list">
+
+      <ion-list *ngSwitchCase="'applied'">
+        <ion-card   *ngFor="let User of  applied; let i=index">
+            <ion-item>
+         <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{User.user_name| slice:0:19}}</span>
+         <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(User.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{User.rating | rating}}</span>
+            </ion-item>
+           
+         <div padding>
+             <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{User.major}}</span></div>
+             <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{User.degree}}</span>
+           </div>
+         </div>
+
+
+         
+  <ion-row padding>
+      <ion-col >
+        <button  ion-button icon-left clear small color="danger" (click)="reject(i,x)">
+          <ion-icon name="close-circle"  ></ion-icon>
+          <div>Reject</div>
+        </button>
+      </ion-col>
+      <ion-col item-right >
+        <button ion-button icon-left clear small color="secondary" (click)="accept(i,x)">
+          <ion-icon name="checkmark-circle" ></ion-icon>
+          <div>Accept</div>
+        </button>
+      </ion-col>
+    
+    </ion-row>
+        </ion-card>
+      </ion-list>
+  
+      <ion-list  *ngSwitchCase="'accepted'">
+
+          <ion-card   *ngFor="let User of  accepted">
+              <ion-item>
+           <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{User.user_name| slice:0:19}}</span>
+           <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(User.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{User.rating | rating}}</span>
+              </ion-item>
+             
+           <div padding>
+               <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{User.major}}</span></div>
+               <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{User.degree}}</span>
+             </div>
+           </div>
+          </ion-card>
+        
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'filter'">
+
+        
+			<ion-item>
+          <ion-label>
+            Degree
+          </ion-label>
+          <ion-select [(ngModel)]="degree" multiple="true">
+            <ion-option>Highschool</ion-option>
+            <ion-option>College</ion-option>
+            <ion-option>Graduate</ion-option>
+          </ion-select>
+        </ion-item>
+  
+        <h6 padding> Rating </h6>
+      
+        <ion-item>
+            
+           
+                    <ion-range dualKnobs="true" pin="true" step="1" min="-1" max="5" [(ngModel)]="setdage" color="danger">
+                      <ion-label range-left color="primary">{{setdage.lower |rating}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
+                      <ion-label range-right color="primary">{{setdage.upper}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
+                    </ion-range>
+            
+                  </ion-item>
+
+      </ion-list>
+
+    </div>
+  
+  
+  
+ 
+
+
+</ion-content>
+
+
+<ion-footer>
+    
+    
+      
+</ion-footer>
