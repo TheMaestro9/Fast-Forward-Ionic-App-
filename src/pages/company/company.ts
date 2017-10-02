@@ -155,67 +155,77 @@ actionSheet;
 		}
 
 		presentActionSheet(x,event) {
-			this.actionSheet = this.actionSheetCtrl.create({
-				// title: '',
-				buttons: [
-				
+
+			if(x.status =="pending payment")
+				 this.navCtrl.push(PaymentMethodPage);
+			else {
+				this.actionSheet = this.actionSheetCtrl.create({
+					// title: '',
+					buttons: [
 					
-					{
-						text: 'Cancel',
-						role: 'cancel',
-						handler: () => {
-							console.log('Cancel clicked');
+						
+						{
+							text: 'Cancel',
+							role: 'cancel',
+							handler: () => {
+								console.log('Cancel clicked');
+							}
 						}
-					}
-				]
-			});
-		
-			x.dates.forEach(element => {
-				this.actionSheet.addButton({text:element.date,
-				handler:()=>{
-				this.Apply(element.date_id,x,event);
-				}})
-			});
-
-			// 	this.actionSheet.addButton(
-			// 	{
-			// 			text: 'Request New Date!',
-			// 			handler: () => {
-
-			// 				this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
-			// 			}
-			// 	} 
-			// ); 
-			this.actionSheet.addButton(
-
+					]
+				});
 			
-				{
-						text: 'Add Promo Code',
-						handler: () => {
-							setTimeout(() => {
-							this.open_promo_code_popup() ; 
-						}, 100);
-						}
-				} 
-			); 
-		this.actionSheet.present();
-		
+				x.dates.forEach(element => {
+					this.actionSheet.addButton({text:element.date,
+					handler:()=>{
+					this.Apply(element.date_id,x,event);
+					}})
+				});
+
+				// 	this.actionSheet.addButton(
+				// 	{
+				// 			text: 'Request New Date!',
+				// 			handler: () => {
+
+				// 				this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
+				// 			}
+				// 	} 
+				// ); 
+				this.actionSheet.addButton(
+
+				
+					{
+							text: 'Add Promo Code',
+							handler: () => {
+								setTimeout(() => {
+								this.open_promo_code_popup() ; 
+							}, 100);
+							}
+					} 
+				); 
+				this.actionSheet.present();
+			 }
 		}
 
 
 	Apply(id,x,event){
-		if(x.price ==0){
-			this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
-				data => {
-					var res = JSON.parse(data['_body']);
-					x.status=res.result;
+		// if(x.price ==0){
+		// 	this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
+		// 		data => {
+		// 			var res = JSON.parse(data['_body']);
+		// 			x.status=res.result;
 		
-			});
-		}
-		else{
-			this.navCtrl.push(PaymentMethodPage);
-		}
+		// 	});
+		// }
+		// else{
+		// 	this.navCtrl.push(PaymentMethodPage);
+		// }
 
+this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
+		 		data => {
+		 			var res = JSON.parse(data['_body']);
+		 			x.status=res.result;
+		
+		 	});
 		
 	}
 		

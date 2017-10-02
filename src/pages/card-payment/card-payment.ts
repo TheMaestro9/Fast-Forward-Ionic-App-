@@ -24,7 +24,7 @@ export class CardPaymentPage {
 
     ngOnInit() {
 
-    this.http.get("https://ffserver.eu-gb.mybluemix.net/go-to-payment").subscribe(data => {
+    this.http.get("https://ffserver.eu-gb.mybluemix.net/test").subscribe(data => {
       var res = JSON.parse(data['_body']);
      this.payMob_link=res.url;
     // console.log('link',this.link);
