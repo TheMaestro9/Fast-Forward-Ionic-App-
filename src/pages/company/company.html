@@ -71,7 +71,7 @@
 				<h2><strong>{{company_details.company_name}}</strong></h2>
 				<!-- <p>{{simulation.date | date: "dd/MM/yyyy HH:mm a"}}</p> -->
 				<!--<h2 style="color:#24b950" item-end><strong>{{simulation.price}}</strong> EGP </h2> -->
-				<h2 style="color:#24b950" item-end><strong>NA</strong> </h2>
+				<h2 style="color:#24b950" item-end><strong>{{simulation.price==-1?'NA':''+simulation.price+' EGP'}}</strong> </h2>
 			</ion-item>
 
 			<!-- <img src="{{company_details._pic_link}}" /> -->
@@ -115,7 +115,7 @@
 					</button>
 				</ion-col> -->
 				<ion-col>
-					<button ion-button block  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet(simulation,$event)"><strong>APPLY</strong></button>
+					<button ion-button block  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet(simulation,$event)"><strong>{{simulation.status=='pending approval'?'Pay':'Apply'}}</strong></button>
 				</ion-col>
 				<!-- <ion-col col-2>
 					<button ion-button outline style="padding-left:10px;padding-right:10px;height: 50px;" color="ffPrimary"><i style="font-size: 28px;" class="fa fa-calendar-plus-o"></i></button>
