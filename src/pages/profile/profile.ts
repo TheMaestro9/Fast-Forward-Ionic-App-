@@ -52,9 +52,12 @@ export class Profile {
 		
 		
 		this.store.get('user_id').then((val) => {
-					this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?id="+val+"&simulation_id="+this.user_simulations[this.user_simulations.indexOf(sim)].simulation_date_id).subscribe(data => {
-						var res = JSON.parse(data['_body']);
-						console.log(res);
+		console.log("selected", sim )  ;
+		console.log("all",this.user_simulations )  ;
+		console.log("index", this.user_simulations.indexOf(sim) )  ;
+					this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?user_id="+val+"&simulation_id="+sim.simulation_date_id).subscribe(data => {
+					//	var res = JSON.parse(data['_body']);
+						console.log(data['_body']);
 						//this.loading=false;
 					});
 					console.log("user_id",val)
