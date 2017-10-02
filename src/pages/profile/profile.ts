@@ -52,7 +52,14 @@ export class Profile {
 
 
 	}
-
+	
+	removeSimulation(sim){
+		console.log(this.user_simulations.indexOf(sim));
+		console.log("hidden status",this.user_simulations[this.user_simulations.indexOf(sim)].hide);
+		this.user_simulations.splice(this.user_simulations.indexOf(sim),1);
+		console.log("removed")
+	  }
+	
 	loginToFireBase (){
 
 		

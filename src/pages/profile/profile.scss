@@ -38,11 +38,13 @@ page-profile {
 		background-repeat: no-repeat;
 		background-position: 50%;
 	}
-
+    .simulation{
+		display: flex;
+	}
 	.description{
 		display:block;
 	}
-
+   
 	.about {
 		text-decoration: none;
 		// color: color($colors, ffPrimary);
