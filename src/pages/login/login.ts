@@ -66,7 +66,7 @@ export class LoginPage {
       this.DS.load().subscribe(
         data => {
           this.check = data;
-      if(this.check.expo)localStorage.setItem('expo','1');
+     // if(this.check.expo)localStorage.setItem('expo','1');
       if (this.check.result) {
 
          this.store.set('user_id', this.check.user_id);

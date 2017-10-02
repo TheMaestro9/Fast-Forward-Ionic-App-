@@ -14,7 +14,7 @@
 
   <ion-list>
 <ion-item style="text-align:left;">
-      <ion-input [(ngModel)]="name" type="text" placeholder="Name"></ion-input>
+      <ion-input [(ngModel)]="name" type="text" placeholder="Full Name"></ion-input>
     </ion-item>
     <ion-item style="text-align:left;">
       <ion-input [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
@@ -30,7 +30,7 @@
     </ion-item>
 
     <ion-item style="text-align:left;">
-      <ion-input #school type="text" placeholder="School"></ion-input>
+      <ion-input #school type="text" placeholder="School/University"></ion-input>
     </ion-item>
 
     <ion-item style="text-align:left;">
@@ -48,7 +48,7 @@
 
 
     <ion-item style="text-align:left;">
-     <ion-label style="text-align:left;font-weight:normal;font-size:1.5rem;" >Birthdate</ion-label>
+     <ion-label style="text-align:left;font-weight:normal;font-size:1.5rem; color:gray" >Birthdate</ion-label>
       <ion-select [(ngModel)]="day" >
           <ion-option >1</ion-option>
           <ion-option >2</ion-option>
@@ -478,12 +478,7 @@
   </ion-list>
   <div >
     
-    
-  <ion-item>
-      <ion-label color="primary">I would like to attend  Expo17</ion-label>
-      <ion-checkbox [(ngModel)]="expo"></ion-checkbox>
-    </ion-item>
-
+   
     <button ion-button color="primary" round block large (click)="register(pass.value,school.value,phone.value,promo.value)">Done</button>
   </div>
 

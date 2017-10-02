@@ -36,12 +36,12 @@ link;
 
   ngOnInit() {
 
-    this.http.get("https://ffserver.eu-gb.mybluemix.net/test").subscribe(data => {
-      var res = JSON.parse(data['_body']);
-     this.link=res.url;
-     console.log('link',this.link);
+    // this.http.get("https://ffserver.eu-gb.mybluemix.net/go-to-payment").subscribe(data => {
+    //   var res = JSON.parse(data['_body']);
+    //  this.link=res.url;
+    //  console.log('link',this.link);
      
-    });
+    // });
 
 
   }

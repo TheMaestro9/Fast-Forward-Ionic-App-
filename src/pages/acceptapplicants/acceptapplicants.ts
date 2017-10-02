@@ -20,7 +20,7 @@ export class AcceptapplicantsPage {
    this.company_or_not= localStorage.getItem('company_or_not');
    console.log("company",this.company_or_not);
    
-   this.http.get("https://ffserver.eu-gb.mybluemiVideosnet/get_company_simulations?company_id="+this.company_or_not).subscribe(data => {
+   this.http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations?company_id="+this.company_or_not).subscribe(data => {
     var res = JSON.parse(data['_body']);
     this.company_Simulations=res;
     console.log('array',this.company_Simulations);
