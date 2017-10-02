@@ -44,20 +44,24 @@ export class Profile {
 				//this.loading=false;
 			});
 			});
-				 
-
-		
-	
-
-
+				
 
 	}
 	
 	removeSimulation(sim){
-		console.log(this.user_simulations.indexOf(sim));
-		console.log("hidden status",this.user_simulations[this.user_simulations.indexOf(sim)].hide);
+		
+		
+		this.store.get('user_id').then((val) => {
+					this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?id="+val+"&simulation_id="+this.user_simulations[this.user_simulations.indexOf(sim)].simulation_date_id).subscribe(data => {
+						var res = JSON.parse(data['_body']);
+						console.log(res);
+						//this.loading=false;
+					});
+					console.log("user_id",val)
+				});
+
 		this.user_simulations.splice(this.user_simulations.indexOf(sim),1);
-		console.log("removed")
+		
 	  }
 	
 	loginToFireBase (){
