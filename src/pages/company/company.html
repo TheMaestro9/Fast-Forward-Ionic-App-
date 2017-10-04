@@ -115,7 +115,7 @@
 					</button>
 				</ion-col> -->
 				<ion-col>
-					<button ion-button block *ngIf = 'simulation.status!="pending approval"'
+					<button ion-button block *ngIf = 'simulation.status==""'
 					  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet(simulation,$event)"><strong>{{simulation.status=='pending payment'?'Pay':'Apply'}}</strong></button>
 				</ion-col>
 				<!-- <ion-col col-2>

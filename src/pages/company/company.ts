@@ -157,7 +157,7 @@ actionSheet;
 		presentActionSheet(x,event) {
 
 			if(x.status =="pending payment")
-				 this.navCtrl.push(PaymentMethodPage);
+				 this.navCtrl.push(PaymentMethodPage ,{SimulationID:x.simulation_id});
 			else {
 				this.actionSheet = this.actionSheetCtrl.create({
 					// title: '',

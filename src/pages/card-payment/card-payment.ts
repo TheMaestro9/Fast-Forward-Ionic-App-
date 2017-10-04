@@ -15,6 +15,7 @@ import {Http} from '@angular/http';
 })
 export class CardPaymentPage {
   payMob_link ; 
+  SimulationID ; 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:Http) {
   }
 
@@ -23,13 +24,22 @@ export class CardPaymentPage {
   }
 
     ngOnInit() {
+      this.SimulationID = this.navParams.get("SimulationID") ; 
 
-    this.http.get("https://ffserver.eu-gb.mybluemix.net/test").subscribe(data => {
-      var res = JSON.parse(data['_body']);
-     this.payMob_link=res.url;
-    // console.log('link',this.link);
+      console.log("simulation" , this.SimulationID); 
+
+    // var PaymentData ={
+    //   "simulation_date_id"  : 10 , 
+    //   "user_id": 324 , 
+    //   "price":300 
+    // }
+    // this.http.post("https://ffserver.eu-gb.mybluemix.net/test" , PaymentData).subscribe(data => {
+    //   var res = JSON.parse(data['_body']);
+    //  this.payMob_link=res.url;
+    //  console.log("link" , res.url); 
+    // // console.log('link',this.link);
      
-    });
+   // });
 
 
   }
