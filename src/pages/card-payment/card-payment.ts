@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import {Http} from '@angular/http';
 
 /**
@@ -16,7 +17,7 @@ import {Http} from '@angular/http';
 export class CardPaymentPage {
   payMob_link ; 
   SimulationID ; 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private http:Http) {
+  constructor(public navCtrl: NavController,private store:Storage, public navParams: NavParams,private http:Http) {
   }
 
   ionViewDidLoad() {
@@ -27,7 +28,22 @@ export class CardPaymentPage {
       this.SimulationID = this.navParams.get("SimulationID") ; 
 
       console.log("simulation" , this.SimulationID); 
+		this.store.get('user_id').then((user_id) => {
 
+
+        var PaymentData ={
+        "simulation_id": this.SimulationID , 
+        "user_id": user_id 
+        }
+        this.http.post("https://ffserver.eu-gb.mybluemix.net/test" , PaymentData).subscribe(data => {
+            var res = JSON.parse(data['_body']);
+            this.payMob_link=res.url;
+            console.log("link" , res.url); 
+      // console.log('link',this.link);
+        }); 
+    
+
+   });
     // var PaymentData ={
     //   "simulation_date_id"  : 10 , 
     //   "user_id": 324 , 

@@ -219,6 +219,8 @@ actionSheet;
 		// else{
 		// 	this.navCtrl.push(PaymentMethodPage);
 		// }
+		console.log("userID ", this.userid) ; 
+		console.log("simID ", id) ; 
 
 this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
 		 		data => {
