@@ -10,6 +10,7 @@ import {CardPaymentPage} from '../card-payment/card-payment'
 })
 export class PaymentMethodPage {
 link;
+SimulationID ; 
   constructor(platform:Platform,private http:Http,public navCtrl: NavController, public navParams: NavParams) {
   
     platform.ready().then(()=>{
@@ -31,7 +32,8 @@ link;
 
   CardPayment() { 
 
-    this.navCtrl.push(CardPaymentPage) ;
+    console.log("payment method sim id" , this.SimulationID ) ; 
+    this.navCtrl.push(CardPaymentPage , {SimulationID:this.SimulationID}) ;
   }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ link;
      
     // });
 
+  this.SimulationID =  this.navParams.get("SimulationID");
 
   }
 }

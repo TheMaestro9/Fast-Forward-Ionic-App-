@@ -33,6 +33,8 @@ this.fields=[
 	{name:"FASHION DESIGN",img:"assets/fashx.png",id:6},
 	{name:"JOURNALISM",img:"assets/journx.png",id:7},
 	{name:"INDUSTRIAL",img:"assets/indx.png",id:8},
+	{name:"TV Production",img:"assets/TVProduction.png",id:9},
+	{name:"Entrepreneurship",img:"assets/Entrepreneurship.png",id:10},
 ];
 
 

@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-card *ngFor="let simulationData of  company_Simulations" (click)="applicants_details(x)">
+    <ion-card *ngFor="let simulationData of  company_Simulations" (click)="applicants_details(simulationData)">
       <ion-item>
           <div class="row" style="padding-left: 1rem;">
             <div style="width:72.5%;float:left;">

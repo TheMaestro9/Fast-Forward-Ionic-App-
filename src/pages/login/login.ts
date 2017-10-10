@@ -86,7 +86,7 @@ export class LoginPage {
   showAlert() {
     let alert = this.alertCtrl.create({
       title: ' ',
-      subTitle: ' wrong mail or password',
+      subTitle: 'Wrong Email Or Password',
       buttons: ['OK']
     });
     alert.present();

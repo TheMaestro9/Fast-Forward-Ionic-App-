@@ -115,7 +115,8 @@
 					</button>
 				</ion-col> -->
 				<ion-col>
-					<button ion-button block  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet(simulation,$event)"><strong>{{simulation.status=='pending approval'?'Pay':'Apply'}}</strong></button>
+				<button ion-button block *ngIf = 'simulation.status!="pending approval" && simulation.status!="accepted"'
+					  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet(simulation,$event)"><strong>{{simulation.status=='pending payment'?'Pay':'Apply'}}</strong></button>
 				</ion-col>
 				<!-- <ion-col col-2>
 					<button ion-button outline style="padding-left:10px;padding-right:10px;height: 50px;" color="ffPrimary"><i style="font-size: 28px;" class="fa fa-calendar-plus-o"></i></button>
