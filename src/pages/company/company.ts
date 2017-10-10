@@ -138,7 +138,29 @@ actionSheet;
 			});
 			alert.present();
 		}
+       navigateToFB(){
+		try {
+			window.open(this.company_details.facebook_link, '_system');
+		} catch (err) {
+			alert("No facebook Link for this company");
+		}
+		
+	   }
 
+	   getLocation(){
+		try {
+			window.open(this.company_details.location, '_system');
+		} catch (err) {
+			alert("No Location Provided for this company");
+		}
+	   }
+	   getEmail(){
+		// try {
+		// 	window.open(this.company_details.company_email, '_system');
+		// } catch (err) {
+		// 	alert("No Location Provided for this company");
+		// }
+	   }
 		showNotValidAlert() {
 			let alert = this.alertCtrl.create({
 			title: ' ',

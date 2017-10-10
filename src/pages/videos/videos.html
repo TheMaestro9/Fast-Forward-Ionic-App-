@@ -30,14 +30,14 @@
 		<ion-row padding>
 			<ion-col col-12 padding style="color:#757575;">{{video.likes}} likes </ion-col>
 			<ion-col col-4>
-				<button ion-button clear small [color]="video.liked?'primary':'grey'" (click)="like(x)" icon-start>
+				<button ion-button clear small [color]="video.liked?'primary':'grey'" (click)="like(video)" icon-start>
 					<ion-icon name='thumbs-up'></ion-icon>
 					Like
 				</button>
 			</ion-col>
 
 			<ion-col col-4>
-				<button ion-button clear small [color]="video.followed?'primary':'grey'" (click)="follow(x)" icon-start>
+				<button ion-button clear small [color]="video.followed?'primary':'grey'" (click)="follow(video)" icon-start>
 					<ion-icon name='logo-rss'></ion-icon>
 					Follow
 				</button>
