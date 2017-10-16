@@ -16,6 +16,7 @@ export class Applicants {
  list;
  applied:any=[];
  accepted:any=[];
+ pending:any=[];
  degree:any[];
  setdage:any={lower:-1,upper:5};
  refrence;
@@ -24,6 +25,7 @@ export class Applicants {
  sim_price;
  app_bool=false;
  acc_bool=false;
+ pending_bool=false;
   constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams, public http: Http) {
    this.list="applied";
    this.app_bool=true;
@@ -53,6 +55,9 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_da
   var res = JSON.parse(data['_body']);
   this.applied=res.applied;
  this.accepted=res.accepted;
+ this.pending=res.pending;
+ console.log("pending",this.pending)
+ console.log("accepted",this.accepted)
  this.original=this.refrence=this.applied;
  
 });
@@ -61,6 +66,7 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_da
   switchapplied(){
     this.app_bool=true;
     this.acc_bool=false;
+    this.pending_bool=false;
    this.list="applied";
    
    if(this.pretab==true){
@@ -74,7 +80,7 @@ this.filter();
       
    this.app_bool=false;
    this.acc_bool=true;
-
+   this.pending_bool=false;
      this.list="accepted";
      if(this.pretab==true){
       
@@ -83,7 +89,20 @@ this.filter();
          }
          this.pretab=false;
       }
-
+      switchpendingpayment(){
+     this.acc_bool=false;
+     this.app_bool=false;
+     this.pending_bool=true;
+  
+       this.list="pending";
+       if(this.pretab==true){
+        
+        this.filter();
+        
+           }
+           this.pretab=false;
+        }
+  
 
 
     filterswitch(){
@@ -144,7 +163,12 @@ this.applied = this.original.filter(
 
 accept(i,User){
   console.log("accept",i);
+  if(this.sim_price==0)
   this.accepted.push(this.applied[i]);
+  else{
+    this.pending.push(this.applied[i]);
+  }
+  
  this.applied.splice(i,1);
 
  this.refrence= this.refrence.filter(
