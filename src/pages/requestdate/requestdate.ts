@@ -28,6 +28,8 @@ export class Requestdate {
     today;
     maxyear;
     minyear;
+    private myDate: string  ; 
+    private myTime:string ;
   constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id = navParams.get("SimID"); 
    
