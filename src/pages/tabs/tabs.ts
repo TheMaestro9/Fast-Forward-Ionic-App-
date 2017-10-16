@@ -3,12 +3,14 @@ import { Component } from '@angular/core';
 import { FieldsPage } from '../fields/fields';
 import { Videos } from '../videos/videos';
 import { Profile } from "../profile/profile";
+import {AddSimulationPage } from "../add-simulation/add-simulation"
 import { ActionSheetController, Platform, LoadingController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
+
 //import {ExpotimerPage} from '../expotimer/expotimer';
 
 
@@ -67,6 +69,7 @@ export class TabsPage {
 					text: 'Add Simulation',
 					handler: () => {
 						console.log('17 Jan, 11:00 AM');
+						this.navCtrl.push(AddSimulationPage);
 					}
 				},
 				{

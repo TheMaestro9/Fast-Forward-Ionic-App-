@@ -19,6 +19,8 @@ import {SimulationsListPage} from '../pages/simulations-list/simulations-list';
 import { CompanyPage} from '../pages/company/company'
 import { Profile } from "../pages/profile/profile";
 import {EditProfilePage } from "../pages/edit-profile/edit-profile";
+import {AddSimulationPage } from "../pages/add-simulation/add-simulation";
+import {AddSimulationDetailsPage } from "../pages/add-simulation-details/add-simulation-details"
 import {LoginPage  } from "../pages/login/login";
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
@@ -71,6 +73,8 @@ import {AngularFireModule} from "angularfire2" ;
     SafepipePipe,
     LoginPage,
     EditProfilePage,
+    AddSimulationPage,
+    AddSimulationDetailsPage,
     CountdownPipe,
     VersionCheckPage,
     AcceptapplicantsPage,
@@ -106,6 +110,8 @@ import {AngularFireModule} from "angularfire2" ;
     CompanyPage,
     Profile,
     LoginPage,
+    AddSimulationPage,
+    AddSimulationDetailsPage,
     EditProfilePage,
     VersionCheckPage,
     AcceptapplicantsPage,
