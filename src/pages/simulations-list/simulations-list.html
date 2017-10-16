@@ -23,9 +23,11 @@
 							<div style="width:72.5%;float:left;">
 								<h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{simulation.simulation_name}}</h2>
 							</div>
-							<div style="width:26.5%;float:right;">
+							<div [ngSwitch]="simulation.simulation_id" style="width:26.5%;float:right;">
 								<!--<h3 style="color:#32db64;font-weight:bold">{{x.price}} EGP</h3>-->
-								<h3 style="color:#32db64;font-weight:bold">{{simulation.price==-1?'NA':''+simulation.price+' EGP'}}</h3>
+								<h3 *ngSwitchCase="10" style="color:#3D32DB;font-weight:bold">{{simulation.price==-1?'NA':''+simulation.price+' EGP'}}</h3>
+								<h3 *ngSwitchDefault style="color:#32db64;font-weight:bold">{{simulation.price==-1?'NA':''+simulation.price+' EGP'}}</h3>
+								
 							</div>
 						</div>
 						<div class="row" style="text-align:left;padding-left:5px;">
