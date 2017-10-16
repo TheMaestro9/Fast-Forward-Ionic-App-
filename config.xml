@@ -24,7 +24,7 @@
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
-    <preference name="loadUrlTimkeoutValue" value="700000" />
+    <preference name="loadUrlTimkeoutValue" value="60000" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/AppLogo.png" />
