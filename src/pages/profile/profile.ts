@@ -4,12 +4,12 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {Http} from '@angular/http';
+import {EditProfilePage } from "../edit-profile/edit-profile";
 import {LoginPage} from'../login/login';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
 import {FileChooser } from 'ionic-native'; 
-import firebase from 'firebase' ; 
 import { AngularFireAuth } from 'angularfire2/auth';
 @Component({
 	selector: 'page-profile',
@@ -17,12 +17,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 	providers: [AngularFireAuth]
 })
 export class Profile {
-
 	user_info:any={};
 	user_simulations:any=[];
 	refresher:any;
 	nativePath: any; 
-	firestore = firebase.storage() ; 
+ 
 	
 	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage, public afa :AngularFireAuth) {
 	
@@ -48,6 +47,11 @@ export class Profile {
 
 	}
 	
+	EditProfile(){
+		console.log("sha3'aaaaal");
+		this.navCtrl.push(EditProfilePage, this.user_info);
+	}
+
 	removeSimulation(sim){
 		
 		
@@ -67,62 +71,17 @@ export class Profile {
 		
 	  }
 	
-	loginToFireBase (){
-
-		
-		//var	fireauth = this.afa.auth() ; 
-
-		this.afa.auth.signInWithEmailAndPassword("walidmoussa995@gmail.com" , "wwwlll").then((res)=>{
-
-				alert('sucessfull Login') ; 
-				this.upload () ; 
-
-		}).catch((err)=>{
-				alert("error login "+err) ;
-		}) ; 
-
-	}
-	upload () {
-
-
-			FileChooser.open().then((url)=> {
-
-				(<any>window).FilePath.resolveNativePath(url, (result)=> {
-
-					this.nativePath = result ; 
-					this.uploadImage ( ) ;
-				})
-			})
-	}
-
-	uploadImage () 
-	{
-			(<any>window).resolveLocalFileSystemURL (this.nativePath , (res)=>{
-				res.file((resFile)=>{
-					var reader = new FileReader () ; 
-					reader.readAsArrayBuffer (resFile) ; 
-					reader.onload = (evt: any)=>{
-
-					var imgBlob = new Blob ([evt.target.result] , {type : 'image/jpeg'}) ;  
-					var imageStore = this.firestore.ref().child('image') ; 
-					imageStore.put(imgBlob).then((res)=>{
-						alert("uploaded sucessfully ") ; 
-					}).catch ((err)=>{
-						alert('upload faild'+ err) ; 
-					}) ;
-					} 
-
-				}) ; 
-			})
-	}
+	
+	
+	
 	edit_user_info(type){
 		let value={};
 		switch(type){
+			case "name":value = this.user_info.user_name;break;			
 			case "email":value = this.user_info.user_email;break;
 			case "phone":value = this.user_info.phone_no;break;
 			case "school":value = this.user_info.school;break;
 			case "degree":value = this.user_info.degree;break;
-			case "name":value = this.user_info.user_name;break;
 		}
 		let alert = this.alertCtrl.create({
 			title: 'Edit your '+type,
