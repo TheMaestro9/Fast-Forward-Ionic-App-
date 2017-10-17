@@ -6,6 +6,6 @@ page-requestdate {
 }
 
 .datetime-text:empty:not(:focus):before{
-    content: "Please select a date"
+    content: "Click to Select" ; 
 }
 }
