@@ -198,6 +198,49 @@ simulation_date_id:this.sim_id
  });
     }
 
+
+    confirmPayement(i,User){
+
+
+      this.accepted.push(this.pending[i]);
+      console.log('index', i);
+      console.log("moved",this.pending[i])
+      console.log(this.accepted) ;
+      this.pending.splice(i,1);
+
+      console.log(this.pending[i])
+      console.log(this.accepted) ; 
+
+ this.refrence= this.refrence.filter(
+  (item) => {
+
+    
+     return (item.user_id!= User.user_id);
+   });
+
+this.original=this.refrence;
+
+      let applicant={
+        obj: {
+          order: {
+            shipping_data: {
+              first_name:User.user_id , 
+              last_name: this.sim_id , 
+            }
+            ,amount_cents : this.sim_price 
+          }
+        }
+      }
+      this.http.post("https://ffserver.eu-gb.mybluemix.net/paymob_notification_callback",applicant).subscribe(data => {
+        // var res = JSON.parse(data['_body']);
+       
+      
+       },(ERROR)=>{
+         console.log('ERROR',ERROR);
+         
+       });
+}    
+
 reject(i,User){
 
   this.applied.splice(i,1);
