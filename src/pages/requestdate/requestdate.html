@@ -41,17 +41,17 @@
 	 						<ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="localDate" min={{minyear}} max={{maxyear}} (ionChange)="setDate()" placeholder="Dont like the timing?" style="color:red;font-weight:bold;text-align:center;"> </ion-datetime>
 -->
 			
-            <ion-item style="text-align:left;" >
+            <ion-item>
 				<!--<ion-label>Select New Date</ion-label> -->
-				<ion-label  style="color:grey ; margin-left:-5rem ">Date</ion-label> 
+				<button ion-button color="dark" clear ng-disable="true" item-start>Date</button> 
  				<ion-datetime class ="DatePicker" displayFormat="MMMM DD YYYY"
 				max="2018-12-31" [(ngModel)]="myDate"></ion-datetime>
 
    			</ion-item>
 
-		    <ion-item style="text-align:left;" >
+		    <ion-item>
 			
-				<ion-label   style="color:grey ; margin-left:-12rem">Time</ion-label> 
+				<button ion-button color="dark" clear ng-disable="true" item-start>Time</button> 
 			
  				<ion-datetime class ="TimePicker" displayFormat="h A" [(ngModel)]="myTime"></ion-datetime>
    			</ion-item>	
