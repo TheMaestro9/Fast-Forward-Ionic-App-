@@ -56,13 +56,17 @@ setDate(){
   console.log('local',this.localDate);
   
   
-  this.nowDate=new Date(Date.parse(this.localDate));
-  console.log("still out ya naaas " , this.nowDate); 
+  
+  console.log("still out ya naaas " , this.myDate); 
+    console.log("still out ya 3alaam " , this.myTime); 
+
 
 this.nowDate.setHours(this.nowDate.getUTCHours()+2);
 var theDate = this.nowDate.toISOString() ; 
 
- this.store.get('user_id').then((val) => {
+ //this.store.get('user_id').then((val) => {
+
+   
   //   var sendObj = {
   // date: theDate ,
   // simulation_id: this.simulation_id , 
@@ -84,26 +88,28 @@ var theDate = this.nowDate.toISOString() ;
 // 					});
   //  console.log("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val); 
    
-  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val);
-    this.DS.load().subscribe(
-            data => { 
-                        var theDate2 = new Date(theDate);  
-                        theDate =  this.TransfromDate(theDate2); 
-                        console.log(theDate2) ; 
-                        var dateObj = {
-                        date : theDate , 
-                        votes :"1" ,
-                        id: data.simDateID    
-                        }
-                      this.date.push(dateObj) ;   
-                      console.log("done"); 
-                      console.log (data); 
-                  }
+
+
+//   this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val);
+//     this.DS.load().subscribe(
+//             data => { 
+//                         var theDate2 = new Date(theDate);  
+//                         theDate =  this.TransfromDate(theDate2); 
+//                         console.log(theDate2) ; 
+//                         var dateObj = {
+//                         date : theDate , 
+//                         votes :"1" ,
+//                         id: data.simDateID    
+//                         }
+//                       this.date.push(dateObj) ;   
+//                       console.log("done"); 
+//                       console.log (data); 
+//                   }
             
-    );
- });
+//     );
+//  });
  
-console.log('date',theDate);
+// console.log('date',theDate);
 
 }
 
