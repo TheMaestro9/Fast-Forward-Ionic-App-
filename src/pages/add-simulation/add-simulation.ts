@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { AddSimulationDetailsPage } from '../add-simulation-details/add-simulation-details';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AddSimulationPage {
   read_more=[];  
   companyid;
   userid;
+  date:any=[];
   
   constructor(private store:Storage , public navCtrl: NavController, public navParams: NavParams , private http: Http) {
     this.company_or_not = localStorage.getItem('company_or_not');
@@ -22,9 +24,8 @@ export class AddSimulationPage {
     
   }
 
-  checkcompanyornot(){
-    console.log(this.company_or_not);
-    console.log(this.companyid);
+  AddSimulation(){
+    this.navCtrl.push(AddSimulationDetailsPage, this.company_or_not);
   }
   ngOnInit() {
 		//console.log('timer page');

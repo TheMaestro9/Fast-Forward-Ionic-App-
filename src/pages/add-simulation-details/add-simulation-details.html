@@ -2,7 +2,7 @@
 <ion-header color="primary">
     
       <ion-navbar color="primary" [style.height]="ios?'6rem':''" [style.padding-top]="ios?'3rem':''">
-        <ion-title style="margin-top:1rem;padding-right:6rem;">Register</ion-title>
+        <ion-title style="margin-top:0.25Srem;padding-right:6rem;">Add Simulation</ion-title>
       </ion-navbar>
     
     </ion-header>
@@ -14,32 +14,24 @@
     
       <ion-list>
     <ion-item style="text-align:left;">
-          <ion-input [(ngModel)]="name" type="text" placeholder="Simulation Name"></ion-input>
+          <ion-input [(ngModel)]="simName" type="text" placeholder="Name"></ion-input>
         </ion-item>
     
         <ion-item style="text-align:left;">
-          <ion-input #price  placeholder="Price"></ion-input>
+          <ion-input [(ngModel)]="price" type="number" placeholder="Price"></ion-input>
         </ion-item>
     
         <ion-item style="text-align:left;">
-          <ion-input #description type="number" placeholder="Description"></ion-input>
+          <ion-textarea [(ngModel)]="description"  placeholder="Description"></ion-textarea>
         </ion-item>
     
     
         <ion-item style="text-align:left;">
     
-          <ion-select [(ngModel)]="field" style="  width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Field">
-            <ion-option value="MARKETING">MARKETING</ion-option>
-            <ion-option value="SOFTWARE ENGINEERING">SOFTWARE ENGINEERING</ion-option>
-            <ion-option value="ARCHITECTURE">ARCHITECTURE</ion-option>
-            <ion-option value="BANKING">BANKING</ion-option>
-            <ion-option value="Medicine">Medicine</ion-option>
-            <ion-option value="FASHION DESIGN">FASHION DESIGN</ion-option>
-            <ion-option value="JOURNALISM">JOURNALISM</ion-option>
-            <ion-option value="INDUSTRIAL">INDUSTRIAL</ion-option>
-            <ion-option value="TV Production">TV Production</ion-option>
-            <ion-option value="Entrepreneurship">Entrepreneurship</ion-option>
-            
+          <ion-select [(ngModel)]="fieldID" style="width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Field" >
+           <div *ngFor="let field of fields">
+            <ion-option value={{field.id}}  >{{field.name}}</ion-option>
+          </div>             
           </ion-select>
         </ion-item>
         
@@ -47,7 +39,7 @@
       <div >
         
        
-        <button ion-button color="primary" round block large >Done</button>
+        <button  ion-button color="primary"  round block large (click)="AddSimulationDetails()"> ADD </button>
       </div>
     
     </ion-content>
