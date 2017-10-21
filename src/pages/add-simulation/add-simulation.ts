@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { AddSimulationDetailsPage } from '../add-simulation-details/add-simulation-details';
+import { SimulationDatesPage } from '../simulation-dates/simulation-dates';
 
 
 @Component({
@@ -24,9 +25,7 @@ export class AddSimulationPage {
     
   }
 
-  AddSimulation(){
-    this.navCtrl.push(AddSimulationDetailsPage, this.company_or_not);
-  }
+  
   ngOnInit() {
 		//console.log('timer page');
 		
@@ -58,5 +57,12 @@ export class AddSimulationPage {
 
 	this.userid=val;
 
+	}
+
+	AddSimulation(){
+    this.navCtrl.push(AddSimulationDetailsPage, this.company_or_not);
+	}
+	SimulationDates(index){
+		this.navCtrl.push(SimulationDatesPage,this.company_simulations[index]);
 	}
 }

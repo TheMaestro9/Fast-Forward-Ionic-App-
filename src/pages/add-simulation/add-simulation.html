@@ -8,9 +8,9 @@
   </ion-header>
   
   <ion-content>
-  <ion-card *ngFor="let simulation of company_simulations; let i = index">
+  <ion-card *ngFor="let simulation of company_simulations; let i = index" (click)="SimulationDates(i)">
     
-          <ion-item>
+          <ion-item >
             <ion-avatar item-left [style.background-image]="'url('+company_details.profile_pic_link+')'" style="background-repeat: no-repeat;background-position: 50%;background-size: contain;border-radius: 50%;"></ion-avatar>
             <h2><strong>{{simulation.simulation_name}}</strong></h2>
             <!-- <p>{{simulation.date | date: "dd/MM/yyyy HH:mm a"}}</p> -->
@@ -20,7 +20,7 @@
     
           <!-- <img src="{{company_details._pic_link}}" /> -->
     
-          <ion-card-content>
+          <ion-card-content >
             <!-- {{simulation.simulation_name}} -->
             <!-- <div style="color:green">
             Dates: <br> 17 Jan, 11:00 AM<br>

@@ -29,7 +29,7 @@
         <ion-item style="text-align:left;">
     
           <ion-select [(ngModel)]="fieldID" style="width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Field" >
-           <div *ngFor="let field of fields">
+           <div *ngFor="let field of fields; let i = index">
             <ion-option value={{field.id}}  >{{field.name}}</ion-option>
           </div>             
           </ion-select>

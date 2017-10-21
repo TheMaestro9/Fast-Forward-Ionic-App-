@@ -45,8 +45,9 @@ import { Network } from '@ionic-native/network';
 import {VersionCheckPage} from '../pages/version-check/version-check';
 import { RatingPipe } from '../pipes/rating/rating';
 import {AngularFireModule} from "angularfire2" ; 
+import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates';
 
- 
+
 
  var config = {
     apiKey: "AIzaSyDLdE-P0vHPTnxIpnA5-Nm3yFlabOaUE78",
@@ -73,6 +74,7 @@ import {AngularFireModule} from "angularfire2" ;
     SafepipePipe,
     LoginPage,
     EditProfilePage,
+    SimulationDatesPage,
     AddSimulationPage,
     AddSimulationDetailsPage,
     CountdownPipe,
@@ -113,6 +115,7 @@ import {AngularFireModule} from "angularfire2" ;
     AddSimulationPage,
     AddSimulationDetailsPage,
     EditProfilePage,
+    SimulationDatesPage,
     VersionCheckPage,
     AcceptapplicantsPage,
     TutorialPage,
