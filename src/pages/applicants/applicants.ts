@@ -163,11 +163,11 @@ this.applied = this.original.filter(
 
 accept(i,User){
   console.log("accept",i);
-  if(this.sim_price==0)
-  this.accepted.push(this.applied[i]);
-  else{
+  // if(this.sim_price==0)
+  // this.accepted.push(this.applied[i]);
+  // else{
     this.pending.push(this.applied[i]);
-  }
+  // }
   
  this.applied.splice(i,1);
 
