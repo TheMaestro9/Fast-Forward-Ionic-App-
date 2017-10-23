@@ -1,0 +1,46 @@
+
+<ion-header color="primary">
+    
+      <ion-navbar color="primary" [style.height]="ios?'6rem':''" [style.padding-top]="ios?'3rem':''">
+        <ion-title style="margin-top:0.25Srem;padding-right:6rem;">Add Simulation</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+    
+    
+    
+      <ion-list>
+    <ion-item style="text-align:left;">
+          <ion-input [(ngModel)]="simName" type="text" placeholder="Name"></ion-input>
+        </ion-item>
+    
+        <ion-item style="text-align:left;">
+          <ion-input [(ngModel)]="price" type="number" placeholder="Price"></ion-input>
+        </ion-item>
+    
+        <ion-item style="text-align:left;">
+          <ion-textarea [(ngModel)]="description"  placeholder="Description"></ion-textarea>
+        </ion-item>
+    
+    
+        <ion-item style="text-align:left;">
+    
+          <ion-select [(ngModel)]="fieldID" style="width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Field" >
+           <div *ngFor="let field of fields; let i = index">
+            <ion-option value={{field.id}}  >{{field.name}}</ion-option>
+          </div>             
+          </ion-select>
+        </ion-item>
+        
+      </ion-list>
+      <div >
+        
+       
+        <button  ion-button color="primary"  round block large (click)="AddSimulationDetails()"> ADD </button>
+      </div>
+    
+    </ion-content>
+    

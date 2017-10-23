@@ -28,6 +28,8 @@ export class Requestdate {
     today;
     maxyear;
     minyear;
+    private myDate: string  ; 
+    private myTime:string ;
   constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id = navParams.get("SimID"); 
    
@@ -54,13 +56,23 @@ setDate(){
   console.log('local',this.localDate);
   
   
-  this.nowDate=new Date(Date.parse(this.localDate));
-  console.log("still out ya naaas " , this.nowDate); 
+  
+  console.log("still out ya naaas " , this.myDate); 
+    console.log("still out ya 3alaam " , this.myTime);
+    var parts = this.myDate.split('-') ;
+    var date =  new  Date(+parts[0] , +parts[1]-1 , +parts[2]) ;
+    var timeParts = this.myTime.split(':') ; 
+    date.setHours(+timeParts[0]+2) ; 
+    //date.setFullYear(+parts[0] , +parts[1]-1 , +parts[2]) ;
 
-this.nowDate.setHours(this.nowDate.getUTCHours()+2);
-var theDate = this.nowDate.toISOString() ; 
+
+  //  console.log("el hayrooo7" , date) ; 
+//this.nowDate.setHours(this.nowDate.getUTCHours()+2);
+//var theDate = this.nowDate.toISOString(); 
 
  this.store.get('user_id').then((val) => {
+
+
   //   var sendObj = {
   // date: theDate ,
   // simulation_id: this.simulation_id , 
@@ -82,12 +94,14 @@ var theDate = this.nowDate.toISOString() ;
 // 					});
   //  console.log("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val); 
    
+  var theDate = date.toISOString() ; 
+  console.log('date',theDate);
+
   this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val);
     this.DS.load().subscribe(
             data => { 
-                        var theDate2 = new Date(theDate);  
-                        theDate =  this.TransfromDate(theDate2); 
-                        console.log(theDate2) ; 
+                        date.setHours(+timeParts[0]); 
+                        theDate =  this.TransfromDate(date); 
                         var dateObj = {
                         date : theDate , 
                         votes :"1" ,
@@ -101,7 +115,6 @@ var theDate = this.nowDate.toISOString() ;
     );
  });
  
-console.log('date',theDate);
 
 }
 

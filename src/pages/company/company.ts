@@ -231,15 +231,15 @@ timer;
 					}})
 				});
 
-				// 	this.actionSheet.addButton(
-				// 	{
-				// 			text: 'Request New Date!',
-				// 			handler: () => {
+					this.actionSheet.addButton(
+					{
+							text: 'Request New Date!',
+							handler: () => {
 
-				// 				this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
-				// 			}
-				// 	} 
-				// ); 
+								this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
+							}
+					} 
+				); 
 				this.actionSheet.addButton(
 
 				

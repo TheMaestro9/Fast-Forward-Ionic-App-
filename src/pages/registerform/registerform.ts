@@ -15,6 +15,7 @@ import {TutorialPage} from '../tutorial/tutorial' ;
   templateUrl: 'registerform.html',
 })
 export class Registerform {
+  company_or_not:any;  
   interests=[];
   degree = "";
   name = "";
@@ -31,8 +32,8 @@ export class Registerform {
   loader;
   age=new Date();
   constructor(platform:Platform,public navCtrl: NavController,public DS: DataService,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
-
-
+    this.company_or_not=-1;
+    localStorage.setItem('company_or_not', this.company_or_not);
     this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({
         content: "No internet connection !",
@@ -97,7 +98,6 @@ this.age.setFullYear(this.year,this.month,this.day);
           interests:this.interests,
           major:this.major        
         }
-        
 
 
 

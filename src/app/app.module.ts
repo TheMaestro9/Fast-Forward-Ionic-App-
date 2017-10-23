@@ -19,6 +19,8 @@ import {SimulationsListPage} from '../pages/simulations-list/simulations-list';
 import { CompanyPage} from '../pages/company/company'
 import { Profile } from "../pages/profile/profile";
 import {EditProfilePage } from "../pages/edit-profile/edit-profile";
+import {AddSimulationPage } from "../pages/add-simulation/add-simulation";
+import {AddSimulationDetailsPage } from "../pages/add-simulation-details/add-simulation-details"
 import {LoginPage  } from "../pages/login/login";
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
@@ -43,8 +45,9 @@ import { Network } from '@ionic-native/network';
 import {VersionCheckPage} from '../pages/version-check/version-check';
 import { RatingPipe } from '../pipes/rating/rating';
 import {AngularFireModule} from "angularfire2" ; 
+import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates';
 
- 
+
 
  var config = {
     apiKey: "AIzaSyDLdE-P0vHPTnxIpnA5-Nm3yFlabOaUE78",
@@ -71,6 +74,9 @@ import {AngularFireModule} from "angularfire2" ;
     SafepipePipe,
     LoginPage,
     EditProfilePage,
+    SimulationDatesPage,
+    AddSimulationPage,
+    AddSimulationDetailsPage,
     CountdownPipe,
     VersionCheckPage,
     AcceptapplicantsPage,
@@ -106,7 +112,10 @@ import {AngularFireModule} from "angularfire2" ;
     CompanyPage,
     Profile,
     LoginPage,
+    AddSimulationPage,
+    AddSimulationDetailsPage,
     EditProfilePage,
+    SimulationDatesPage,
     VersionCheckPage,
     AcceptapplicantsPage,
     TutorialPage,

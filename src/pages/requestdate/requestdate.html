@@ -38,10 +38,25 @@
 <!--
 	<button ion-button block ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" style="height: 50px;font-size: 17px;"
 	 color="ffPrimary" (click)="presentActionSheet()"><strong>REQUEST NEW TIME</strong></button>
+	 						<ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="localDate" min={{minyear}} max={{maxyear}} (ionChange)="setDate()" placeholder="Dont like the timing?" style="color:red;font-weight:bold;text-align:center;"> </ion-datetime>
 -->
-            <ion-item style="text-align:center">
-				<div style="text-align:center">
-						<ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="localDate" min={{minyear}} max={{maxyear}} (ionChange)="setDate()" placeholder="Dont like the timing?" style="color:red;font-weight:bold;text-align:center;"> </ion-datetime>
-				</div>		
-		    </ion-item>
+			
+            <ion-item>
+				<!--<ion-label>Select New Date</ion-label> -->
+				<button ion-button color="dark" clear ng-disable="true" item-start>Date</button> 
+ 				<ion-datetime class ="DatePicker" displayFormat="MMMM DD YYYY"
+				max="2018-12-31" [(ngModel)]="myDate"></ion-datetime>
+
+   			</ion-item>
+
+		    <ion-item>
+			
+				<button ion-button color="dark" clear ng-disable="true" item-start>Time</button> 
+			
+ 				<ion-datetime class ="TimePicker" displayFormat="h A" [(ngModel)]="myTime"></ion-datetime>
+   			</ion-item>	
+			<button ion-button color="primary"
+			 round block large (click)="setDate()">Add Date Request</button>
+
+		
 </ion-content>

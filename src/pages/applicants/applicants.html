@@ -84,7 +84,7 @@
           <button ion-button icon-right clear  item-right  [color]="pending_bool?'primary':'grey'"  >Pending Payment</button>          
           </ion-col>
           </ion-row>
-          <ion-card   *ngFor="let User of  pending">
+          <ion-card   *ngFor="let User of  pending; let i=index">
                       <ion-item>
                    <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{User.user_name| slice:0:19}}</span>
                    <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(User.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{User.rating | rating}}</span>
@@ -95,6 +95,15 @@
                        <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{User.degree}}</span>
                      </div>
                    </div>
+
+                   <!-- <ion-row padding>
+                    <ion-col col-12 > -->
+                      <button style="margin-left:7rem;" padding round ion-button small color="secondary" (click)="confirmPayement(i,User)">
+                        <div>Confirm Payment</div>
+                      </button>
+                    <!-- </ion-col> 
+                  </ion-row> -->
+
                   </ion-card>
                 
               </ion-list>
