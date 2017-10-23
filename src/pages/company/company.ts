@@ -225,9 +225,9 @@ timer;
 					this.actionSheet.addButton({text:element.date,
 					handler:()=>{
 					this.Apply(element.date_id,x,event);
-					setTimeout(() => {
-					this.open_reservation_notification_popup();
-					});
+					// setTimeout(() => {
+					// this.open_reservation_notification_popup();
+					// });
 					}})
 				});
 
@@ -319,41 +319,35 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+
 	this.userid=val;
 
 	}
-	addTimer(){
+	addTimer(date){
 		
-		  
-		//   this.StartDate=new Date(this.user_simulations.Acceptance_deadline)
-		//   console.log('date',this.StartDate);
-		//   this.StartDate.setMilliseconds(0);
-		 
-		//   this.timer=  Observable.interval(1000 ).subscribe(x => {
-			
-		// 	this.timercal();
-		//   });
-		
-	   
- 
-
-	}
-	status(stat){
-		if(stat==="pending payment"){
+			console.log("in add timer",date)
+			this.StartDate=new Date(date)
+			console.log('date',this.StartDate);
+			this.StartDate.setMilliseconds(0);	
 			this.timercal();
+	}
+
+	status(simulation){
+		if(simulation.status==="pending payment"){
+			this.addTimer(simulation.acceptance_deadline);
 			return true;
 		}
 	}
 	timercal(){
 		let dump =new Date();
-		
-		this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
+	//	dump.setHours(dump.getHours()-2); 
+		//this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
 		console.log("INNNN",this.StartDate);
 		dump.getTimezoneOffset();
 		let diff=this.StartDate.getTime() - dump.getTime();
 		var timeDiff = Math.abs(diff);
 		this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
-		this. diffhours =Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
+		this. diffhours =Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) 	 ; 
 		this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
 	  
 		this.diffhours+=(this.diffDays*24);
 	
 	}
+
 }

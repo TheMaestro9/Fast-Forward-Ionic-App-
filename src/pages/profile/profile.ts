@@ -172,17 +172,10 @@ this.app.getRootNav().setRoot(LoginPage);
 			  console.log("in add timer",date)
 			  this.StartDate=new Date(date)
 			  console.log('date',this.StartDate);
-			  this.StartDate.setMilliseconds(0);
-			 
-			  this.timer=  Observable.interval(1000 ).subscribe(x => {
-				
-				this.timercal();
-			  });
-			
-		   
-	 
-	
+			  this.StartDate.setMilliseconds(0);	
+			  this.timercal();
 		}
+
 		status(sim){
 			if(sim.status==="pending payment"){
 				this.addTimer(sim.acceptance_deadline);
@@ -191,7 +184,7 @@ this.app.getRootNav().setRoot(LoginPage);
 		}
 		timercal(){
 			let dump =new Date();
-			
+		//	dump.setHours(dump.getHours()-2); 
 			//this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
 			console.log("INNNN",this.StartDate);
 			dump.getTimezoneOffset();

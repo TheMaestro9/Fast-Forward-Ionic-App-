@@ -41,7 +41,9 @@ SimulationID ;
     
     let confirm=this.alertController.create({
       title : 'Vodafone Cash',
-      message:'You can submit a Vodafone Cash payment to : 01014623562. (Vodafone Branches: https://goo.gl/6CP94K) Then confirm by sending an email to support@fastforwardsim.com',
+      message:
+       '<p>You can submit a Vodafone Cash payment to : 01014623562.</p>' + 
+      '<p>Then confirm by sending an email to support@fastforwardsim.com</p>',
       buttons: [
         {text: 'Ok'}]
     });
@@ -49,12 +51,16 @@ SimulationID ;
   
   }
 
+  
+
   EgBankCashPayment(){
     // alert("You can submit a Vodafone Cash payment to : 01014623562.\n (Vodafone Branches: https://goo.gl/6CP94K)\n Then confirm by sending an email to support@fastforwardsim.com");
     
     let confirm=this.alertController.create({
       title : 'Bank Deposit',
-      message:'You can deposit the fees to EGBANK\'s account number: 605661, with the account name: Fast Forward.(EG Bank\'s branches: https://goo.gl/7gWixL)Then confirm by sending a picture of your receipt to support@fastforwardsim.com',
+      message:
+      '<p>You can deposit the fees to EGBANK\'s account number: 605661, with the account name: Fast Forward.</p>' + 
+      '<p>Then confirm by sending a picture of your receipt to support@fastforwardsim.com</p>',
       buttons: [
         {text: 'Ok'}]
     });
@@ -64,9 +70,10 @@ SimulationID ;
 
   OfficeCashPayment(){
     let confirm=this.alertController.create({
-      title : 'Bank Deposit',
-      message:'You can call (+2)01120055087 to schedule a time to come pay the fees in our Dokki office. (Location: https://goo.gl/v2UnsD)',
-      buttons: [
+      title : 'Office Payment',
+      message:
+       '<p>You can call (+2)01120055087 to schedule a time to come pay the fees in our Dokki office.</p>' , 
+        buttons: [
         {text: 'Ok'}]
     });
     confirm.present();
@@ -83,5 +90,8 @@ SimulationID ;
 
   this.SimulationID =  this.navParams.get("SimulationID");
 
-  }
+}
+
+
+
 }
