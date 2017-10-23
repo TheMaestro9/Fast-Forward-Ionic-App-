@@ -70,6 +70,8 @@ export class TabsPage {
 					handler: () => {
 						console.log('17 Jan, 11:00 AM');
 						this.navCtrl.push(AddSimulationPage);
+						console.log(this.company_or_not);
+						
 					}
 				},
 				{
