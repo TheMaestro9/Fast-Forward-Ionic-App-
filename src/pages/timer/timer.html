@@ -1,0 +1,68 @@
+<!--
+  Generated template for the TimerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+ <ion-toolbar  [style.height]="ios?'70px':''">
+<ion-title style=" width:100%;display:inline-block;" [style.margin-top]="ios?'15px':''">
+	<!-- <div *ngIf="true" ></div> -->
+ <h3 style="color:#F84838;display:inline-block;font-weight:bold;font-size:1.4rem">FAST</h3>
+ <h3 style="color:black;display:inline-block;font-weight:bold;font-size:1.4rem"> FORWARD</h3>
+
+</ion-title>
+ </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<br>
+<h1><strong>Soft Launch</strong></h1>
+<div id="clockdiv">
+  <div>
+    <span class="days">{{diffDays}}</span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours">{{diffhours}}</span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes">{{diffmins}}</span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds">{{diffsecs}}</span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+<br><br>
+<h2 style="vertical-align:middle;">Ticket Price: <h1 style="color:green;font-size: -webkit-xxx-large;font-weight:bold;">EGP {{price}}</h1></h2>
+<br>
+<hr> 
+<!--Expo timer-->
+<br>
+<h1><strong>Expo 17</strong></h1>
+<div id="clockdiv">
+    <div>
+      <span class="days">{{diffDaysExpo}}</span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div>
+      <span class="hours">{{diffhoursExpo}}</span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span class="minutes">{{diffminsExpo}}</span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds">{{diffsecsExpo}}</span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+
+
+<h4 style="position:absolute;bottom:4rem;right:1rem;left:1rem;">Our team will be happy to help you! <br> <a href="mailto:support@fastforwardsim.com">support@fastforwardsim.com</a></h4>
+
+</ion-content>
