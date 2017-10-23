@@ -15,14 +15,23 @@
       </ion-card-header>
   
     <ion-list>
-     <button ion-item (click)="CardPayment()">
-        <ion-icon name="card" item-start></ion-icon>
-        <h3 style="color:black;"><strong> Card</strong></h3>
+     <button ion-item >
+        <ion-icon name="card" style="color:grey;" item-start></ion-icon>
+        <h3 style="color:grey;"><strong> Card</strong></h3>
       </button> 
   
-      <button ion-item>
-        <ion-icon name="cash" color="grey" item-start></ion-icon>
-       <h3 style="color:grey;"> <strong>Cash</strong></h3>
+      <button ion-item (click)="vodafoneCashPayment()">
+        <ion-icon name="cash"  item-start></ion-icon>
+       <h3 style="color: black;"> <strong>Vodafone Cash</strong></h3>
+      </button>
+
+      <button ion-item (click)="EgBankCashPayment()">
+        <ion-icon name="briefcase"  item-start></ion-icon>
+       <h3 style="color: black;"> <strong>Bank Deposit</strong></h3>
+      </button>
+      <button ion-item (click)=" OfficeCashPayment()">
+        <ion-icon name="fastforward"  item-start></ion-icon>
+       <h3 style="color: black;"> <strong>Office Payment</strong></h3>
       </button>
     </ion-list>
 
