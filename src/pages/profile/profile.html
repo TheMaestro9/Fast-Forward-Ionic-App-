@@ -72,7 +72,11 @@
 						<i class="desc"> {{sim.simulation_name}}</i> <br>
 						<i class="desc">{{sim.date}}</i><br>
 						<p style="color:#F84838; font-size:1.5rem ; text-transform:uppercase;">{{sim.status}}</p>
+					<div *ngIf="status(sim)" >
+							<span>{{diffhours}} Hours,{{diffmins}} Minutes</span>
+					</div>
 					</a> <br>
+
 					<ion-icon name="close" (click)="removeSimulation(sim)"></ion-icon>
 				</div>
 	

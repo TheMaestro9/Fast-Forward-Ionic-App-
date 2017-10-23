@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,Platform } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { AlertController} from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {  Requestdate } from "../requestdate/requestdate";
@@ -25,6 +25,15 @@ export class CompanyPage {
   companyid=3;
 userid;
 actionSheet;
+StartDate;
+check:any;
+nowDate = new Date();
+diffDays;
+diffhours;
+diffmins;
+diffsecs;
+user_id;
+timer;
 	constructor(platform:Platform, private store:Storage,public navCtrl: NavController, navParams: NavParams, private http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
 	
 	this.companyid=navParams.get("co_id");
@@ -89,6 +98,22 @@ actionSheet;
 						text: 'Send',
 						handler: data => {
 							console.log(data.message);
+						}
+					}
+				]
+			});
+			alert.present();
+		}
+		open_reservation_notification_popup(){
+			let alert = this.alertCtrl.create({
+				title: 'Reservation Notification',
+				message: 'This is to inform you that in case you got accepted, you will be requested to pay 50LE for reservation',
+				buttons: [
+					{
+						text: 'Ok',
+						role:'cancel',
+						handler: data => {  
+							console.log('Cancel clicked');
 						}
 					}
 				]
@@ -200,6 +225,9 @@ actionSheet;
 					this.actionSheet.addButton({text:element.date,
 					handler:()=>{
 					this.Apply(element.date_id,x,event);
+					setTimeout(() => {
+					this.open_reservation_notification_popup();
+					});
 					}})
 				});
 
@@ -290,5 +318,42 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+
 
 	this.userid=val;
 
+	}
+	addTimer(){
+		
+		  
+		//   this.StartDate=new Date(this.user_simulations.Acceptance_deadline)
+		//   console.log('date',this.StartDate);
+		//   this.StartDate.setMilliseconds(0);
+		 
+		//   this.timer=  Observable.interval(1000 ).subscribe(x => {
+			
+		// 	this.timercal();
+		//   });
+		
+	   
+ 
+
+	}
+	status(stat){
+		if(stat==="pending payment"){
+			this.timercal();
+			return true;
+		}
+	}
+	timercal(){
+		let dump =new Date();
+		
+		this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
+		console.log("INNNN",this.StartDate);
+		dump.getTimezoneOffset();
+		let diff=this.StartDate.getTime() - dump.getTime();
+		var timeDiff = Math.abs(diff);
+		this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+		this. diffhours =Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
+		this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
+	  
+		this.diffhours+=(this.diffDays*24);
+	
 	}
 }

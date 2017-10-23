@@ -11,6 +11,8 @@ import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
 import {FileChooser } from 'ionic-native'; 
 import { AngularFireAuth } from 'angularfire2/auth';
+import {DataService} from '../../providers/data-service';
+import {Observable} from 'rxjs/Rx';
 @Component({
 	selector: 'page-profile',
 	templateUrl: 'profile.html',
@@ -21,9 +23,17 @@ export class Profile {
 	user_simulations:any=[];
 	refresher:any;
 	nativePath: any; 
- 
+	StartDate;
+	check:any;
+	nowDate = new Date();
+	diffDays;
+	diffhours;
+	diffmins;
+	diffsecs;
+	user_id;
+    timer;
 	
-	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage, public afa :AngularFireAuth) {
+	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,private DS:DataService,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage, public afa :AngularFireAuth) {
 	
 
 		this.store.get('user_id').then((val) => {
@@ -40,10 +50,10 @@ export class Profile {
 				var res = JSON.parse(data['_body']);
 				this.user_simulations=res;
 				console.log(this.user_info);
+				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
 			});
 			});
-				
 
 	}
 	
@@ -51,13 +61,14 @@ export class Profile {
 		console.log("sha3'aaaaal");
 		this.navCtrl.push(EditProfilePage, this.user_info);
 	}
-
+	
 	removeSimulation(sim){
 		
 		
 		this.store.get('user_id').then((val) => {
 		console.log("selected", sim )  ;
-		console.log("all",this.user_simulations )  ;
+		console.log("all",this.user_simulations)  ;
+		
 		console.log("index", this.user_simulations.indexOf(sim) )  ;
 					this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?user_id="+val+"&simulation_id="+sim.simulation_date_id).subscribe(data => {
 					//	var res = JSON.parse(data['_body']);
@@ -155,6 +166,43 @@ this.app.getRootNav().setRoot(LoginPage);
 //root.popToRoot();
 
 		}
-
+	
+		addTimer(date){
+			
+			  console.log("in add timer",date)
+			  this.StartDate=new Date(date)
+			  console.log('date',this.StartDate);
+			  this.StartDate.setMilliseconds(0);
+			 
+			  this.timer=  Observable.interval(1000 ).subscribe(x => {
+				
+				this.timercal();
+			  });
+			
+		   
+	 
+	
+		}
+		status(sim){
+			if(sim.status==="pending payment"){
+				this.addTimer(sim.acceptance_deadline);
+				return true;
+			}
+		}
+		timercal(){
+			let dump =new Date();
+			
+			//this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
+			console.log("INNNN",this.StartDate);
+			dump.getTimezoneOffset();
+			let diff=this.StartDate.getTime() - dump.getTime();
+			var timeDiff = Math.abs(diff);
+			this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+			this. diffhours =Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
+			this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
+		  
+		    this.diffhours+=(this.diffDays*24);
+		
+		}
 
 }
