@@ -17,12 +17,12 @@
       <ion-list>
         <ion-item style="text-align:left;">
                 <ion-label>Name :</ion-label>
-                <ion-input #name type="text" style="padding-right:60px"></ion-input>
+                <ion-input #name type="text" [(ngModel)]="company_details.company_name" style="padding-right:60px"></ion-input>
             </ion-item>
             
             <ion-item style="text-align:left;">
                 <ion-label>Description :</ion-label>
-              <ion-textarea #email type="text" ></ion-textarea>
+              <ion-textarea #description type="text" [(ngModel)]="company_details.description" ></ion-textarea>
               
             </ion-item>
         
@@ -30,7 +30,7 @@
           <div >
             
            
-            <button ion-button color="primary" round block large >Update</button>
+            <button ion-button color="primary" round block large (click)="edit_company_info(name.value,description.value)">Update</button>
           </div>
         
     </ion-content>
