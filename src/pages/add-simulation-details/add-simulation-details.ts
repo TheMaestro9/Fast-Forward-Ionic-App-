@@ -78,7 +78,7 @@ setresponse(value) {
   else if(this.check.result==true){
     this.showAlert(this.check.msg);
     this.navCtrl.pop();             
-    this.navCtrl.push(AddSimulationDatePage);
+    this.navCtrl.push(AddSimulationDatePage,this.check.simulation_id);
    }      
   }
   }
