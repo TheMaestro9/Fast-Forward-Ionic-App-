@@ -14,14 +14,15 @@ export class SimulationDatesPage {
   simulationDate:any;  
   read_more=[];  
   companyid;
+  sim_id;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.company_simulations = this.navParams.data;
     console.log(this.company_simulations);
-    this.simulationDate=this.company_simulations.dates[0].date;
-    console.log(this.simulationDate);
+    this.sim_id=navParams.data.simulation_id;
+    console.log("Simulation ID : ",this.sim_id);
   }
   AddDate(){
-    this.navCtrl.push(AddSimulationDatePage);
+    this.navCtrl.push(AddSimulationDatePage , this.sim_id);
   }
 
 }

@@ -46,13 +46,15 @@
           </ion-card-content>
     
           <ion-row><ion-col col-5>
-            <div  style="color:#24b950; text-align:center;padding-left: 20px;margin-right: auto;font-size: 17px;">
+            <div  style="color:#24b950; text-align:left;padding-left:2rem;font-size: 17px;">
               <i class="fa fa-users" aria-hidden="true"></i>
               <strong> {{simulation.number_of_applicants}}</strong>
             </div>
           </ion-col>
             <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;" (click)="goToProfile()">
-              <!-- <p *ngFor="let y of simulation.dates" style="color:#F84838;font-weight:bold;" >{{y.date}}</p> -->
+                <ion-icon name="md-create" style="font-size:2.75rem"></ion-icon>
+                <ion-icon name="trash" style="font-size:2.75rem;padding-left:2.75rem"></ion-icon>                
+              <!-- <p  style="color:#F84838;font-weight:bold;" >{{y.date}}</p> -->
             </ion-col>
           </ion-row>
           
