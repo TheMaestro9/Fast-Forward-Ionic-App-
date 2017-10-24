@@ -46,6 +46,8 @@ import {VersionCheckPage} from '../pages/version-check/version-check';
 import { RatingPipe } from '../pipes/rating/rating';
 import {AngularFireModule} from "angularfire2" ; 
 import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates';
+import { AddSimulationDatePage } from '../pages/add-simulation-date/add-simulation-date';
+import { EditCompanyPage } from '../pages/edit-company/edit-company';
 
 
 
@@ -74,7 +76,9 @@ import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates'
     SafepipePipe,
     LoginPage,
     EditProfilePage,
+    EditCompanyPage,
     SimulationDatesPage,
+    AddSimulationDatePage,
     AddSimulationPage,
     AddSimulationDetailsPage,
     CountdownPipe,
@@ -115,7 +119,9 @@ import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates'
     AddSimulationPage,
     AddSimulationDetailsPage,
     EditProfilePage,
+    EditCompanyPage,
     SimulationDatesPage,
+    AddSimulationDatePage,
     VersionCheckPage,
     AcceptapplicantsPage,
     TutorialPage,

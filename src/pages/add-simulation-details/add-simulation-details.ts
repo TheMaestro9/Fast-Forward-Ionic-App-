@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
 import { Storage } from '@ionic/storage';
 import { AddSimulationPage } from '../add-simulation/add-simulation';
+import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
 
 @Component({
   selector: 'page-add-simulation-details',
@@ -77,7 +78,7 @@ setresponse(value) {
   else if(this.check.result==true){
     this.showAlert(this.check.msg);
     this.navCtrl.pop();             
-    
+    this.navCtrl.push(AddSimulationDatePage);
    }      
   }
   }

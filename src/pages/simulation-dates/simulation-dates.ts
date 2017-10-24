@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
 
 
 @Component({
@@ -19,6 +20,8 @@ export class SimulationDatesPage {
     this.simulationDate=this.company_simulations.dates[0].date;
     console.log(this.simulationDate);
   }
-  
+  AddDate(){
+    this.navCtrl.push(AddSimulationDatePage);
+  }
 
 }

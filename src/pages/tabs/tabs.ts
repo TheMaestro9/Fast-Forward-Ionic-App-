@@ -10,6 +10,7 @@ import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
+import { EditCompanyPage } from '../edit-company/edit-company';
 
 //import {ExpotimerPage} from '../expotimer/expotimer';
 
@@ -77,6 +78,7 @@ export class TabsPage {
 				{
 					text: 'Edit Profile',
 					handler: () => {
+						this.navCtrl.push(EditCompanyPage,this.company_or_not);
 						console.log('20 Feb, 7:300 AM');
 					}
 				},
