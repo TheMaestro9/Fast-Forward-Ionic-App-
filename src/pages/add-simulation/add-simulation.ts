@@ -60,9 +60,10 @@ export class AddSimulationPage {
 	}
 
 	AddSimulation(){
-    this.navCtrl.push(AddSimulationDetailsPage, this.company_or_not);
+    this.navCtrl.push(AddSimulationDetailsPage, this.company_or_not,this.company_simulations);
 	}
 	SimulationDates(index){
-		this.navCtrl.push(SimulationDatesPage,this.company_simulations[index]);
+		this.navCtrl.push(SimulationDatesPage,this.company_simulations[index],this.company_simulations);
 	}
+
 }
