@@ -48,7 +48,7 @@
     "cordova-sqlite-storage": "^2.0.4",
     "datepicker-ionic2": "^2.4.8",
     "es6-promise-plugin": "^4.1.0",
-    "firebase": "^4.3.0",
+    "firebase": "^4.2.0",
     "ion2-datetime-picker": "^1.1.9",
     "ionic-angular": "3.5.0",
     "ionic-plugin-keyboard": "^2.2.1",
