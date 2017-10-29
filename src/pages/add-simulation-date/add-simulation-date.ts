@@ -23,10 +23,14 @@ export class AddSimulationDatePage {
     today;
     maxyear;
     minyear;
+    durations;
+    duration;
     private myDate: string  ; 
     private myTime:string ;
   constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id=this.navParams.data;
+    this.durations=[1,2,3,4,5,6];
+    this.duration = navParams.get("duration");    
     console.log(this.simulation_id);
     this.minyear=this.nowDate.getFullYear();
 
@@ -50,7 +54,8 @@ export class AddSimulationDatePage {
 
     let simDate={
       "date":theDate , 
-      "simulation_id":this.simulation_id 
+      "simulation_id":this.simulation_id,
+      "duration":this.duration
     }
     console.log("daa el sim date ",simDate);
     this.http.post("https://ffserver.eu-gb.mybluemix.net/add-simulation-date", simDate).subscribe(data => {
