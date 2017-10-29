@@ -9,40 +9,18 @@
   </ion-header>
   
   <ion-content>
-  <ion-card *ngFor="let simulation of company_simulations; let i = index" (click)="SimulationDates(i)">
+  <ion-card *ngFor="let simulation of company_simulations; let i = index" >
     
-          <ion-item >
+          <ion-item (click)="SimulationDates(i)">
             <ion-avatar item-left [style.background-image]="'url('+company_details.profile_pic_link+')'" style="background-repeat: no-repeat;background-position: 50%;background-size: contain;border-radius: 50%;"></ion-avatar>
             <h2><strong>{{simulation.simulation_name}}</strong></h2>
             <!-- <p>{{simulation.date | date: "dd/MM/yyyy HH:mm a"}}</p> -->
             <!--<h2 style="color:#24b950" item-end><strong>{{simulation.price}}</strong> EGP </h2> -->
             <h2 style="color:#24b950" item-end><strong>{{simulation.price==-1?'NA':''+simulation.price+' EGP'}}</strong> </h2>
-          </ion-item>
-    
-          <!-- <img src="{{company_details._pic_link}}" /> -->
-    
-          <ion-card-content >
-            <!-- {{simulation.simulation_name}} -->
-            <!-- <div style="color:green">
-            Dates: <br> 17 Jan, 11:00 AM<br>
-            20 Feb, 7:00 AM
-            <br>
-          </div> -->
+          </ion-item>    
+          <ion-card-content (click)="SimulationDates(i)">
           {{simulation.description}}
-            <!-- <br>
-            Introduction: <br>Students will try out the mobile application development simulation in our work place.
-            <a style="color:#f85a51" href="#" *ngIf="!read_more[i]"(click)="read_more[i]=true"> <strong>read more..</strong></a>
-            <br>
-            <br>
-            <span *ngIf="read_more[i]" >
-              Requirements:<br>
-              - GPA > 2.0 <br>
-              - University Student <br>
-              - Loving Nature
-              <br>
-              <br>
-              Tools: Mobile First which is a very important thing in life and stuff about it.
-            </span> -->
+
           </ion-card-content>
     
           <ion-row><ion-col col-5>
@@ -51,10 +29,9 @@
               <strong> {{simulation.number_of_applicants}}</strong>
             </div>
           </ion-col>
-            <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;" (click)="goToProfile()">
+            <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;">
                 <ion-icon name="md-create" style="font-size:2.75rem"></ion-icon>
-                <ion-icon name="trash" style="font-size:2.75rem;padding-left:2.75rem"></ion-icon>                
-              <!-- <p  style="color:#F84838;font-weight:bold;" >{{y.date}}</p> -->
+                <ion-icon name="trash" style="font-size:2.75rem;padding-left:2.75rem " (click)="deleteSimulation(i)"></ion-icon>
             </ion-col>
           </ion-row>
           

@@ -25,14 +25,21 @@
         <ion-item *ngFor="let simulation of company_simulations.dates; let i = index">
             <div class="row" style="padding-left: 1rem;">
               <div style="width:72.5%;float:left;">
-                <h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{i+1}}- {{company_simulations.dates[i].date}}</h2>
+                <h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{company_simulations.dates[i].date}}</h2>
               </div>
               <div style="width:26.5%;float:right;">
                 <h3 style="color:#32db64;font-weight:bold">{{company_simulations.number_of_applicants}} </h3>
               </div>
+
             </div>
+            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon>
+            
         </ion-item>
-  
+        <!-- <ion-row>
+          <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;"> -->
+            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon>
+          <!-- </ion-col>
+        </ion-row> -->
       </ion-card>
     </ion-list>
   

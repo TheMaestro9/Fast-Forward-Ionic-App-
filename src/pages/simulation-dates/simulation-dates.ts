@@ -17,7 +17,7 @@ export class SimulationDatesPage {
   sim_id;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.company_simulations = this.navParams.data;
-    console.log(this.company_simulations);
+    console.log(this.company_simulations.dates);
     this.sim_id=navParams.data.simulation_id;
     console.log("Simulation ID : ",this.sim_id);
   }
