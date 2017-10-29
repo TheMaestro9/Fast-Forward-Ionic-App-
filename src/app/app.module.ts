@@ -48,6 +48,8 @@ import {AngularFireModule} from "angularfire2" ;
 import { SimulationDatesPage } from '../pages/simulation-dates/simulation-dates';
 import { AddSimulationDatePage } from '../pages/add-simulation-date/add-simulation-date';
 import { EditCompanyPage } from '../pages/edit-company/edit-company';
+import { EditSimulationPage } from '../pages/edit-simulation/edit-simulation';
+import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
 
 
 
@@ -77,6 +79,8 @@ import { EditCompanyPage } from '../pages/edit-company/edit-company';
     LoginPage,
     EditProfilePage,
     EditCompanyPage,
+    EditSimulationPage,
+    ChooseCompanyPage,
     SimulationDatesPage,
     AddSimulationDatePage,
     AddSimulationPage,
@@ -120,6 +124,8 @@ import { EditCompanyPage } from '../pages/edit-company/edit-company';
     AddSimulationDetailsPage,
     EditProfilePage,
     EditCompanyPage,
+    EditSimulationPage,
+    ChooseCompanyPage,
     SimulationDatesPage,
     AddSimulationDatePage,
     VersionCheckPage,
