@@ -62,15 +62,15 @@
 				<a  class="description sim" style="margin-left:44px;">
 					 <i class="sim-title">SIMULATIONS</i> <br>
 					 <p class="sim-detail">{{user_simulations.length}}</p></a><br> <hr> 
-			<div class="simulation" *ngFor="let sim of user_simulations">
+			<div class="simulation" *ngFor="let sim of user_simulations; let i = index">
 					<ion-avatar class="border" item-start style="width: 40px;height: 40px;
-			display: inline-block;" [style.background-image]="'url('+sim.profile_pic_link+')'">
+			display: inline-block;" [style.background-image]="'url('+sim.profile_pic_link+')'" (click)="GoToCompany(i,sim)">
 					</ion-avatar>
 					
 					<a  class="description sim" style="width: 70%;">
-						<i class="desc" >{{sim.company_name}}</i> <br>
-						<i class="desc"> {{sim.simulation_name}}</i> <br>
-						<i class="desc">{{sim.date}}</i><br>
+						<i class="desc" (click)="GoToCompany(i,sim)">{{sim.company_name}}</i> <br>
+						<i class="desc" (click)="GoToCompany(i,sim)"> {{sim.simulation_name}}</i> <br>
+						<i class="desc" (click)="GoToCompany(i,sim)">{{sim.date}}</i><br>
 						<p style="color:#F84838; font-size:1.5rem ; text-transform:uppercase;">{{sim.status}}</p>
 					<div *ngIf="status(sim)" >
 							<span>{{diffhours}} Hours,{{diffmins}} Minutes</span>

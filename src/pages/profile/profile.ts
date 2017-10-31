@@ -13,6 +13,7 @@ import {FileChooser } from 'ionic-native';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
+import { CompanyPage } from '../company/company';
 @Component({
 	selector: 'page-profile',
 	templateUrl: 'profile.html',
@@ -49,12 +50,16 @@ export class Profile {
 			http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id="+val).subscribe(data => {
 				var res = JSON.parse(data['_body']);
 				this.user_simulations=res;
-				console.log(this.user_info);
+				console.log(this.user_simulations);
 				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
 			});
 			});
 
+	}	
+	GoToCompany(index,simulation){
+		this.navCtrl.push(CompanyPage,{co_id:simulation.company_id});
+		console.log(this.user_simulations[index].company_id);
 	}
 	
 	EditProfile(){
@@ -169,9 +174,9 @@ this.app.getRootNav().setRoot(LoginPage);
 	
 		addTimer(date){
 			
-			  console.log("in add timer",date)
+			 // console.log("in add timer",date)
 			  this.StartDate=new Date(date)
-			  console.log('date',this.StartDate);
+			 // console.log('date',this.StartDate);
 			  this.StartDate.setMilliseconds(0);	
 			  this.timercal();
 		}
@@ -186,7 +191,7 @@ this.app.getRootNav().setRoot(LoginPage);
 			let dump =new Date();
 		//	dump.setHours(dump.getHours()-2); 
 			//this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
-			console.log("INNNN",this.StartDate);
+		//	console.log("INNNN",this.StartDate);
 			dump.getTimezoneOffset();
 			let diff=this.StartDate.getTime() - dump.getTime();
 			var timeDiff = Math.abs(diff);

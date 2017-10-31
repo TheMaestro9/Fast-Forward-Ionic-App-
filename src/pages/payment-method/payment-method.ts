@@ -30,11 +30,11 @@ SimulationID ;
     this.navCtrl.pop();
   }
 
- /* CardPayment() { 
+  CardPayment() { 
 
     console.log("payment method sim id" , this.SimulationID ) ; 
     this.navCtrl.push(CardPaymentPage , {SimulationID:this.SimulationID}) ;
-  }*/
+  }
 
   vodafoneCashPayment(){
     // alert("You can submit a Vodafone Cash payment to : 01014623562.\n (Vodafone Branches: https://goo.gl/6CP94K)\n Then confirm by sending an email to support@fastforwardsim.com");
