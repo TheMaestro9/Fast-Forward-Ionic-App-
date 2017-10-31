@@ -56,7 +56,7 @@ timer;
 		
 		
 			  });
-
+			  
 	
 	}
 
@@ -172,6 +172,56 @@ timer;
 		
 	   }
 
+       followFunc(company,follow){
+		
+// 		console.log("ya mr7ba",company.company_id);
+	 
+		 
+	   //follow=false;
+	   
+	    
+	   this.store.get('user_id').then((val) => {
+		   this.http.get("https://ffserver.eu-gb.mybluemix.net/followed-or-not?user_id="+val+"&company_id="+company.company_id).subscribe(
+		   data => {
+			var res = JSON.parse(data['_body']);
+			if(res.followed) {
+				this.follow="Follow";
+				company.followers--
+				this.http.get("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id="+val+"&company_id="+company.company_id).subscribe(
+					data => {
+					 var res = JSON.parse(data['_body']);
+					})
+					console.log("RES F",res)
+			}
+			else{
+				this.follow="Unfollow";
+				company.followers++
+				this.http.get("https://ffserver.eu-gb.mybluemix.net/follow-company?user_id="+val+"&company_id="+company.company_id).subscribe(
+					data => {
+					 var res = JSON.parse(data['_body']);
+					 console.log("RES UNF",res)
+					})				
+			}
+
+	});
+	
+		   
+		  console.log("followers",company.followers)
+	   })
+
+   
+   
+   
+   }
+   
+   
+   
+  // follow=true;
+   
+ 
+	
+   
+   
 	   getLocation(){
 		try {
 			window.open(this.company_details.location, '_system');
@@ -295,6 +345,21 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+
 		this.http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
 		var res = JSON.parse(data['_body']);
 		this.company_details=res;
+		this.store.get('user_id').then((val) => {
+			this.http.get("https://ffserver.eu-gb.mybluemix.net/followed-or-not?user_id="+val+"&company_id="+this.company_details.company_id).subscribe(
+			 data => {
+			  var res = JSON.parse(data['_body']);
+			  console.log("ress",res)
+			  if(res.followed) {
+				  this.follow="Unfollow"
+				  
+			  }
+			  else{
+				  this.follow="Follow"
+			  }
+			  
+		  })
+	  })
 		console.log(this.company_details);
 		//this.loader.dismiss();
 		// this.loading=false;
