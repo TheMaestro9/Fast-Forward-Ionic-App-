@@ -199,7 +199,7 @@ export class TabsPage {
 						var video = {
 							"video_link": data.video_link,
 							"description": data.video_description,
-							"company_id": "5"
+							"company_id": this.company_or_not
 						}
 						console.log(data.video_link);
 						this.http.post("https://ffserver.eu-gb.mybluemix.net/add-video", video).subscribe(data => {
