@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {Http} from '@angular/http';
 
@@ -17,7 +17,8 @@ import {Http} from '@angular/http';
 export class CardPaymentPage {
   payMob_link ; 
   SimulationID ; 
-  constructor(public navCtrl: NavController,private store:Storage, public navParams: NavParams,private http:Http) {
+  loader;
+  constructor(public navCtrl: NavController,private store:Storage, public navParams: NavParams,private http:Http,private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -30,7 +31,7 @@ export class CardPaymentPage {
       console.log("simulation" , this.SimulationID); 
 		this.store.get('user_id').then((user_id) => {
 
-
+      this.presentLoading() ;      
         var PaymentData ={
         "simulation_id": this.SimulationID , 
         "user_id": user_id 
@@ -38,6 +39,7 @@ export class CardPaymentPage {
         this.http.post("https://ffserver.eu-gb.mybluemix.net/test" , PaymentData).subscribe(data => {
             var res = JSON.parse(data['_body']);
             this.payMob_link=res.url;
+            this.dismissLoading();            
             console.log("link" , res.url); 
       // console.log('link',this.link);
         }); 
@@ -59,5 +61,14 @@ export class CardPaymentPage {
 
 
   }
+  presentLoading() {
+    this. loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+   this. loader.present();
+  }
 
+  dismissLoading() {
+    this.loader.dismiss();
+  }
 }

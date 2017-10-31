@@ -4,6 +4,7 @@ import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { AddSimulationDetailsPage } from '../add-simulation-details/add-simulation-details';
 import { SimulationDatesPage } from '../simulation-dates/simulation-dates';
+import { EditSimulationPage } from '../edit-simulation/edit-simulation';
 
 
 @Component({
@@ -42,10 +43,10 @@ export class AddSimulationPage {
 	SimulationDates(index){
 		this.navCtrl.push(SimulationDatesPage,this.company_simulations[index],this.company_simulations);
 	}
-	// EditSimulation(){
-	// this.navCtrl.push(EditSimulationPage,this.company_simulations);
-	
-	// }
+	EditSimulation(index){
+	this.navCtrl.push(EditSimulationPage,this.company_simulations[index]);
+		this.getData();
+	}
 
 	deleteSimulation(index){
 		let confirm=this.alertController.create({
