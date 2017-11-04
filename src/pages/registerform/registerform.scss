@@ -1,3 +1,8 @@
 page-registerform {
-
+.datetime-text:empty:not(:focus):before{
+    content: "Click to Select" ; 
+}   
+.ion-btn{
+     text-transform: none;
+}
 }
