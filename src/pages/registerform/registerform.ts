@@ -31,7 +31,11 @@ export class Registerform {
   major="";
   loader;
   age=new Date();
-  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService, 
+   public http: Http,public navParams: NavParams,public alertCtrl: AlertController,
+   public plt: Platform,private network: Network, private loadingCtrl: LoadingController, 
+   private store: Storage) {
+     
     this.company_or_not=-1;
     localStorage.setItem('company_or_not', this.company_or_not);
     this.network.onDisconnect().subscribe(() => {

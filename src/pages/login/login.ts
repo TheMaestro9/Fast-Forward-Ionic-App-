@@ -71,11 +71,9 @@ export class LoginPage {
 
          this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
-        
         this.DoTheNav(this.check) ; 
     }
       else {
-
         this.store.set('user_id', "");
         this.showAlert();
       }
@@ -95,79 +93,77 @@ export class LoginPage {
 
   form() {
     this.navCtrl.push(Registerform);
-
-
   }
 
 
-  get_details() {
+  // get_details() {
     
-   this.loginfacebook();
-alert(1);
-    this.fb.getLoginStatus().then((responsefb) => {
-alert(2);
-      this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
+  //  this.loginfacebook();
+  //   alert(1);
+  //   this.fb.getLoginStatus().then((responsefb) => {
+  //   alert(2);
+  //     this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
-alert(response);
+  //       alert(response);
 
-        this.setdata(response)
+  //       this.setdata(response)
 
-        this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
-        this.DS.load().subscribe(
-          data => {
-            this.check = data;
+  //       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
+  //       this.DS.load().subscribe(
+  //         data => {
+  //           this.check = data;
 
       
-            if (this.check.result === true) {
+  //           if (this.check.result === true) {
 
-              localStorage.setItem('company_or_not', this.check.company_or_not);
-              this.store.set('user_id', this.check.user_id);
-              this.navCtrl.setRoot(TabsPage) ; 
+  //             localStorage.setItem('company_or_not', this.check.company_or_not);
+  //             this.store.set('user_id', this.check.user_id);
+  //             this.navCtrl.setRoot(TabsPage) ; 
 
-            }
+  //           }
 
-            // or register
-            else if (this.check.result === false) {
-              alert('registration');
-              this.navCtrl.setRoot(Registerform, { name: this.name, email: this.email, age: this.age });
-            }
+  //           // or register
+  //           else if (this.check.result === false) {
+  //             alert('registration');
+  //             this.navCtrl.setRoot(Registerform, { name: this.name, email: this.email, age: this.age });
+  //           }
 
-          }
+  //         }
 
-        );
-      }, (error) => {
-        alert('error');
+  //       );
+  //     }, (error) => {
+  //       alert('error');
         
-        }
+  //       }
     
-    );
+  //   );
 
-    }
-    );
-
-
-
-  }
+  //   }
+  //   );
 
 
-  loginfacebook() {
 
-    this.fb.login(['email', 'user_birthday']).then((response) => {
+  // }
+
+
+  // loginfacebook() {
+
+  //   this.fb.login(['email', 'user_birthday']).then((response) => {
 
 
        
-    }, (error) => { })
-  }
+  //   }, (error) => { })
+  // }
 
 
 
-  setdata(response) {
-alert('setdata');
-    this.name = response.name;
-    this.email = response.email;
-    this.age = response.birthday;
+  // setdata(response) {
+  //   alert('setdata');
+  //   this.name = response.name;
+  //   this.email = response.email;
+  //   this.age = response.birthday;
 
-  }
+  // }
 
   forgot_pass() {
     this.alertCtrl.create({
@@ -208,7 +204,7 @@ alert('setdata');
       data => {alert(data.msg);});
     }
     else {
-alert('Enter your mail please ');
+      alert('Enter your mail please ');
 
 
     }
@@ -218,7 +214,6 @@ alert('Enter your mail please ');
 
 
   DoTheNav(responseData) {  
-    
         this.navCtrl.setRoot(TutorialPage);   
   }
 
