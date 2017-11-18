@@ -1,8 +1,9 @@
 
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component } from '@angular/core';
-import { Platform, LoadingController } from 'ionic-angular';
+import { Component,Inject, ViewChild } from '@angular/core';
+import { Platform,Nav,NavController,LoadingController } from 'ionic-angular';
+import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
@@ -13,8 +14,6 @@ import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import {  TutorialPage } from '../pages/tutorial/tutorial';
 @Component({
   templateUrl: 'app.html',
-
-
 })
 
 
@@ -28,13 +27,15 @@ export class MyApp {
 
   connection_error_popup: any;
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private DS: DataService, private network: Network, public store: Storage) {
+ 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+    
     });
-
+  
     //this.rootPage=TabsPage;this.handelResponse(data, val)
 
     store.get('user_id').then((val) => {
@@ -45,9 +46,20 @@ export class MyApp {
       );
 
     });
-
+    // deeplinks.route({
+    //   '/about-us': LoginPage,
+    //   '/company':CompanyPage
+    // }).subscribe((match) => {
+    //   // match.$route - the route we matched, which is the matched entry from the arguments to route()
+    //   // match.$args - the args passed in the link
+    //   // match.$link - the full link data
+    //   console.log('Successfully matched route', match);
+    // }, (nomatch) => {
+    //   // nomatch.$link - the full link data
+    //   console.error('Got a deeplink that didn\'t match', nomatch);
+    // });
   }
-
+ 
   ngOnInit() {
 
     this.network.onDisconnect().subscribe(() => {
@@ -60,6 +72,8 @@ export class MyApp {
     this.network.onConnect().subscribe(() => {
       this.connection_error_popup.dismiss();
     });
+
+  
   }
 
   handelResponse(data, user_id) {

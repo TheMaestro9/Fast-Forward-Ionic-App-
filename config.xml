@@ -101,4 +101,9 @@
     <engine name="ios" spec="~4.4.0" />
     <engine name="android" spec="~6.1.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+    <plugin name="ionic-plugin-deeplinks" spec="~1.0.15">
+        <variable name="URL_SCHEME" value="fastforwardsimapp" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="fastforwardsimapp.com" />
+    </plugin>
 </widget>
