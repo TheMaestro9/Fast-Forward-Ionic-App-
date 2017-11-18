@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FieldsPage } from '../fields/fields';
 import { Videos } from '../videos/videos';
 import { Profile } from "../profile/profile";
-import {AddSimulationPage } from "../add-simulation/add-simulation"
+import { AddSimulationPage } from "../add-simulation/add-simulation"
 import { ActionSheetController, Platform, LoadingController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -23,15 +23,15 @@ import { ChooseCompanyPage } from '../choose-company/choose-company';
 export class TabsPage {
 	company_or_not: any;
 	superAdmin;
-	expo:any;
+	expo: any;
 	tab1Root = FieldsPage;
 	tab2Root = Videos;
 	tab3Root = Profile;
 	//tab5Root = ExpotimerPage;
 	ios: boolean = false;
 	root;
-	companies=[];
-	connection_error_popup:any;
+	companies = [];
+	connection_error_popup: any;
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
 			this.connection_error_popup = this.loadingCtrl.create({
@@ -44,29 +44,29 @@ export class TabsPage {
 			this.connection_error_popup.dismiss();
 		});
 		this.store.get('user_id').then((val) => {
-			
-					  
-					http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id="+val).subscribe(data => {
-						var res = JSON.parse(data['_body']);
-						this.superAdmin=res.company_or_not;
-						console.log(this.superAdmin);
-						//this.loading=false;
-					});
-				});
 
-				http.get("https://ffserver.eu-gb.mybluemix.net/all-companies?id=").subscribe(data => {
-					var res = JSON.parse(data['_body']);
-					this.companies=res;
-					console.log(this.companies);
-					//this.loading=false;
-				});		
+
+			http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=" + val).subscribe(data => {
+				var res = JSON.parse(data['_body']);
+				this.superAdmin = res.company_or_not;
+				console.log(this.superAdmin);
+				//this.loading=false;
+			});
+		});
+
+		http.get("https://ffserver.eu-gb.mybluemix.net/all-companies?id=").subscribe(data => {
+			var res = JSON.parse(data['_body']);
+			this.companies = res;
+			console.log(this.companies);
+			//this.loading=false;
+		});
 		this.root = this.tab1Root;
 		this.company_or_not = localStorage.getItem('company_or_not');
 		if (plt.is('ios')) {
 			this.ios = true;
 		}
 		//this.expo= localStorage.getItem('expo');
-	
+
 	}
 	switch1() {
 		this.root = this.tab1Root;
@@ -80,7 +80,7 @@ export class TabsPage {
 	switch4() {
 		this.presentAdminActionSheet();
 	}
-	
+
 
 	presentAdminActionSheet() {
 		let actionSheet = this.actionSheetCtrl.create({
@@ -92,13 +92,13 @@ export class TabsPage {
 						console.log('17 Jan, 11:00 AM');
 						this.navCtrl.push(AddSimulationPage);
 						console.log(this.company_or_not);
-						
+
 					}
 				},
 				{
 					text: 'Edit Profile',
 					handler: () => {
-						this.navCtrl.push(EditCompanyPage,this.company_or_not);
+						this.navCtrl.push(EditCompanyPage, this.company_or_not);
 						console.log('20 Feb, 7:300 AM');
 					}
 				},
@@ -113,10 +113,10 @@ export class TabsPage {
 				{
 					text: 'Accept Applicants',
 					handler: () => {
-					this.navCtrl.push(AcceptapplicantsPage);
+						this.navCtrl.push(AcceptapplicantsPage);
 					}
 				},
-				
+
 				{
 					text: 'Cancel',
 					role: 'cancel',
@@ -125,26 +125,26 @@ export class TabsPage {
 					}
 				}
 			]
-				
-		});
-		if(this.superAdmin==-2){
-		actionSheet.addButton	({
-			text: 'Choose Company',
-			
-			handler: () => {
 
-				setTimeout(() => {
-				this.ChooseCompanyList();
-					
-			}, 100); 
-			}
-			
 		});
+		if (this.superAdmin == -2) {
+			actionSheet.addButton({
+				text: 'Choose Company',
+
+				handler: () => {
+
+					setTimeout(() => {
+						this.ChooseCompanyList();
+
+					}, 100);
+				}
+
+			});
 		}
 		actionSheet.present();
 	}
-	
-	ChooseCompanyList(){
+
+	ChooseCompanyList() {
 		let alert = this.alertCtrl.create();
 		alert.setTitle('Select Gender');
 		for (var index = 0; index < this.companies.length; index++) {
@@ -154,17 +154,17 @@ export class TabsPage {
 				label: element.company_name,
 				value: element.company_id,
 				checked: false
-			  });	
+			});
 		}
-		
-	
+
+
 		alert.addButton('Cancel');
 		alert.addButton({
-		  text: 'OK',
-		  handler: data => {
-			this.company_or_not=data;
-			localStorage.setItem('company_or_not', this.company_or_not);
-			console.log("hya de",data);
+			text: 'OK',
+			handler: data => {
+				this.company_or_not = data;
+				localStorage.setItem('company_or_not', this.company_or_not);
+				console.log("hya de", data);
 			}
 		});
 		alert.present();
@@ -190,8 +190,8 @@ export class TabsPage {
 					placeholder: 'Enter 1 for video 0 for image...',
 					type: 'text'
 				},
-				
-			
+
+
 			],
 			buttons: [
 				{
@@ -205,15 +205,15 @@ export class TabsPage {
 					text: 'Add',
 					handler: data => {
 
-						console.log("ana goa and this is the data :",data) ; 
-						var videoOrNot = 0  ; 
-						if (data.video_or_not =="1")
-							videoOrNot = 1 ; 
+						console.log("ana goa and this is the data :", data);
+						var videoOrNot = 0;
+						if (data.video_or_not == "1")
+							videoOrNot = 1;
 						var video = {
 							"video_link": data.video_link,
 							"description": data.video_description,
-							"company_id": this.company_or_not, 
-							"video_or_not": videoOrNot 
+							"company_id": this.company_or_not,
+							"video_or_not": videoOrNot
 						}
 						console.log(video);
 						this.http.post("https://ffserver.eu-gb.mybluemix.net/add-video", video).subscribe(data => {
