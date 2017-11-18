@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Http} from '@angular/http';
+
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
+import { EditDatePage } from '../edit-date/edit-date';
 
 
 @Component({
@@ -15,14 +18,47 @@ export class SimulationDatesPage {
   read_more=[];  
   companyid;
   sim_id;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private http: Http, public alertController: AlertController) {
     this.company_simulations = this.navParams.data;
     console.log(this.company_simulations.dates);
     this.sim_id=navParams.data.simulation_id;
     console.log("Simulation ID : ",this.sim_id);
   }
+  
+  
+  ionViewWillEnter() {
+	  this.getData();
+  }
   AddDate(){
     this.navCtrl.push(AddSimulationDatePage , this.sim_id);
   }
+
+
+  deleteSimulationDate(date_id){
+    var Dateid = {simulation_date_id: date_id}
+    console.log(date_id);
+		let confirm=this.alertController.create({
+		title : 'Confirm',
+		message:
+			'Are You Sure Want To Delete This Date ?!',
+		buttons: [
+	  	{text: 'No', role: 'cancel',},
+	  	{text: 'Yes' ,
+	  	handler: () => {
+			this.http.post("https://ffserver.eu-gb.mybluemix.net/delete-simulation-date",Dateid).subscribe(data => {
+          var res = JSON.parse(data['_body']);
+          //console.log(res);
+					this.getData();
+				});
+	  		}
+		}
+	]
+  });
+  confirm.present();	
+}
+getData(){
+  this.company_simulations = this.navParams.data;
+  
+}
 
 }

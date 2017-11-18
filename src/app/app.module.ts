@@ -50,6 +50,7 @@ import { AddSimulationDatePage } from '../pages/add-simulation-date/add-simulati
 import { EditCompanyPage } from '../pages/edit-company/edit-company';
 import { EditSimulationPage } from '../pages/edit-simulation/edit-simulation';
 import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
+import { EditDatePage } from '../pages/edit-date/edit-date';
 
 
 
@@ -92,7 +93,7 @@ import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
     TutorialPage,
     PaymentMethodPage,
     CardPaymentPage,
-   
+    EditDatePage
    
   ],
   imports: [
@@ -133,7 +134,7 @@ import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
     TutorialPage,
     PaymentMethodPage,
      CardPaymentPage,   
-  
+     EditDatePage
   ],
   providers: [
     StatusBar,

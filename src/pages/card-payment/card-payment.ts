@@ -29,6 +29,7 @@ export class CardPaymentPage {
       this.SimulationID = this.navParams.get("SimulationID") ; 
 
       console.log("simulation" , this.SimulationID); 
+      this.payMob_link = "https://ffserver.eu-gb.mybluemix.net/blank-page" ; 
 		this.store.get('user_id').then((user_id) => {
 
       this.presentLoading() ;      

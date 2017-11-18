@@ -25,13 +25,18 @@ export class Registerform {
   ios: boolean = false;
   connection_error_popup: any;
   promo_code: string = "";
-  day;
-  month;
-  year;
+  private myDate: string  ; 
+  // day;
+  // month;
+  // year;
   major="";
   loader;
   age=new Date();
-  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService, 
+   public http: Http,public navParams: NavParams,public alertCtrl: AlertController,
+   public plt: Platform,private network: Network, private loadingCtrl: LoadingController, 
+   private store: Storage) {
+
     this.company_or_not=-1;
     localStorage.setItem('company_or_not', this.company_or_not);
     this.network.onDisconnect().subscribe(() => {
@@ -58,31 +63,34 @@ export class Registerform {
       
     // });
   
-    this.name = navParams.get("name");
-  // this.getage = navParams.get("age");
-    this.email = navParams.get("email");
+    // this.name = navParams.get("name");
+    // this.getage = navParams.get("age");
+    //this.email = navParams.get("email");
     //alert(this.name+this.age+this.email);
     
-    if (plt.is('ios')) {
-      this.ios = true;
-    }
   }
-  setDate(event){
-    this.age=event;
-    this.age.setHours(this.age.getHours()+2);
-    }
 
 
+  // setDate(event){
+  //   this.age=event;
+  //   this.age.setHours(this.age.getHours()+2);
+  //   }
+   handleBirthDateFormat() { 
+    var parts = this.myDate.split('-') ;
+    var date =  new  Date(+parts[0] , +parts[1]-1 , +parts[2]) ;
+    date.setHours(date.getHours()+2) ; 
+    return date ; 
+   }
   register(pass, school, phone,promo) {
    
 
-this.age.setFullYear(this.year,this.month,this.day);
-
+   var bDate =  this.handleBirthDateFormat() ; 
+   console.log("el date ya man" , bDate.toISOString()) ; 
 
     if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");
-      if(phone>1299999999 && phone<1000000000)
-        this.showAlert("Enter a valid phone number");
+      if(phone>1599999999 || phone<1000000000)
+        this.showAlert("Enter a valid phone number. make sure you have entered 11 numbers");
       else{
         this.presentLoading() ;
         let user={
@@ -90,7 +98,7 @@ this.age.setFullYear(this.year,this.month,this.day);
           degree:this.degree,
           user_name:this.name,
           user_email:this.email,
-          birth_date:this.age.toISOString(),
+          birth_date:bDate.toISOString(),
           password:pass,
           school:school,
           phone_no:phone,
@@ -105,9 +113,9 @@ this.age.setFullYear(this.year,this.month,this.day);
       this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {
         
         var res = JSON.parse(data['_body']);
-        this.setresponse(res);
+        this.handleResponse(res);
         this.dismissLoading();
-      });
+      } , err => {this.showAlert(err)});
 
     }
   }
@@ -129,7 +137,7 @@ this.age.setFullYear(this.year,this.month,this.day);
     alert.present();
   }
 
-  setresponse(value) {
+  handleResponse(value) {
     this.check = value;
     if (this.check.result == false) {
       this.showAlert(this.check.msg);
@@ -142,11 +150,11 @@ this.age.setFullYear(this.year,this.month,this.day);
 
 
 
-  setdata(response) {
-    this.name = response.name;
-    this.email = response.email;
-    this.age = response.birthday;
-  }
+  // setdata(response) {
+  //   this.name = response.name;
+  //   this.email = response.email;
+  //   this.age = response.birthday;
+  // }
 
   presentLoading() {
     this. loader = this.loadingCtrl.create({

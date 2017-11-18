@@ -26,7 +26,7 @@
     </ion-item>
 
     <ion-item style="text-align:left;">
-      <ion-input #phone type="number" placeholder="Phone"></ion-input>
+      <ion-input #phone type="number" placeholder="Mobile number"></ion-input>
     </ion-item>
 
     <ion-item style="text-align:left;">
@@ -34,19 +34,28 @@
     </ion-item>
 
     <ion-item style="text-align:left;">
-
       <ion-select [(ngModel)]="degree" style="  width:100%; max-width: 100% !important; padding-left:6px;" placeholder="Degree">
         <ion-option value="High School">in High School</ion-option>
         <ion-option value="College">in College</ion-option>
         <ion-option value="Graduate">Graduate</ion-option>
       </ion-select>
     </ion-item>
+
+
     <ion-item style="text-align:left;">
       <ion-input [(ngModel)]="major" type="text" placeholder="Major (optional)" #promo></ion-input>
     </ion-item>
 
+   <ion-item>
+				<!--<ion-label>Select New Date</ion-label> -->
+				
+        <button ion-button color="dark" clear ng-disable="true" item-start style="color:C8CFDD; font-family:Georgia">BirthDate</button> 
+ 				<ion-datetime class ="DatePicker" displayFormat="MMMM DD YYYY"
+				max="2007-12-31" [(ngModel)]="myDate" ></ion-datetime>
 
+  	</ion-item>
 
+<!-- 
     <ion-item style="text-align:left;">
      <ion-label style="text-align:left;font-weight:normal;font-size:1.5rem; color:gray" >Birthdate</ion-label>
       <ion-select [(ngModel)]="day" >
@@ -157,8 +166,8 @@
         <ion-option>2006</ion-option>
         <ion-option>2007</ion-option>
         
-</ion-select>
-    </ion-item>
+        </ion-select> 
+    </ion-item> --> 
     <!-- <ion-grid>
         <ion-row>
     <ion-col col-7> <p style=" vertical-align: text-top;">{{age | date:'dd/MM/yyyy'}}</p></ion-col>

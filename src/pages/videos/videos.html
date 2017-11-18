@@ -12,8 +12,10 @@
 
 		</ion-item>
 		<!---->
-		<iframe width="100%" height="200rem" autostart="false" [attr.src]="video.video_link | safe" frameborder="0" webkit-playsinline="webkit-playsinline"
+		<iframe *ngIf="video.video_or_not==1" width="100%" height="200rem" autostart="false" [attr.src]="video.video_link | safe" frameborder="0" webkit-playsinline="webkit-playsinline"
 		 class="embed-responsive-item" allowfullscreen></iframe>
+
+		<img *ngIf="video.video_or_not==0" width="100%" height="200rem" [attr.src]="video.video_link" class="embed-responsive-item"  allowfullscreen >
 
 		<ion-card-content padding>
 

@@ -181,9 +181,17 @@ export class TabsPage {
 				},
 				{
 					name: 'video_description',
-					placeholder: 'Enter video description here...',
+					placeholder: 'Enter description here...',
 					type: 'text'
-				}
+				},
+
+				{
+					name: 'video_or_not',
+					placeholder: 'Enter 1 for video 0 for image...',
+					type: 'text'
+				},
+				
+			
 			],
 			buttons: [
 				{
@@ -196,12 +204,18 @@ export class TabsPage {
 				{
 					text: 'Add',
 					handler: data => {
+
+						console.log("ana goa and this is the data :",data) ; 
+						var videoOrNot = 0  ; 
+						if (data.video_or_not =="1")
+							videoOrNot = 1 ; 
 						var video = {
 							"video_link": data.video_link,
 							"description": data.video_description,
-							"company_id": "5"
+							"company_id": this.company_or_not, 
+							"video_or_not": videoOrNot 
 						}
-						console.log(data.video_link);
+						console.log(video);
 						this.http.post("https://ffserver.eu-gb.mybluemix.net/add-video", video).subscribe(data => {
 							var res = JSON.parse(data['_body']);
 							// this.user_simulations=res;

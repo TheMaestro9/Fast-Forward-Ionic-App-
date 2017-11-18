@@ -21,8 +21,8 @@
   
   <ion-content padding>
     <ion-list>
-      <ion-card >
-        <ion-item *ngFor="let simulation of company_simulations.dates; let i = index">
+      <ion-card *ngFor="let simulation of company_simulations.dates; let i = index" >
+        <ion-item >
             <div class="row" style="padding-left: 1rem;">
               <div style="width:72.5%;float:left;">
                 <h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{company_simulations.dates[i].date}}</h2>
@@ -32,12 +32,12 @@
               </div>
 
             </div>
-            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon>
+            <!-- <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon> -->
             
         </ion-item>
         <!-- <ion-row>
           <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;"> -->
-            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon>
+            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem " (click)="deleteSimulationDate(simulation.date_id)"></ion-icon>
           <!-- </ion-col>
         </ion-row> -->
       </ion-card>

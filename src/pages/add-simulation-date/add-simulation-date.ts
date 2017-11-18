@@ -27,8 +27,13 @@ export class AddSimulationDatePage {
     duration;
     private myDate: string  ; 
     private myTime:string ;
+    dateToEdit: any;
+    timeToEdit: any;
+    simIdToEdit: any;
   constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id=this.navParams.data;
+    this.simIdToEdit = this.navParams.data.simID;
+    console.log(this.navParams.data.simDate);
     this.durations=[1,2,3,4,5,6];
     this.duration = navParams.get("duration");    
     console.log(this.simulation_id);
@@ -36,8 +41,7 @@ export class AddSimulationDatePage {
 
     console.log('year',this.minyear);
     
-  this.maxyear=this.minyear+1;
-     
+  this.maxyear=this.minyear+1;     
   }
   setDate(){
     console.log('local',this.localDate);
@@ -91,5 +95,9 @@ export class AddSimulationDatePage {
        }      
       }
     
-
+  trimDateForEditing(){
+    var res = this.navParams.data.simDate.split("at");
+    this.dateToEdit = res[0];
+    this.timeToEdit = res[1];
+  }
 }
