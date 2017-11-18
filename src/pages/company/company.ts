@@ -407,6 +407,7 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+
 	}
 
 	status(simulation){
+
 		if(simulation.status==="pending payment"){
 			this.addTimer(simulation.acceptance_deadline);
 			return true;

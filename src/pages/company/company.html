@@ -114,7 +114,7 @@
 					<strong> {{simulation.number_of_applicants}}</strong>
 				</div>
 			</ion-col>
-				<ion-col col-6 style="text-align:right;text-transform:uppercase;z-index: 10000;" (click)="goToProfile()"><p style="color:#F84838;font-weight:bold;" >{{simulation.status}}</p></ion-col>
+				<ion-col col-6 style="text-align:right;text-transform:uppercase;z-index: 10000;" (click)="goToProfile()"><p style="color:#F84838;font-weight:bold;" >{{simulation.status=='rejected'?'Pending Approval':simulation.status}}</p></ion-col>
 				<ion-col col-12 style="text-align:center;" *ngIf="status(simulation)" >
 					<span>Remaining Time To Pay: <br> {{diffhours}} Hours,{{diffmins}} Minutes</span>
 				</ion-col>
