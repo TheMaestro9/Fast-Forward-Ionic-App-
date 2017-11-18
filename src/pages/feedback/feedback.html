@@ -1,0 +1,30 @@
+<!--
+  Generated template for the FeedbackPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+        <ion-title>Feedback</ion-title>
+      </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-rating
+  [numStars]="5"
+  [readOnly]="false"
+  [value]="0"
+  (clicked)="starClicked($event)">
+</ion-rating>
+<div [ngSwitch]="rate">
+    <ion-title *ngSwitchCase="1"  text-center style="font-size:10rem;color:#F84838">Bad</ion-title>      
+    <ion-title *ngSwitchCase="2"  text-center style="font-size:10rem;color:#F84838">Fair</ion-title>      
+    <ion-title *ngSwitchCase="3"  text-center style="font-size:10rem;color:#F84838">Good</ion-title>      
+    <ion-title *ngSwitchCase="4"  text-center style="font-size:10rem;color:#F84838">Very Good</ion-title>      
+    <ion-title *ngSwitchCase="5"  text-center style="font-size:10rem;color:#F84838">Excellent</ion-title>      
+</div>
+<ion-textarea style="border:solid 1px;border-radius:2px;border-color:#F84838" placeholder="Enter Your Feedback"></ion-textarea>
+</ion-content>

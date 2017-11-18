@@ -8,6 +8,8 @@ import { PaymentMethodPage } from '../payment-method/payment-method';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { Profile } from "../profile/profile"
+import { FeedbackPage } from '../feedback/feedback';
+import { IonRatingPage } from '../ion-rating/ion-rating';
 
 @Component({
 	selector: 'page-company',
@@ -301,8 +303,19 @@ timer;
 							}, 100);
 							}
 					} 
-				); 
+				);
+				
+				this.actionSheet.addButton(
+					{
+						text:'Add a Feedback',
+						handler:() => {
+							this.navCtrl.push(FeedbackPage,this.company_simulations)	
+						}
+					}
+				);
+
 				this.actionSheet.present();
+
 			 }
 		}
 
