@@ -99,7 +99,11 @@ timer;
 					{
 						text: 'Send',
 						handler: data => {
-							console.log(data.message);
+							this.http.get("https://ffserver.eu-gb.mybluemix.net/messageCompany?content="+data.message+" to "+this.company_details.company_name+" Company by the user with ID:"+this.userid).subscribe(data => {
+							
+											});
+
+							console.log(data.message," ",this.userid);
 						}
 					}
 				]
