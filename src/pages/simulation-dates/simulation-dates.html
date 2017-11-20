@@ -35,13 +35,21 @@
             <!-- <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem "></ion-icon> -->
             
         </ion-item>
-        <!-- <ion-row>
-          <ion-col col-6  style="text-align:right;text-transform:uppercase;z-index: 10000;"> -->
-            <ion-icon name="trash" style="font-size:2.75rem;padding-left:23rem " (click)="deleteSimulationDate(simulation.date_id)"></ion-icon>
-          <!-- </ion-col>
-        </ion-row> -->
+        <ion-row>
+          <ion-col col-11  style="text-align:right;text-transform:uppercase;z-index: 10000;">
+            <ion-icon name="md-create" style="font-size:2.75rem;  padding-right:2rem " (click)="editDate(simulation.date_id)"></ion-icon>              
+            <ion-icon name="trash" style="font-size:2.75rem;" (click)="deleteSimulationDate(simulation.date_id)"></ion-icon>
+        </ion-col>
+    </ion-row>
       </ion-card>
     </ion-list>
   
   </ion-content>
+  
+
+
+  
+
+  <!-- <ion-icon name="trash" style="font-size:2.75rem; " (click)="deleteSimulationDate(simulation.date_id)"></ion-icon> -->
+  
   
