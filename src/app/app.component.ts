@@ -1,8 +1,8 @@
 
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component,Inject, ViewChild } from '@angular/core';
-import { Platform,Nav,NavController,LoadingController } from 'ionic-angular';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { Platform, Nav, NavController, LoadingController } from 'ionic-angular';
 //import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -11,7 +11,8 @@ import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { CardPaymentPage } from '../pages/card-payment/card-payment';
-import {  TutorialPage } from '../pages/tutorial/tutorial';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { FeedbackPage } from '../pages/feedback/feedback' ;
 @Component({
   templateUrl: 'app.html',
 })
@@ -27,15 +28,15 @@ export class MyApp {
 
   connection_error_popup: any;
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private DS: DataService, private network: Network, public store: Storage) {
- 
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-    
+
     });
-  
+
     //this.rootPage=TabsPage;this.handelResponse(data, val)
 
     store.get('user_id').then((val) => {
@@ -59,7 +60,7 @@ export class MyApp {
     //   console.error('Got a deeplink that didn\'t match', nomatch);
     // });
   }
- 
+
   ngOnInit() {
 
     this.network.onDisconnect().subscribe(() => {
@@ -73,7 +74,7 @@ export class MyApp {
       this.connection_error_popup.dismiss();
     });
 
-  
+
   }
 
   handelResponse(data, user_id) {
@@ -87,24 +88,43 @@ export class MyApp {
       this.rootPage = LoginPage;
     }
     else {
-      if (user_id == 324)
-        this.rootPage = TabsPage;
-      else {
-        if (user_id==324) 
-            this.rootPage=TabsPage;
-       else {
-              
-            this.store.get('tutorial').then((val) => {
-                  if(val ==null)
-                    this.rootPage= TutorialPage;
-                  else 
-                    this.rootPage= TabsPage;
-            });
-                          
-       }
-      }
-    }
 
+      this.store.get('tutorial').then((val) => {
+        if (val == null)
+          this.rootPage = TutorialPage;
+        else {
+          //if()
+          this.store.get('Accepted').then((val) => {
+            var feedBackSimID = this.checkFeedBack(val) ; 
+            if( feedBackSimID!=-1)
+              this.rootPage = TutorialPage;
+            else 
+              this.rootPage = TabsPage;
+            
+          }); 
+        }
+      });
+
+    }
+  }
+
+  checkFeedBack(acceptedDates){ 
+    var currentDate = new Date () ; 
+    currentDate.setHours(currentDate.getHours()+2) ; 
+    console.log ("curentDate " , currentDate) ; 
+    for( var i=0 ; i < acceptedDates.length ; i ++) {
+      var simDate = new Date(acceptedDates[i].date) ; 
+      console.log("feed back date ", simDate) ; 
+      if ( currentDate > simDate ){
+        var simId = acceptedDates[i].simulation_date_id ; 
+        acceptedDates.splice ( i , 1 ) ; 
+        this.store.set('Accepted', acceptedDates);        
+        return  simId ; 
+        
+      }
+
+		} 
+		return -1 ; 
   }
 
 

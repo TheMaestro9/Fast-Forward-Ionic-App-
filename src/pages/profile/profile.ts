@@ -78,7 +78,7 @@ export class Profile {
 				if (simulation.status == "accepted")
 				{	var feedBack = {}; 
 					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
-					 feedBack["date"] = simulation.date ; 
+					 feedBack["date"] = simulation.applied_simulation_date ; 
 					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
 						acceptedDates.push (feedBack) ; 
 				}
@@ -125,10 +125,28 @@ export class Profile {
 			console.log("user_id", val)
 		});
 
+		console.log("sim to be removed!" , sim.simulation_date_id) ; 
+		this.removeFromFeedArray (sim.simulation_date_id) ; 
 		this.user_simulations.splice(this.user_simulations.indexOf(sim), 1);
 
 	}
 
+	removeFromFeedArray(simId) { 
+		this.store.get('Accepted').then((val) => {
+			if (val!=null)
+				var acceptedDates = val ; 
+			else 
+				return ; 
+			console.log("now I should be removing!!") ; 
+			for( var i=0 ; i < acceptedDates.length ; i ++) {
+				if ( acceptedDates[i].simulation_date_id == simId){
+					acceptedDates.splice(i,1) ; 
+					this.store.set('Accepted', acceptedDates);					
+					return ; 
+				}
+			} 
+		});
+	}
 
 
 
