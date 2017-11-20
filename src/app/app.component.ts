@@ -3,7 +3,7 @@ import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component,Inject, ViewChild } from '@angular/core';
 import { Platform,Nav,NavController,LoadingController } from 'ionic-angular';
-import { Deeplinks } from '@ionic-native/deeplinks';
+//import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
