@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { HttpModule} from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-
 import { FieldsPage } from '../pages/fields/fields';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -51,6 +50,8 @@ import { EditCompanyPage } from '../pages/edit-company/edit-company';
 import { EditSimulationPage } from '../pages/edit-simulation/edit-simulation';
 import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
 import { EditDatePage } from '../pages/edit-date/edit-date';
+import {FeedbackPage} from '../pages/feedback/feedback'
+import {IonRatingPage} from '../pages/ion-rating/ion-rating'
 
 
 
@@ -93,8 +94,9 @@ import { EditDatePage } from '../pages/edit-date/edit-date';
     TutorialPage,
     PaymentMethodPage,
     CardPaymentPage,
-    EditDatePage
-   
+    EditDatePage,
+    FeedbackPage,
+    IonRatingPage
   ],
   imports: [
     BrowserModule,
@@ -134,7 +136,9 @@ import { EditDatePage } from '../pages/edit-date/edit-date';
     TutorialPage,
     PaymentMethodPage,
      CardPaymentPage,   
-     EditDatePage
+     EditDatePage,
+     FeedbackPage,
+     IonRatingPage
   ],
   providers: [
     StatusBar,
