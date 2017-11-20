@@ -1,3 +1,21 @@
 page-feedback {
 
 }
+.circular-profile{
+    background-color: white;
+       margin-top: 15px;
+       border: 3px solid color($colors, ffPrimary);
+       border-radius: 50%;
+       box-shadow: 0 0 25px gray;
+       margin-left: auto;
+       margin-right: auto;
+       width: 20vw;
+       height: 20vw;
+       display:flex;
+       align-items:center;
+       justify-content:center;
+       position: relative;
+       // background-repeat: no-repeat;
+       // background-position: 50%;
+       // background-size: contain;
+   }
