@@ -62,6 +62,9 @@ timer;
 	
 	}
 
+
+	
+	
 	back_button(){
 		this.navCtrl.pop();
 	}
@@ -99,7 +102,11 @@ timer;
 					{
 						text: 'Send',
 						handler: data => {
-							console.log(data.message);
+							this.http.get("https://ffserver.eu-gb.mybluemix.net/messageCompany?content="+data.message+" to "+this.company_details.company_name+" Company by the user with ID:"+this.userid).subscribe(data => {
+							
+											});
+
+							console.log(data.message," ",this.userid);
 						}
 					}
 				]
@@ -384,12 +391,47 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+
 			entry=false;
 		}
 		console.log(this.company_simulations);
+		this.CheckAccepted()
 		// this.loading=false;
 	});
 		
 		
 		});
 					
+	}
+
+	CheckAccepted() {
+		var acceptedDates = [];
+		this.store.get('Accepted').then((val) => {
+			if (val != null)
+				acceptedDates = val;
+
+			console.log(acceptedDates) ; 
+			for ( var i=0 ; i < this.company_simulations.length ; i ++) {
+		//	acceptedDates = [ 1 , 2  , 3] ; 
+				var simulation = this.company_simulations[i] ; 
+				if (simulation.status == "accepted")
+				{	var feedBack = {}; 
+					 feedBack["simulation_date_id"] = simulation.applied_simulation_date_id ; 
+					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 if ( this .CheckFeedExist (acceptedDates , simulation.applied_simulation_date_id))					 
+						acceptedDates.push (feedBack) ; 
+				}
+			}
+			this.store.set('Accepted', acceptedDates);
+			
+		});
+	}
+
+	CheckFeedExist ( acceptedDates , newId ){
+		console.log("checking ") ; 
+		//console.log(newId) ; 
+		//console.log(acceptedDates[0].simulation_date_id) ; 
+		for( var i=0 ; i < acceptedDates.length ; i ++) {
+			if ( acceptedDates[i].simulation_date_id == newId)
+				return false ; 
+		} 
+		return true ; 
 	}
 
 	setid(val){

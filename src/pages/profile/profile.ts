@@ -40,7 +40,6 @@ export class Profile {
 		public actionSheetCtrl: ActionSheetController, private fb: Facebook,
 		private store: Storage, public afa: AngularFireAuth) {
 
-		this.CheckAccepted();
 			
 		this.store.get('user_id').then((val) => {
 
@@ -58,6 +57,8 @@ export class Profile {
 				console.log(this.user_simulations);
 				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
+				this.CheckAccepted();
+				
 			});
 
 		});
@@ -69,17 +70,33 @@ export class Profile {
 		this.store.get('Accepted').then((val) => {
 			if (val != null)
 				acceptedDates = val;
-		
-		console.log("hello" , val ) ; 
-			// for (let simulation in this.user_simulations) {
-			acceptedDates = [ 1 , 2  , 3] ; 
+
+			console.log(acceptedDates) ; 
+			for ( var i=0 ; i < this.user_simulations.length ; i ++) {
+		//	acceptedDates = [ 1 , 2  , 3] ; 
+				var simulation = this.user_simulations[i] ; 
+				if (simulation.status == "accepted")
+				{	var feedBack = {}; 
+					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
+					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
+						acceptedDates.push (feedBack) ; 
+				}
+			}
 			this.store.set('Accepted', acceptedDates);
 			
-			// }
 		});
+	}
 
-
-
+	CheckFeedExist ( acceptedDates , newId ){
+		console.log("checking ") ; 
+		//console.log(newId) ; 
+		//console.log(acceptedDates[0].simulation_date_id) ; 
+		for( var i=0 ; i < acceptedDates.length ; i ++) {
+			if ( acceptedDates[i].simulation_date_id == newId)
+				return false ; 
+		} 
+		return true ; 
 	}
 	GoToCompany(index, simulation) {
 		this.navCtrl.push(CompanyPage, { co_id: simulation.company_id });
@@ -87,6 +104,7 @@ export class Profile {
 	}
 
 	EditProfile() {
+		this.store.set('Accepted', []); 		
 		console.log("sha3'aaaaal");
 		this.navCtrl.push(EditProfilePage, this.user_info);
 	}
@@ -107,10 +125,28 @@ export class Profile {
 			console.log("user_id", val)
 		});
 
+		console.log("sim to be removed!" , sim.simulation_date_id) ; 
+		this.removeFromFeedArray (sim.simulation_date_id) ; 
 		this.user_simulations.splice(this.user_simulations.indexOf(sim), 1);
 
 	}
 
+	removeFromFeedArray(simId) { 
+		this.store.get('Accepted').then((val) => {
+			if (val!=null)
+				var acceptedDates = val ; 
+			else 
+				return ; 
+			console.log("now I should be removing!!") ; 
+			for( var i=0 ; i < acceptedDates.length ; i ++) {
+				if ( acceptedDates[i].simulation_date_id == simId){
+					acceptedDates.splice(i,1) ; 
+					this.store.set('Accepted', acceptedDates);					
+					return ; 
+				}
+			} 
+		});
+	}
 
 
 
