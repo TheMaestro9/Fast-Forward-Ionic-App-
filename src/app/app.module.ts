@@ -5,7 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule} from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { Deeplinks } from '@ionic-native/deeplinks';
 import { FieldsPage } from '../pages/fields/fields';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -149,6 +149,7 @@ import {IonRatingPage} from '../pages/ion-rating/ion-rating'
     DataService,
     User,
     InAppBrowser,
+    Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Network
   ]

@@ -3,7 +3,7 @@ import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component,Inject, ViewChild } from '@angular/core';
 import { Platform,Nav,NavController,LoadingController } from 'ionic-angular';
-//import { Deeplinks } from '@ionic-native/deeplinks';
+import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
@@ -12,6 +12,8 @@ import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import {  TutorialPage } from '../pages/tutorial/tutorial';
+import {  CompanyPage } from '../pages/company/company';
+
 @Component({
   templateUrl: 'app.html',
 })
@@ -26,13 +28,24 @@ export class MyApp {
   check;
 
   connection_error_popup: any;
-  constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private DS: DataService, private network: Network, public store: Storage) {
+  constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private DS: DataService, private network: Network, public store: Storage,private deeplinks:Deeplinks) {
  
     platform.ready().then(() => {
+      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.deeplinks.route({
+        '/login': LoginPage,
+        '/company':CompanyPage
+      }).subscribe((match) => {
+      
+      console.log('Successfully matched route', match);
+    }, (nomatch) => {
+      
+      console.error('Got a deeplink that didn\'t match', nomatch);
+    });
     
     });
   
