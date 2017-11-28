@@ -4,6 +4,7 @@ import {Http} from '@angular/http';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
 import { EditDatePage } from '../edit-date/edit-date';
+import { EditSimulationDatePage } from '../edit-simulation-date/edit-simulation-date';
 
 
 @Component({
@@ -55,6 +56,11 @@ export class SimulationDatesPage {
 	]
   });
   confirm.present();	
+}
+
+editDate(date_id){
+  this.navCtrl.push(EditSimulationDatePage,date_id);
+  
 }
 getData(){
   this.company_simulations = this.navParams.data;

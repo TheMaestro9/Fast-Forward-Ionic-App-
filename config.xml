@@ -99,11 +99,13 @@
     <plugin name="cordova-plugin-filepath" spec="~1.0.2" />
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <engine name="ios" spec="~4.4.0" />
-    <engine name="android" spec="~6.1.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
     <plugin name="ionic-plugin-deeplinks" spec="~1.0.15">
-        <variable name="URL_SCHEME" value="fastforwardsimapp" />
+        <variable name="URL_SCHEME" value="fastforward" />
         <variable name="DEEPLINK_SCHEME" value="https" />
-        <variable name="DEEPLINK_HOST" value="fastforwardsimapp.com" />
+        <variable name="DEEPLINK_HOST" value="fastforward.com" />
     </plugin>
+    <engine name="android" spec="~6.1.2" />
+    <allow-navigation href="http://192.168.1.14:8100" />
+    <engine name="browser" spec="~4.1.0" />
 </widget>

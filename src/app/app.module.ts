@@ -5,7 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule} from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { Deeplinks } from '@ionic-native/deeplinks';
 import { FieldsPage } from '../pages/fields/fields';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -50,8 +50,9 @@ import { EditCompanyPage } from '../pages/edit-company/edit-company';
 import { EditSimulationPage } from '../pages/edit-simulation/edit-simulation';
 import { ChooseCompanyPage } from '../pages/choose-company/choose-company';
 import { EditDatePage } from '../pages/edit-date/edit-date';
-import {FeedbackPage} from '../pages/feedback/feedback'
-import {IonRatingPage} from '../pages/ion-rating/ion-rating'
+import {FeedbackPage} from '../pages/feedback/feedback';
+import {IonRatingPage} from '../pages/ion-rating/ion-rating';
+import {EditSimulationDatePage} from '../pages/edit-simulation-date/edit-simulation-date';
 
 
 
@@ -96,7 +97,8 @@ import {IonRatingPage} from '../pages/ion-rating/ion-rating'
     CardPaymentPage,
     EditDatePage,
     FeedbackPage,
-    IonRatingPage
+    IonRatingPage,
+    EditSimulationDatePage
   ],
   imports: [
     BrowserModule,
@@ -138,7 +140,8 @@ import {IonRatingPage} from '../pages/ion-rating/ion-rating'
      CardPaymentPage,   
      EditDatePage,
      FeedbackPage,
-     IonRatingPage
+     IonRatingPage,
+     EditSimulationDatePage
   ],
   providers: [
     StatusBar,
@@ -149,6 +152,7 @@ import {IonRatingPage} from '../pages/ion-rating/ion-rating'
     DataService,
     User,
     InAppBrowser,
+    Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Network
   ]
