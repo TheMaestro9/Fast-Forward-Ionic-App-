@@ -14,6 +14,7 @@ import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import {  TutorialPage } from '../pages/tutorial/tutorial';
 import {  CompanyPage } from '../pages/company/company';
 import { FeedbackPage } from '../pages/feedback/feedback' ;
+import { Profile } from '../pages/profile/profile';
 @Component({
   templateUrl: 'app.html',
 })
@@ -41,7 +42,8 @@ export class MyApp {
 
       this.deeplinks.route({
         '/login': LoginPage,
-        '/company':CompanyPage
+        '/company':CompanyPage,
+        '/profile': Profile,
       }).subscribe((match) => {
       
       console.log('Successfully matched route', match);
