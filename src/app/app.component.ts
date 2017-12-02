@@ -41,29 +41,36 @@ export class MyApp {
       splashScreen.hide();
 
       this.deeplinks.route({
-        '/login': LoginPage,
-        '/company':CompanyPage,
-        '/profile': Profile,
+        '/login': {},
+        '/company':{hello:"h"},
+        '/profile': {},
       }).subscribe((match) => {
-      
-      console.log('Successfully matched route', match);
+        if(match.$link.path =="/profile"){
+          this.rootPage = Profile ; 
+
+        }
+          //alert ("ya man afashtoooo") ;
+        else 
+          alert("not here") ; 
+     // console.log('Successfully matched route', match);
     }, (nomatch) => {
+          //alert("ya man anna bara 5ales");
+          store.get('user_id').then((val) => {
+            console.log('store', val);
+            this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
+            this.DS.load().subscribe(
+              data => (this.handelResponse(data, val))
+            );
       
-      console.error('Got a deeplink that didn\'t match', nomatch);
+          });
+    //  console.error('Got a deeplink that didn\'t match', nomatch);
     });
     
     });
 
     //this.rootPage=TabsPage;this.handelResponse(data, val)
 
-    store.get('user_id').then((val) => {
-      console.log('store', val);
-      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
-      this.DS.load().subscribe(
-        data => (this.handelResponse(data, val))
-      );
-
-    });
+    
     // deeplinks.route({
     //   '/about-us': LoginPage,
     //   '/company':CompanyPage
