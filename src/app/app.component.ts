@@ -1,8 +1,8 @@
 
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component,Inject, ViewChild } from '@angular/core';
-import { Platform,Nav,NavController,LoadingController } from 'ionic-angular';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { Platform, Nav, NavController, LoadingController } from 'ionic-angular';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -11,10 +11,11 @@ import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { CardPaymentPage } from '../pages/card-payment/card-payment';
-import {  TutorialPage } from '../pages/tutorial/tutorial';
-import {  CompanyPage } from '../pages/company/company';
-import { FeedbackPage } from '../pages/feedback/feedback' ;
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { CompanyPage } from '../pages/company/company';
+import { FeedbackPage } from '../pages/feedback/feedback';
 import { Profile } from '../pages/profile/profile';
+
 @Component({
   templateUrl: 'app.html',
 })
@@ -27,50 +28,52 @@ export class MyApp {
   date;
   nextpage;
   check;
-
+  @ViewChild('myNav') nav: NavController ; 
   connection_error_popup: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private DS: DataService, private network: Network, public store: Storage,private deeplinks:Deeplinks) {
- 
+  constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
+     private DS: DataService, private network: Network, public store: Storage,
+      private deeplinks: Deeplinks ) {
 
-    platform.ready().then(() => {
-      
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
 
-      this.deeplinks.route({
-        '/login': {},
-        '/company':{hello:"h"},
-        '/profile': {},
-      }).subscribe((match) => {
-        if(match.$link.path =="/profile"){
-          this.rootPage = Profile ; 
+    // platform.ready().then(() => {
 
-        }
-          //alert ("ya man afashtoooo") ;
-        else 
-          alert("not here") ; 
-     // console.log('Successfully matched route', match);
-    }, (nomatch) => {
-          //alert("ya man anna bara 5ales");
-          store.get('user_id').then((val) => {
-            console.log('store', val);
-            this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
-            this.DS.load().subscribe(
-              data => (this.handelResponse(data, val))
-            );
-      
-          });
-    //  console.error('Got a deeplink that didn\'t match', nomatch);
-    });
-    
-    });
+    //   // Okay, so the platform is ready and our plugins are available.
+    //   // Here you can do any higher level native things you might need.
+    //   statusBar.styleDefault();
+    //   splashScreen.hide();
+
+    //   this.deeplinks.route({
+    //     '/login': {},
+    //     '/company': { hello: "h" },
+    //     '/profile': {},
+    //   }).subscribe((match) => {
+    //     if (match.$link.path == "/profile") {
+    //       this.rootPage = Profile;
+
+    //     }
+    //     //alert ("ya man afashtoooo") ;
+    //     else
+    //       alert("not here");
+    //     // console.log('Successfully matched route', match);
+    //   }, (nomatch) => {
+    //     //alert("ya man anna bara 5ales");
+    //     store.get('user_id').then((val) => {
+    //       console.log('store', val);
+    //       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
+    //       this.DS.load().subscribe(
+    //         data => (this.handelResponse(data, val))
+    //       );
+
+    //     });
+    //     //  console.error('Got a deeplink that didn\'t match', nomatch);
+    //   });
+
+    // });
 
     //this.rootPage=TabsPage;this.handelResponse(data, val)
 
-    
+
     // deeplinks.route({
     //   '/about-us': LoginPage,
     //   '/company':CompanyPage
@@ -83,6 +86,19 @@ export class MyApp {
     //   // nomatch.$link - the full link data
     //   console.error('Got a deeplink that didn\'t match', nomatch);
     // });
+
+
+         store.get('user_id').then((val) => {
+          console.log('store', val);
+          this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
+          this.DS.load().subscribe(
+          //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
+              data => (this.handelResponse(data , val) ) 
+          );
+
+        });
+        //  console.error('Got a deeplink that didn\'t match', nomatch);
+    
   }
 
   ngOnInit() {
@@ -119,36 +135,36 @@ export class MyApp {
         else {
           //if()
           this.store.get('Accepted').then((val) => {
-            var feedBackSimID = this.checkFeedBack(val) ; 
-            if( feedBackSimID!=-1)
+            var feedBackSimID = this.checkFeedBack(val);
+            if (feedBackSimID != -1)
               this.rootPage = TutorialPage;
-            else 
+            else
               this.rootPage = TabsPage;
-            
-          }); 
+
+          });
         }
       });
 
     }
   }
 
-  checkFeedBack(acceptedDates){ 
-    var currentDate = new Date () ; 
-    currentDate.setHours(currentDate.getHours()+2) ; 
-    console.log ("curentDate " , currentDate) ; 
-    for( var i=0 ; i < acceptedDates.length ; i ++) {
-      var simDate = new Date(acceptedDates[i].date) ; 
-      console.log("feed back date ", simDate) ; 
-      if ( currentDate > simDate ){
-        var simId = acceptedDates[i].simulation_date_id ; 
-        acceptedDates.splice ( i , 1 ) ; 
-        this.store.set('Accepted', acceptedDates);        
-        return  simId ; 
-        
+  checkFeedBack(acceptedDates) {
+    var currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 2);
+    console.log("curentDate ", currentDate);
+    for (var i = 0; i < acceptedDates.length; i++) {
+      var simDate = new Date(acceptedDates[i].date);
+      console.log("feed back date ", simDate);
+      if (currentDate > simDate) {
+        var simId = acceptedDates[i].simulation_date_id;
+        acceptedDates.splice(i, 1);
+        this.store.set('Accepted', acceptedDates);
+        return simId;
+
       }
 
-		} 
-		return -1 ; 
+    }
+    return -1;
   }
 
 

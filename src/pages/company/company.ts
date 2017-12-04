@@ -36,7 +36,9 @@ diffmins;
 diffsecs;
 user_id;
 timer;
-	constructor(platform:Platform, private store:Storage,public navCtrl: NavController, navParams: NavParams, private http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
+	constructor(platform:Platform, private store:Storage,public navCtrl: NavController,
+		 navParams: NavParams, private http: Http, public alertCtrl:AlertController,
+		 public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
 	
 	this.companyid=navParams.get("co_id");
 	
