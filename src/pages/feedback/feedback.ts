@@ -55,6 +55,11 @@ export class FeedbackPage {
       console.log("user_id", val.user_id);
       console.log("Simulation Date ID in val: ", val.simulation_date_id);
       console.log("Rate mo5tlf : ", this.rate);
+      if (this.feedbackDescp == null) 
+        this.feedbackDescp = "" ; 
+
+      console.log(this.feedbackDescp) ; 
+      
       let feedbackDetails = {
         user_id: val.user_id,
         simulation_date_id: val.simulation_date_id,

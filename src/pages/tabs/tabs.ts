@@ -32,6 +32,7 @@ export class TabsPage {
 	root;
 	companies = [];
 	connection_error_popup: any;
+	AcceptedSimulations =[]; 
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
 			this.connection_error_popup = this.loadingCtrl.create({
@@ -147,6 +148,39 @@ export class TabsPage {
 		actionSheet.present();
 	}
 
+	CheckAccepted() {
+		var acceptedDates = [];
+		this.store.get('Accepted').then((val) => {
+			if (val != null)
+				acceptedDates = val;
+
+			console.log(acceptedDates) ; 
+			for ( var i=0 ; i < this.AcceptedSimulation.length ; i ++) {
+		//	acceptedDates = [ 1 , 2  , 3] ; 
+				var simulation = this.AcceptedSimulation[i] ; 
+				if (simulation.status == "accepted")
+				{	var feedBack = {}; 
+					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
+					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
+						acceptedDates.push (feedBack) ; 
+				}
+			}
+			this.store.set('Accepted', acceptedDates);
+			
+		});
+	}
+
+	CheckFeedExist ( acceptedDates , newId ){
+		console.log("checking ") ; 
+		//console.log(newId) ; 
+		//console.log(acceptedDates[0].simulation_date_id) ; 
+		for( var i=0 ; i < acceptedDates.length ; i ++) {
+			if ( acceptedDates[i].simulation_date_id == newId)
+				return false ; 
+		} 
+		return true ; 
+	}
 	ChooseCompanyList() {
 		let alert = this.alertCtrl.create();
 		alert.setTitle('Select Gender');
