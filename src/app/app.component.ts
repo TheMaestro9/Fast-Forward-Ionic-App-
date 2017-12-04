@@ -117,6 +117,8 @@ export class MyApp {
 
   }
 
+
+
   handelResponse(data, user_id) {
     this.check = data.result;
     console.log(this.check);
@@ -139,8 +141,14 @@ export class MyApp {
             if (val!=null){
             feedBackSimID = this.checkFeedBack(val);
             }
-            if (feedBackSimID != -1)
+            if (feedBackSimID != -1){
+              var feedBackDetails = {
+                "simulation_date_id":feedBackSimID , 
+                "user_id" : user_id  
+              }
+              this.store.set("feedBackDetails" , feedBackDetails);
               this.rootPage = TutorialPage;
+            }
             else
               this.rootPage = TabsPage;
 
