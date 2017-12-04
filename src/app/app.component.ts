@@ -135,7 +135,10 @@ export class MyApp {
         else {
           //if()
           this.store.get('Accepted').then((val) => {
-            var feedBackSimID = this.checkFeedBack(val);
+            var feedBackSimID=-1;
+            if (val!=null){
+            feedBackSimID = this.checkFeedBack(val);
+            }
             if (feedBackSimID != -1)
               this.rootPage = TutorialPage;
             else
