@@ -40,7 +40,7 @@
       <br>
       </div>
 
-      <ion-textarea text-left style="border:solid 1px;border-radius:2px;border-color:#F84838;width:90%;margin-left:1.5rem " ([ngModel] = "feedbackDescp") placeholder="Enter Your Feedback"></ion-textarea>
+      <ion-textarea text-left style="border:solid 1px;border-radius:2px;border-color:#F84838;width:90%;margin-left:1.5rem " [(ngModel)]="feedbackDescp" placeholder="Enter Your Feedback"></ion-textarea>
     
       <button ion-button color="primary" round block medium style="width:80% ;margin-left:2.5rem;top:3vw" (click)="AddFeedback()">Submit</button>
     </div>

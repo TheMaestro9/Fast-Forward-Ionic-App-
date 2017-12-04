@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the FeedbackPage page.
@@ -20,9 +22,9 @@ export class FeedbackPage {
   userID;
   simulationDateID;  
   feedbackDescp:string;
-  starRating:Int16Array;
+  check;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private store: Storage,public alertCtrl: AlertController) {
     // this.simulationId=this.navParams.data[0].simulation_id;
     // console.log("Simulation ID : " , this.simulationId);
      console.log("data : ",this.navParams.data)
@@ -36,10 +38,7 @@ export class FeedbackPage {
       // this.loading=false;
     });
     console.log("Simulation details in constructor : ",this.simulationDetails);
-    this.starRating=this.starClicked(this.starRating);
-    console.log("Star Rating : ",this.starRating);
-    console.log("Rate : ",this.rate);  
-  }
+   }
 
   starClicked(value){
     console.log("Rated :", value);
@@ -48,14 +47,45 @@ export class FeedbackPage {
     return value;
   }
   AddFeedback(){
-    console.log("Rate : ",this.rate);  
-    console.log("Star Rating : ",this.starRating);    
-    // let feedbackDetails = {
-    //   user_id:this.userID,
-    //   simulation_date_id:this.simulationDateID,
-    //   notes:this.feedbackDescp,
-    //   rating:this.starRating
-    // }
+    this.store.get('user_id').then((val) => {
+      console.log("user_id", val);
+      console.log("Rate mo5tlf : ",this.rate);  
+      let feedbackDetails = {
+        user_id:val,
+        simulation_date_id:this.simulationDateID,
+        notes:this.feedbackDescp,
+        rating:this.rate
+      }
+      this.http.post("https://ffserver.eu-gb.mybluemix.net/add-feedback", feedbackDetails).subscribe(data => {
+        
+        var res = JSON.parse(data['_body']);
+        this.setresponse(res);
+        console.log("etbaaa3",res);
+      });
+      console.log("Feedack Details : ",feedbackDetails);
+			});
+			
+   
   }
+  showAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: ' ',
+      subTitle: msg,
+      buttons: ['OK'],
+      
+    });
+    alert.present();
+    
+    }
+    
+    setresponse(value) {
+      this.check = value;
+      if (this.check.result == false) {
+        this.showAlert(this.check.msg);
+      }
+      else if(this.check.result==true){
+        this.showAlert(this.check.msg);
+       }      
+      }
  
 }
