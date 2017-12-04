@@ -45,6 +45,9 @@ export class TabsPage {
 		});
 		this.store.get('user_id').then((val) => {
 
+			console.log("the Bolean:" , navParams.get("goToCompany")) ;
+			console.log("the Garbage:" , navParams.get("goToCompanys")) ;
+			
 
 			http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=" + val).subscribe(data => {
 				var res = JSON.parse(data['_body']);

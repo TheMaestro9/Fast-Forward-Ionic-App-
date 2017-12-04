@@ -16,8 +16,12 @@ export class FeedbackPage {
   rate;
   simulationId;
   simulationName;
-  simulationDateID;
   simulationDetails:any={};
+  userID;
+  simulationDateID;  
+  feedbackDescp:string;
+  starRating:Int16Array;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http) {
     // this.simulationId=this.navParams.data[0].simulation_id;
     // console.log("Simulation ID : " , this.simulationId);
@@ -32,11 +36,26 @@ export class FeedbackPage {
       // this.loading=false;
     });
     console.log("Simulation details in constructor : ",this.simulationDetails);
-    }
+    this.starRating=this.starClicked(this.starRating);
+    console.log("Star Rating : ",this.starRating);
+    console.log("Rate : ",this.rate);  
+  }
+
   starClicked(value){
     console.log("Rated :", value);
     this.rate=value;
- }
- 
+    console.log("Rate : ",this.rate);      
+    return value;
+  }
+  AddFeedback(){
+    console.log("Rate : ",this.rate);  
+    console.log("Star Rating : ",this.starRating);    
+    // let feedbackDetails = {
+    //   user_id:this.userID,
+    //   simulation_date_id:this.simulationDateID,
+    //   notes:this.feedbackDescp,
+    //   rating:this.starRating
+    // }
+  }
  
 }
