@@ -307,18 +307,6 @@ feedbackObject;
 							}
 					} 
 				);
-				this.feedbackObject={company_sim:this.company_simulations,dateId:this.simulationDateId};
-				
-				this.actionSheet.addButton(
-					{
-						
-						text:'Add a Feedback',
-						handler:() => {
-							this.navCtrl.push(FeedbackPage,this.feedbackObject);	
-						}
-					}
-				);
-
 				this.actionSheet.present();
 
 			 }
