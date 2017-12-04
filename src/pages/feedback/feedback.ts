@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -66,7 +67,7 @@ export class FeedbackPage {
       console.log("Feedack Details : ",feedbackDetails);
 			});
 			
-   
+      this.navCtrl.setRoot(TabsPage);
   }
   showAlert(msg) {
     let alert = this.alertCtrl.create({
