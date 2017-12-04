@@ -137,6 +137,7 @@ export class MyApp {
         else {
           //if()
           this.store.get('Accepted').then((val) => {
+            console.log("the accepted array" ,val) ;
             var feedBackSimID=-1;
             if (val!=null){
             feedBackSimID = this.checkFeedBack(val);
@@ -147,7 +148,7 @@ export class MyApp {
                 "user_id" : user_id  
               }
               this.store.set("feedBackDetails" , feedBackDetails);
-              this.rootPage = TutorialPage;
+              this.rootPage = FeedbackPage;
             }
             else
               this.rootPage = TabsPage;
