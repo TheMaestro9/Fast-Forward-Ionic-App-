@@ -47,12 +47,13 @@ export class FeedbackPage {
     return value;
   }
   AddFeedback(){
-    this.store.get('user_id').then((val) => {
-      console.log("user_id", val);
+    this.store.get('feedBackDetails').then((val) => {
+      console.log("user_id", val.user_id);
+      console.log("Simulation Date ID in val: ",val.simulation_date_id);
       console.log("Rate mo5tlf : ",this.rate);  
       let feedbackDetails = {
-        user_id:val,
-        simulation_date_id:this.simulationDateID,
+        user_id:val.user_id,
+        simulation_date_id:val.simulation_date_id,
         notes:this.feedbackDescp,
         rating:this.rate
       }
