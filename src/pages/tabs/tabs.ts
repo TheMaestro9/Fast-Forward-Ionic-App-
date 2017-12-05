@@ -155,9 +155,9 @@ export class TabsPage {
 				acceptedDates = val;
 
 			console.log(acceptedDates) ; 
-			for ( var i=0 ; i < this.AcceptedSimulation.length ; i ++) {
+			for ( var i=0 ; i < this.AcceptedSimulations.length ; i ++) {
 		//	acceptedDates = [ 1 , 2  , 3] ; 
-				var simulation = this.AcceptedSimulation[i] ; 
+				var simulation = this.AcceptedSimulations[i] ; 
 				if (simulation.status == "accepted")
 				{	var feedBack = {}; 
 					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
