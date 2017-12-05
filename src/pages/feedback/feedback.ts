@@ -97,5 +97,7 @@ export class FeedbackPage {
       this.showAlert(this.check.msg);
     }
   }
-
+  CloseFeedback(){
+    this.navCtrl.setRoot(TabsPage);    
+  }
 }

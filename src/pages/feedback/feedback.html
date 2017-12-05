@@ -6,8 +6,14 @@
   -->
   <ion-header>
 
-    <ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+    <ion-navbar align-title="center" color="ffPrimary" >
+         
       <ion-title>Feedback</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="CloseFeedback()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-navbar>
   </ion-header>
 

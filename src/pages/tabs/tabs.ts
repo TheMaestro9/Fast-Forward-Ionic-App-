@@ -33,6 +33,7 @@ export class TabsPage {
 	companies = [];
 	connection_error_popup: any;
 	AcceptedSimulations =[]; 
+	user_simulations: any = [];
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
 			this.connection_error_popup = this.loadingCtrl.create({
@@ -55,6 +56,15 @@ export class TabsPage {
 				this.superAdmin = res.company_or_not;
 				console.log(this.superAdmin);
 				//this.loading=false;
+			});
+			http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id=" + val).subscribe(data => {
+				var res = JSON.parse(data['_body']);
+				this.user_simulations = res;
+				console.log(this.user_simulations);
+				//console.log("STAT",this.user_simulations[0].status);
+				//this.loading=false;
+				this.CheckAccepted();
+				
 			});
 		});
 

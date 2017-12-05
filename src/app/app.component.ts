@@ -15,6 +15,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { CompanyPage } from '../pages/company/company';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { Profile } from '../pages/profile/profile';
+import { Http } from '@angular/http';
 
 @Component({
   templateUrl: 'app.html',
@@ -30,10 +31,11 @@ export class MyApp {
   check;
   @ViewChild('myNav') nav: NavController ; 
   connection_error_popup: any;
-
+  AcceptedSimulations =[]; 
+	user_simulations: any = [];
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
      private DS: DataService, private network: Network, public store: Storage,
-      private deeplinks: Deeplinks ) {
+      private deeplinks: Deeplinks,public http: Http) {
 
 
     // platform.ready().then(() => {
@@ -89,17 +91,61 @@ export class MyApp {
 
 
          store.get('user_id').then((val) => {
+          http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id=" + val).subscribe(data => {
+            var res = JSON.parse(data['_body']);
+            this.user_simulations = res;
+            console.log(this.user_simulations);
+            //console.log("STAT",this.user_simulations[0].status);
+            //this.loading=false;
+            this.CheckAccepted();
+            
+          
+         
           console.log('store', val);
           this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
           this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
               data => (this.handelResponse(data , val) ) 
           );
-
+        });
         });
         //  console.error('Got a deeplink that didn\'t match', nomatch);
     
   }
+
+  CheckAccepted() {
+		var acceptedDates = [];
+		this.store.get('Accepted').then((val) => {
+			if (val != null)
+				acceptedDates = val;
+
+			console.log(acceptedDates) ; 
+			for ( var i=0 ; i < this.AcceptedSimulations.length ; i ++) {
+		//	acceptedDates = [ 1 , 2  , 3] ; 
+				var simulation = this.AcceptedSimulations[i] ; 
+				if (simulation.status == "accepted")
+				{	var feedBack = {}; 
+					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
+					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
+						acceptedDates.push (feedBack) ; 
+				}
+			}
+			this.store.set('Accepted', acceptedDates);
+			
+		});
+	}
+
+	CheckFeedExist ( acceptedDates , newId ){
+		console.log("checking ") ; 
+		//console.log(newId) ; 
+		//console.log(acceptedDates[0].simulation_date_id) ; 
+		for( var i=0 ; i < acceptedDates.length ; i ++) {
+			if ( acceptedDates[i].simulation_date_id == newId)
+				return false ; 
+		} 
+		return true ; 
+	}
 
   ngOnInit() {
 
