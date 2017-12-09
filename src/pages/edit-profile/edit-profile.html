@@ -16,28 +16,28 @@
   <ion-content padding>
     <ion-list>
       <ion-item style="text-align:left;">
-              <ion-label>Name :</ion-label>
+              <ion-label style="color:gray">Name :</ion-label>
               <ion-input #name type="text" [(ngModel)]="navdata.data.user_name" style="padding-right:60px"></ion-input>
           </ion-item>
           
           <ion-item style="text-align:left;">
-              <ion-label>E-mail :</ion-label>
+              <ion-label style="color:gray">E-mail :</ion-label>
             <ion-input #email type="email" [(ngModel)]="navdata.data.user_email"></ion-input>
             
           </ion-item>
       
           <ion-item style="text-align:left;">
-              <ion-label>Phone Number :</ion-label>
+              <ion-label style="color:gray">Phone Number :</ion-label>
             <ion-input #phone type="number" [(ngModel)]="navdata.data.phone_no"></ion-input>
           </ion-item>
       
           <ion-item style="text-align:left;">
-              <ion-label>School :</ion-label>
+              <ion-label style="color:gray">School :</ion-label>
             <ion-input #school type="text" [(ngModel)]="navdata.data.school"></ion-input>
           </ion-item>
       
           <ion-item style="text-align:left;">
-              <ion-label style="padding-right:40px">Degree :</ion-label>
+              <ion-label style="padding-right:50px;color:gray">Degree :</ion-label>
             <ion-select #degree style="  width:80%; max-width: 80% !important ; padding-left:40px" [(ngModel)]="navdata.data.degree">
               <ion-option value="High School">in High School</ion-option>
               <ion-option value="College">in College</ion-option>

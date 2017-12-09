@@ -63,7 +63,6 @@ export class TabsPage {
 				console.log(this.user_simulations);
 				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
-				this.CheckAccepted();
 				
 			});
 		});

@@ -308,18 +308,6 @@ feedbackObject;
 							}
 					} 
 				);
-				this.feedbackObject={company_sim:this.company_simulations,dateId:this.simulationDateId};
-				
-				this.actionSheet.addButton(
-					{
-						
-						text:'Add a Feedback to User',
-						handler:() => {
-							this.navCtrl.push(FeedbackToUserPage,this.feedbackObject);	
-						}
-					}
-				);
-
 				this.actionSheet.present();
 
 			 }

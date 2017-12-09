@@ -91,10 +91,10 @@ export class MyApp {
 
 
          store.get('user_id').then((val) => {
-          http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id=" + val).subscribe(data => {
+          http.get("https://ffserver.eu-gb.mybluemix.net/accepted-simulation?user_id=" + val).subscribe(data => {
             var res = JSON.parse(data['_body']);
-            this.user_simulations = res;
-            console.log(this.user_simulations);
+            this.AcceptedSimulations = res;
+            console.log("Da el accepted Simulations :",this.AcceptedSimulations);
             //console.log("STAT",this.user_simulations[0].status);
             //this.loading=false;
             this.CheckAccepted();
@@ -209,10 +209,13 @@ export class MyApp {
   checkFeedBack(acceptedDates) {
     var currentDate = new Date();
     currentDate.setHours(currentDate.getHours() + 2);
+
     console.log("curentDate ", currentDate);
     for (var i = 0; i < acceptedDates.length; i++) {
       var simDate = new Date(acceptedDates[i].date);
       console.log("feed back date ", simDate);
+      simDate.setHours(simDate.getHours() + 4);
+      
       if (currentDate > simDate) {
         var simId = acceptedDates[i].simulation_date_id;
         acceptedDates.splice(i, 1);
