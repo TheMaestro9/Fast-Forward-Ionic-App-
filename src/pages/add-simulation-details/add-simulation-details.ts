@@ -35,6 +35,10 @@ export class AddSimulationDetailsPage {
       {name:"INDUSTRIAL",id:8},
       {name:"Medicine",id:9},      
       {name:"Entrepreneurship",id:10},      
+	{name:"Dentistry",id:11},  
+	{name:"Music Production",id:12},  
+	{name:"Psychology",id:13}, 
+	{name:"Dance",id:14},  
     ];
     
   }

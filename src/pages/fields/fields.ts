@@ -35,6 +35,10 @@ this.fields=[
 	{name:"INDUSTRIAL",img:"assets/indx.png",id:8},
 	{name:"TV Production",img:"assets/TVProduction.png",id:5},
 	{name:"Entrepreneurship",img:"assets/Entrepreneurship.png",id:10},
+	{name:"Dentistry",img:"assets/Dentistry.png",id:11},
+	{name:"Music Production",img:"assets/Music.png",id:12},
+	{name:"Psychology",img:"assets/Psychology.png",id:13},
+	{name:"Dance",img:"assets/Dance.png",id:14},
 ];
 
 
