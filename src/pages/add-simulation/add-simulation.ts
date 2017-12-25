@@ -75,7 +75,7 @@ export class AddSimulationPage {
 			var res = JSON.parse(data['_body']);
 			this.company_details=res;
 			console.log(this.company_details);
-		});
+		} ,  (error) => { alert(error) });
 		this.http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations2?company_id="+this.company_or_not+"&user_id="+this.userid).subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.company_simulations =res;

@@ -42,7 +42,7 @@ this.id=navParams.get("id");
         });
 
 
-      });
+      }, (error) => { console.log(error) });
     
   }
  
@@ -65,7 +65,7 @@ this.DS.load().subscribe(
             data => {this.setvalue(data);}
             
         );
-      });
+      }, (error) => { console.log(error) });
           
  }
       setvalue(value){

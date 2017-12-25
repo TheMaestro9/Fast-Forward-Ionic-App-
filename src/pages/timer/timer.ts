@@ -60,7 +60,7 @@ this.DS.load().subscribe(
 
 
 
-});
+}, (error) => { console.log(error) });
             
           
         
@@ -121,7 +121,7 @@ timercal(){
         this.store.get('version').then((val)=>{
         if(val=="")this.navCtrl.setRoot(VersionCheckPage);
         else this.navCtrl.setRoot(TabsPage);
-        });
+        }, (error) => { console.log(error) });
 
       }
 
@@ -150,7 +150,7 @@ timercalExpo(){
         this.store.get('version').then((val)=>{
         if(val=="")this.navCtrl.setRoot(VersionCheckPage);
         else this.navCtrl.setRoot(TabsPage);
-        });
+        }, (error) => { console.log(error) });
 
       }
 

@@ -6,13 +6,10 @@ import { ActionSheetController } from 'ionic-angular'
 import { Http } from '@angular/http';
 import { EditProfilePage } from "../edit-profile/edit-profile";
 import { LoginPage } from '../login/login';
-import { Facebook } from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
-import { FileChooser } from 'ionic-native';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DataService } from '../../providers/data-service';
-import { Observable } from 'rxjs/Rx';
 import { CompanyPage } from '../company/company';
 @Component({
 	selector: 'page-profile',
@@ -35,9 +32,9 @@ export class Profile {
 	timer;
 
 	constructor(private app: App, public navCtrl: NavController,
-		navParams: NavParams, private DS: DataService, public http: Http,
+		navParams: NavParams, public http: Http,
 		public alertCtrl: AlertController, public loadingCtrl: LoadingController,
-		public actionSheetCtrl: ActionSheetController, private fb: Facebook,
+		public actionSheetCtrl: ActionSheetController,
 		private store: Storage, public afa: AngularFireAuth) {
 
 			
@@ -60,7 +57,7 @@ export class Profile {
 				
 			});
 
-		});
+		}, (error) => { console.log(error) });
 
 	}
 
@@ -97,7 +94,7 @@ export class Profile {
 						//this.loading=false;
 					});
 					console.log("user_id", val)
-				});
+				}, (error) => { console.log(error) });
 		
 				console.log("sim to be removed!" , sim.simulation_date_id) ; 
 				this.removeFromFeedArray (sim.simulation_date_id) ; 
@@ -125,7 +122,7 @@ export class Profile {
 					return ; 
 				}
 			} 
-		});
+		}, (error) => { console.log(error) });
 	}
 
 
@@ -206,7 +203,6 @@ export class Profile {
 
 		this.store.set('user_id', "");
 		localStorage.setItem('expo', null);
-		this.fb.logout();
 		this.app.getRootNav().setRoot(LoginPage);
 		//root.popToRoot();
 

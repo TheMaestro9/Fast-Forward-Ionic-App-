@@ -31,7 +31,7 @@ import {CardPaymentPage} from'../pages/card-payment/card-payment'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Facebook } from '@ionic-native/facebook';
+//import { Facebook } from '@ionic-native/facebook';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Ionic2RatingModule } from 'ionic2-rating';
@@ -149,7 +149,6 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
   providers: [
     StatusBar,
     SplashScreen,
-    Facebook,
     SocialSharing,
     AndroidPermissions,
     DataService,

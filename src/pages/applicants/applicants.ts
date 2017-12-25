@@ -41,7 +41,7 @@ export class Applicants {
             });
     
     
-          });
+          } ,  (error) => { alert(error) });
   }
 
  

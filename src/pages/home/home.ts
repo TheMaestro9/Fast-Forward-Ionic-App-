@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
 import { Applicants } from '../applicants/applicants';
 import { Requestdate } from '../requestdate/requestdate';
 import { Registerform } from '../registerform/registerform';
@@ -19,7 +17,7 @@ export class HomePage {
   check = true;
   splash = true; // new 
 
-  constructor(public navCtrl: NavController, private fb: Facebook, private sharefb: SocialSharing) {
+  constructor(public navCtrl: NavController, private sharefb: SocialSharing) {
 
 
   }
@@ -56,48 +54,48 @@ else{
 
 
 
-  loginfacebook() {
+  // loginfacebook() {
 
-    this.fb.login(['email', 'user_birthday']).then((response) => {
+  //   this.fb.login(['email', 'user_birthday']).then((response) => {
 
-      alert('Logged in');
-      // alert(JSON.stringify(response.authResponse))
-    }, (error) => { alert(error) })
-  }
+  //     alert('Logged in');
+  //     // alert(JSON.stringify(response.authResponse))
+  //   }, (error) => { alert(error) })
+  // }
 
-  get_details() {
-    this.fb.getLoginStatus().then((response) => {
-      if (response.status == 'connected') {
-        this.fb.api('/' + response.authResponse.userID + '?fields=id,name,gender,user_birthday', []).then((response) => {
-          alert(JSON.stringify(response))
-        }, (error) => { alert(error) })
-      }
-      else {
-        alert('not logged in');
-      }
-
-
-    })
-
-  }
-  applicantnav() {
-    this.navCtrl.push(Applicants);
-  }
+  // get_details() {
+  //   this.fb.getLoginStatus().then((response) => {
+  //     if (response.status == 'connected') {
+  //       this.fb.api('/' + response.authResponse.userID + '?fields=id,name,gender,user_birthday', []).then((response) => {
+  //         alert(JSON.stringify(response))
+  //       }, (error) => { alert(error) })
+  //     }
+  //     else {
+  //       alert('not logged in');
+  //     }
 
 
+  //   })
+
+  // }
+  // applicantnav() {
+  //   this.navCtrl.push(Applicants);
+  // }
 
 
 
-  logout() {
-    this.fb.logout().then((response) => {
-
-      alert('Logged out');
-      alert(JSON.stringify(response.authResponse))
-    }, (error) => { alert(error) })
 
 
+  // logout() {
+  //   this.fb.logout().then((response) => {
 
-  }
+  //     alert('Logged out');
+  //     alert(JSON.stringify(response.authResponse))
+  //   }, (error) => { alert(error) })
+
+
+
+  // }
 
 
 

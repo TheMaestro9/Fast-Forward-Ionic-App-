@@ -65,7 +65,7 @@ export class TabsPage {
 				//this.loading=false;
 				
 			});
-		});
+		}, (error) => { console.log(error) });
 
 		http.get("https://ffserver.eu-gb.mybluemix.net/all-companies?id=").subscribe(data => {
 			var res = JSON.parse(data['_body']);
@@ -177,7 +177,7 @@ export class TabsPage {
 			}
 			this.store.set('Accepted', acceptedDates);
 			
-		});
+		}, (error) => { console.log(error) });
 	}
 
 	CheckFeedExist ( acceptedDates , newId ){

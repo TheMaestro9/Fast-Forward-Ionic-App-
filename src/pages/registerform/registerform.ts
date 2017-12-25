@@ -3,7 +3,6 @@ import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import {TabsPage} from '../tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import {TutorialPage} from '../tutorial/tutorial' ; 

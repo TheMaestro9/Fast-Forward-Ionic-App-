@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
@@ -41,7 +41,7 @@ export class FeedbackPage {
         // this.loading=false;
       });
       console.log("Simulation details in constructor : ", this.simulationDetails);
-    });
+    }, (error) => { console.log(error) });
   }
 
   starClicked(value) {
@@ -73,7 +73,7 @@ export class FeedbackPage {
         console.log("etbaaa3", res);
       });
       console.log("Feedack Details : ",feedbackDetails);
-			});
+			}, (error) => { console.log(error) });
 			
       this.navCtrl.setRoot(TabsPage);
   }
