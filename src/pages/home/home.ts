@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Applicants } from '../applicants/applicants';
 import { Requestdate } from '../requestdate/requestdate';
 import { Registerform } from '../registerform/registerform';
 import { TabsPage } from '../tabs/tabs';

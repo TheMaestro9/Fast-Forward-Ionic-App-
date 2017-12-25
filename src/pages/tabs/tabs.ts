@@ -12,7 +12,6 @@ import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 import { EditCompanyPage } from '../edit-company/edit-company';
-import { ChooseCompanyPage } from '../choose-company/choose-company';
 
 //import {ExpotimerPage} from '../expotimer/expotimer';
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import {  NavController, NavParams, AlertController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { AddSimulationDetailsPage } from '../add-simulation-details/add-simulation-details';
@@ -59,6 +59,7 @@ export class AddSimulationPage {
 	  	handler: () => {
 			this.http.post("https://ffserver.eu-gb.mybluemix.net/delete-simulation",this.company_simulations[index]).subscribe(data => {
 					var res = JSON.parse(data['_body']);
+					console.log(res) ; 
 					this.getData();
 				});
 	  		}

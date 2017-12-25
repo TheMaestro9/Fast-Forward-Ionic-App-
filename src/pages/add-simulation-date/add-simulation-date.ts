@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
-import { DataService } from '../../providers/data-service';
-import { Storage } from '@ionic/storage';
+import { NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { SimulationDatesPage } from '../simulation-dates/simulation-dates';
 
 
 @Component({
@@ -30,7 +27,8 @@ export class AddSimulationDatePage {
     dateToEdit: any;
     timeToEdit: any;
     simIdToEdit: any;
-  constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
+  constructor(platform:Platform,public http: Http,public navCtrl: NavController,
+     public alertCtrl: AlertController, public navParams: NavParams) {
     this.simulation_id=this.navParams.data;
     this.simIdToEdit = this.navParams.data.simID;
     console.log(this.navParams.data.simDate);

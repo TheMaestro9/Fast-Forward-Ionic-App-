@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 import { Http } from '@angular/http';
-import { Network } from '@ionic-native/network';
-import { Storage } from '@ionic/storage';
-import { AddSimulationPage } from '../add-simulation/add-simulation';
 import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
 
 @Component({
@@ -19,7 +16,9 @@ export class AddSimulationDetailsPage {
   description:string;
   fieldID:number;
   check;
-  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService, 
+     public http: Http,public navParams: NavParams,public alertCtrl: AlertController,
+     public plt: Platform) {
     this.company_or_not = localStorage.getItem('company_or_not');
     this.simName = navParams.get("name");
     this.description = navParams.get("description");

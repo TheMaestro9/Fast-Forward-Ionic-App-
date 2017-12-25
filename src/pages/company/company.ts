@@ -8,9 +8,6 @@ import { PaymentMethodPage } from '../payment-method/payment-method';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { Profile } from "../profile/profile"
-import { FeedbackPage } from '../feedback/feedback';
-import { IonRatingPage } from '../ion-rating/ion-rating';
-import { FeedbackToUserPage } from '../feedback-to-user/feedback-to-user';
 
 @Component({
 	selector: 'page-company',
@@ -193,10 +190,7 @@ export class CompanyPage {
 					if (res.followed) {
 						this.follow = "Follow";
 						company.followers--
-						this.http.get("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id=" + val + "&company_id=" + company.company_id).subscribe(
-							data => {
-								var res = JSON.parse(data['_body']);
-							})
+						this.http.get("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id=" + val + "&company_id=" + company.company_id) ; 
 						console.log("RES F", res)
 					}
 					else {

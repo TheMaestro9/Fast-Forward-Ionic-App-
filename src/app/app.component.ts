@@ -1,20 +1,17 @@
 
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component, Inject, ViewChild } from '@angular/core';
-import { Platform, Nav, NavController, LoadingController } from 'ionic-angular';
-import { Deeplinks } from '@ionic-native/deeplinks';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController, LoadingController } from 'ionic-angular';
+//import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { CompanyPage } from '../pages/company/company';
 import { FeedbackPage } from '../pages/feedback/feedback';
-import { Profile } from '../pages/profile/profile';
 import { Http } from '@angular/http';
 
 @Component({
@@ -35,7 +32,7 @@ export class MyApp {
 	user_simulations: any = [];
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
      private DS: DataService, private network: Network, public store: Storage,
-      private deeplinks: Deeplinks,public http: Http) {
+    public http: Http) {
 
 
     // platform.ready().then(() => {

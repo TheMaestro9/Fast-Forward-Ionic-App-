@@ -9,7 +9,6 @@ import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { DataService } from '../../providers/data-service';
 import { CompanyPage } from '../company/company';
 @Component({
 	selector: 'page-profile',
