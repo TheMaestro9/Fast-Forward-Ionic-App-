@@ -26,7 +26,8 @@ import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 //import {ExpotimerPage} from '../pages/expotimer/expotimer';
-import {CardPaymentPage} from'../pages/card-payment/card-payment'
+import {CardPaymentPage} from'../pages/card-payment/card-payment'; 
+import { VrVideoPage } from '../pages/vr-video/vr-video' ; 
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -100,7 +101,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
     FeedbackPage,
     FeedbackToUserPage,
     IonRatingPage,
-    EditSimulationDatePage
+    EditSimulationDatePage, 
+    VrVideoPage
   ],
   imports: [
     BrowserModule,
@@ -144,7 +146,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      FeedbackPage,
      FeedbackToUserPage,
      IonRatingPage,
-     EditSimulationDatePage
+     EditSimulationDatePage,
+     VrVideoPage
   ],
   providers: [
     StatusBar,

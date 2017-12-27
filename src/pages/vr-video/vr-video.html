@@ -1,0 +1,109 @@
+<!--
+  Generated template for the VrVideoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>VrVideo</ion-title>
+  </ion-navbar> 
+  <link href="http://vjs.zencdn.net/5.8/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/5.8/video.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js"></script>
+  <link href="C:\Users\Waleed Mousa\Documents\GitHub\Fast-Forward-Ionic-App-\src\dist\videojs-panorama.min.css" rel="stylesheet">
+  <script src="C:\Users\Waleed Mousa\Documents\GitHub\Fast-Forward-Ionic-App-\src\dist\videojs-panorama.min.js"></script>
+ <!-- <script>
+     var player = window.player = videojs('videojs-panorama-player', {}, function () {
+      window.addEventListener("resize", function () {
+          var canvas = player.getChild('Canvas');
+          canvas.handleResize();
+      });
+  });
+
+  var panorama = player.panorama({
+            PanoramaThumbnail: true, //enable panorama thumbnail
+            KeyboardControl: true,
+            clickToToggle: true,
+            Notice: {
+                Enable: true,
+                Message: (isMobile())? "please drag and drop the video" : "please use your mouse drag and drop the video"
+            },
+            Markers: [
+                {
+                    location: {
+                        lat: 0,
+                        lon: 180
+                    },
+                    radius: 500,
+                    element: "This is text 1 with long text"
+                },
+                {
+                    location: {
+                        lat: 20,
+                        lon: 160
+                    },
+                    radius: 500,
+                    element: "This is text 2 with long text",
+                    onShow: function(){
+                        console.log("text 2 is shown");
+                    },
+                    onHide: function(){
+                        console.log("text 2 is hidden");
+                    }
+                }
+            ],
+            Animation: [
+                {
+                    keyPoint: 0,
+                    from: {
+                        lon: 180,
+                    },
+                    to:{
+                        lon: 540,
+                    },
+                    duration: 8000,
+                    ease: "linear",
+                    onComplete: function () {
+                        console.log("animation 1 is completed");
+                    }
+                },
+                {
+                    keyPoint: 0,
+                    from: {
+                        fov: 75,
+                    },
+                    to:{
+                        fov: 90,
+                    },
+                    duration: 5000,
+                    ease: "linear",
+                }
+            ],
+        });
+
+        player.panorama({
+    clickAndDrag: true,
+    callback: function () {
+      player.play();
+    }
+      });
+  </script> -->
+</ion-header>
+
+
+<ion-content padding>
+<p (click)="prin()">hello man </p> <!--
+<video id="videojs-panorama-player" class="video-js vjs-default-skin" poster="assets/ff.png"  
+crossorigin="anonymous" controls width="100%"  height="auto" >
+  <source src="assets/piano.MP4" type='video/mp4'>
+</video> --> 
+<video id="v1" className="video-js vjs-default-skin" crossOrigin="anonymous" controls ref="player">
+</video>
+  <script>
+    function prin () {
+        console.log("ya mann", videojs) ; 
+    }
+  </script>
+</ion-content>

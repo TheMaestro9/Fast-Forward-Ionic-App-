@@ -13,6 +13,7 @@ import { Network } from '@ionic-native/network';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { Http } from '@angular/http';
+import {VrVideoPage} from '../pages/vr-video/vr-video' ; 
 
 @Component({
   templateUrl: 'app.html',
@@ -103,6 +104,7 @@ export class MyApp {
           this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
               data => (this.handelResponse(data , val) ) 
+           // data => {this.rootPage = VrVideoPage ; }
           );
         });
         });
@@ -123,13 +125,15 @@ export class MyApp {
 				if (simulation.status == "accepted")
 				{	var feedBack = {}; 
 					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
-					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 feedBack["date"] = simulation.date ; 
 					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
 						acceptedDates.push (feedBack) ; 
 				}
 			}
 			this.store.set('Accepted', acceptedDates);
-			
+      console.log("upcomming feedbacks" , acceptedDates) ; 
+      console.log("william") ; 
+      console.log("sims" , this.AcceptedSimulations); 
 		});
 	}
 
