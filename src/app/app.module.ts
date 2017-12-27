@@ -55,8 +55,10 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {IonRatingPage} from '../pages/ion-rating/ion-rating';
 import {EditSimulationDatePage} from '../pages/edit-simulation-date/edit-simulation-date';
 import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
-
-
+import { MediaSamplePage } from '../pages/media-sample/media-sample'
+import { ComponentsModule } from '../components/components.module';
+import { ApiProvider } from '../providers/api/api';
+import { VrViewProvider } from '../providers/vr-view/vr-view';
 
  var config = {
     apiKey: "AIzaSyDLdE-P0vHPTnxIpnA5-Nm3yFlabOaUE78",
@@ -102,7 +104,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
     FeedbackToUserPage,
     IonRatingPage,
     EditSimulationDatePage, 
-    VrVideoPage
+    VrVideoPage, 
+    MediaSamplePage
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      HttpModule,
      BrowserAnimationsModule,
      IonicStorageModule.forRoot(),  
-     AngularFireModule.initializeApp(config) 
+     AngularFireModule.initializeApp(config),
+     ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -147,7 +151,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      FeedbackToUserPage,
      IonRatingPage,
      EditSimulationDatePage,
-     VrVideoPage
+     VrVideoPage,
+     MediaSamplePage
   ],
   providers: [
     StatusBar,
@@ -159,7 +164,9 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
     InAppBrowser,
     Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Network
+    Network,
+    ApiProvider,
+    VrViewProvider
   ]
 })
 export class AppModule {}
