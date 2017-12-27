@@ -46,7 +46,7 @@ export class CardPaymentPage {
         }); 
     
 
-   });
+   } ,  (error) => { alert(error) });
     // var PaymentData ={
     //   "simulation_date_id"  : 10 , 
     //   "user_id": 324 , 

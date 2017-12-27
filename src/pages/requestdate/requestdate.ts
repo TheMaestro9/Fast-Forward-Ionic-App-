@@ -113,7 +113,7 @@ setDate(){
                   }
             
     );
- });
+ }, (error) => { console.log(error) });
  
 
 }
@@ -132,7 +132,7 @@ vote (simulation_date_id , index){
                 else 
                  this. showAlert() ; 
             });
-  }) ; 
+  }, (error) => { console.log(error) }) ; 
 
 }
 

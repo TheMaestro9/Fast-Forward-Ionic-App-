@@ -12,7 +12,6 @@ import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 import { EditCompanyPage } from '../edit-company/edit-company';
-import { ChooseCompanyPage } from '../choose-company/choose-company';
 
 //import {ExpotimerPage} from '../expotimer/expotimer';
 
@@ -65,7 +64,7 @@ export class TabsPage {
 				//this.loading=false;
 				
 			});
-		});
+		}, (error) => { console.log(error) });
 
 		http.get("https://ffserver.eu-gb.mybluemix.net/all-companies?id=").subscribe(data => {
 			var res = JSON.parse(data['_body']);
@@ -177,7 +176,7 @@ export class TabsPage {
 			}
 			this.store.set('Accepted', acceptedDates);
 			
-		});
+		}, (error) => { console.log(error) });
 	}
 
 	CheckFeedExist ( acceptedDates , newId ){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import {  NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 @Component({
@@ -9,7 +9,8 @@ import { Http } from '@angular/http';
 export class EditSimulationPage {
   company_simulations;
   fields;
-  constructor(public alertController: AlertController,public navCtrl: NavController, public navParams: NavParams ,public http: Http) {
+  constructor(public alertController: AlertController,public navCtrl: NavController,
+     public navParams: NavParams ,public http: Http) {
     this.fields=[
       {name:"MARKETING",id:1},
       {name:"SOFTWARE ENGINEERING",id:2},

@@ -2,11 +2,10 @@ import { Network } from '@ionic-native/network';
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 import { Registerform } from '../registerform/registerform';
-import { Facebook } from '@ionic-native/facebook';
+//import { Facebook } from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import {TutorialPage} from '../tutorial/tutorial' ; 
 
@@ -25,7 +24,7 @@ export class LoginPage {
   connection_error_popup: any;
 
 
-  constructor(public navCtrl: NavController, private http: Http, private DS: DataService, public alertCtrl: AlertController, private fb: Facebook, private store: Storage, private network: Network, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private http: Http, private DS: DataService, public alertCtrl: AlertController, private store: Storage, private network: Network, private loadingCtrl: LoadingController) {
 
     this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({

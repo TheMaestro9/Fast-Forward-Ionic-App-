@@ -39,7 +39,7 @@ dump:any;
 									data => this.setresponse(data)
 			
 							);
-		})
+		}, (error) => { console.log(error) })
 
 
 	}
@@ -59,7 +59,7 @@ if(video.liked) {
 								data =>{ this.dump
 								video.likes--;}
 						);
-	});
+	}, (error) => { console.log(error) });
 
 }
 else{
@@ -71,7 +71,7 @@ this.store.get('user_id').then((val) => {
 							data =>{ this.dump;
 							video.likes++;}
 	);
-})
+}, (error) => { console.log(error) })
 
 }
 
@@ -90,7 +90,7 @@ follow(company){
 								data => this.dump
 		
 						);
-	})
+	}, (error) => { console.log(error) })
 	
 					this.videos1.forEach(element => {
 						if(element.company_id==company.company_id)element.followed=false;
@@ -110,7 +110,7 @@ this.store.get('user_id').then((val) => {
 							data => this.dump
 	
 	);
-})
+}, (error) => { console.log(error) })
 	
 					this.videos1.forEach(element => {
 						if(element.company_id==company.company_id)element.followed=true;
@@ -125,7 +125,7 @@ this.store.get('user_id').then((val) => {
 			//alert('vedio is shared');
 			//alert(JSON.stringify(response.authResponse)
 		
-		},(error)=>{});
+		}, (error) => { console.log(error) });
 
 
 

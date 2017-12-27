@@ -1,21 +1,19 @@
 
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
-import { Component, Inject, ViewChild } from '@angular/core';
-import { Platform, Nav, NavController, LoadingController } from 'ionic-angular';
-import { Deeplinks } from '@ionic-native/deeplinks';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController, LoadingController } from 'ionic-angular';
+//import { Deeplinks } from '@ionic-native/deeplinks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { CompanyPage } from '../pages/company/company';
 import { FeedbackPage } from '../pages/feedback/feedback';
-import { Profile } from '../pages/profile/profile';
 import { Http } from '@angular/http';
+import {VrVideoPage} from '../pages/vr-video/vr-video' ; 
 
 @Component({
   templateUrl: 'app.html',
@@ -35,7 +33,7 @@ export class MyApp {
 	user_simulations: any = [];
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
      private DS: DataService, private network: Network, public store: Storage,
-      private deeplinks: Deeplinks,public http: Http) {
+    public http: Http) {
 
 
     // platform.ready().then(() => {
@@ -105,7 +103,8 @@ export class MyApp {
           this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
           this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
-              data => (this.handelResponse(data , val) ) 
+             // data => (this.handelResponse(data , val) ) 
+            data => {this.rootPage = VrVideoPage ; }
           );
         });
         });
@@ -126,13 +125,15 @@ export class MyApp {
 				if (simulation.status == "accepted")
 				{	var feedBack = {}; 
 					 feedBack["simulation_date_id"] = simulation.simulation_date_id ; 
-					 feedBack["date"] = simulation.applied_simulation_date ; 
+					 feedBack["date"] = simulation.date ; 
 					 if ( this .CheckFeedExist (acceptedDates , simulation.simulation_date_id))					 
 						acceptedDates.push (feedBack) ; 
 				}
 			}
 			this.store.set('Accepted', acceptedDates);
-			
+      console.log("upcomming feedbacks" , acceptedDates) ; 
+      console.log("william") ; 
+      console.log("sims" , this.AcceptedSimulations); 
 		});
 	}
 

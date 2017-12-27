@@ -26,12 +26,13 @@ import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 //import {ExpotimerPage} from '../pages/expotimer/expotimer';
-import {CardPaymentPage} from'../pages/card-payment/card-payment'
+import {CardPaymentPage} from'../pages/card-payment/card-payment'; 
+import { VrVideoPage } from '../pages/vr-video/vr-video' ; 
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Facebook } from '@ionic-native/facebook';
+//import { Facebook } from '@ionic-native/facebook';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Ionic2RatingModule } from 'ionic2-rating';
@@ -54,6 +55,7 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {IonRatingPage} from '../pages/ion-rating/ion-rating';
 import {EditSimulationDatePage} from '../pages/edit-simulation-date/edit-simulation-date';
 import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -100,7 +102,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
     FeedbackPage,
     FeedbackToUserPage,
     IonRatingPage,
-    EditSimulationDatePage
+    EditSimulationDatePage, 
+    VrVideoPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      HttpModule,
      BrowserAnimationsModule,
      IonicStorageModule.forRoot(),  
-     AngularFireModule.initializeApp(config) 
+     AngularFireModule.initializeApp(config) ,
+     ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -144,12 +148,12 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      FeedbackPage,
      FeedbackToUserPage,
      IonRatingPage,
-     EditSimulationDatePage
+     EditSimulationDatePage,
+     VrVideoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Facebook,
     SocialSharing,
     AndroidPermissions,
     DataService,

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Platform ,AlertController } from 'ionic-angular';
-import {Http} from '@angular/http';
 import {CardPaymentPage} from '../card-payment/card-payment'
 
 @IonicPage()
@@ -11,7 +10,7 @@ import {CardPaymentPage} from '../card-payment/card-payment'
 export class PaymentMethodPage {
 link;
 SimulationID ; 
-  constructor(platform:Platform,private http:Http,public navCtrl: NavController, public navParams: NavParams , public alertController: AlertController) {
+  constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams , public alertController: AlertController) {
   
     platform.ready().then(()=>{
       
@@ -23,7 +22,7 @@ SimulationID ;
               });
       
       
-            });
+            }, (error) => { console.log(error) });
   }
   back_button(){
 

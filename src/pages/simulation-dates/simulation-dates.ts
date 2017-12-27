@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {Http} from '@angular/http';
-
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import {AddSimulationDatePage } from '../add-simulation-date/add-simulation-date'
-import { EditDatePage } from '../edit-date/edit-date';
 import { EditSimulationDatePage } from '../edit-simulation-date/edit-simulation-date';
 
 
@@ -48,7 +46,7 @@ export class SimulationDatesPage {
 	  	handler: () => {
 			this.http.post("https://ffserver.eu-gb.mybluemix.net/delete-simulation-date",Dateid).subscribe(data => {
           var res = JSON.parse(data['_body']);
-          //console.log(res);
+          console.log(res);
 					this.getData();
 				});
 	  		}

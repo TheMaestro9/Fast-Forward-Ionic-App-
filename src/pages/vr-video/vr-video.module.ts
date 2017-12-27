@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ExpotimerPage } from './expotimer';
+import { VrVideoPage } from './vr-video';
 
 @NgModule({
   declarations: [
-    ExpotimerPage,
+    VrVideoPage,
   ],
   imports: [
-    IonicPageModule.forChild(ExpotimerPage),
+    IonicPageModule.forChild(VrVideoPage),
   ],
   exports: [
-    ExpotimerPage
+    VrVideoPage
   ]
 })
-export class ExpotimerPageModule {}
+export class VrVideoPageModule {}
