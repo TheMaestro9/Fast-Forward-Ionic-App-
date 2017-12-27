@@ -55,6 +55,7 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {IonRatingPage} from '../pages/ion-rating/ion-rating';
 import {EditSimulationDatePage} from '../pages/edit-simulation-date/edit-simulation-date';
 import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -112,7 +113,8 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
      HttpModule,
      BrowserAnimationsModule,
      IonicStorageModule.forRoot(),  
-     AngularFireModule.initializeApp(config) 
+     AngularFireModule.initializeApp(config) ,
+     ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

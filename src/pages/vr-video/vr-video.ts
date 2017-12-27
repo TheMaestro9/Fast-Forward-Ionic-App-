@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {videojs} from 'video.js' ; 
-import {panorama} from 'videojs-panorama' ; 
+
 /**
  * Generated class for the VrVideoPage page.
  *
@@ -18,51 +17,44 @@ export class VrVideoPage {
   props ={
     "imageURL":"assets/ff.png" , 
     "videoURL":"assets/piano.MP4"
-  }
+  } ; 
+
+   mediaSamples = [
+    {
+      name: "Playhouse",
+      type: "VIDEO",
+      inputType: "TYPE_MONO",
+      inputFormat: "FORMAT_HLS",
+      url: "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
+      isLocal: false,
+      previewUrl: "https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg"
+    }
+    ];    
   constructor(public navCtrl: NavController, public navParams: NavParams  ) {
 
+    
   //  console.log("ya mannn") ; 
 //    console.log(videojs) ; 
 
+   console.log("ana hena")
   }
-
-  // initializePlayer(){
-  //   var  videoInfo  = this.props;
-  //   var videoElement = this.player;
-
-  //   this.player = videojs(videoElement, {} , () => {
-  //       window.addEventListener("resize", () => {
-  //           var canvas = this.player.getChild('Canvas');
-  //           if(canvas) canvas.handleResize();
-  //       });
-  //   });
-
-  //   this.player.poster(videoInfo.imageURL);
-  //   this.player.src({src: videoInfo.videoURL, type: "video/mp4" });
-
-  //   var width = videoElement.offsetWidth;
-  //   var height = videoElement.offsetHeight;
-  //   this.player.width(width), this.player.height(height);
-  //   panorama(this.player, {
-  //       clickToToggle: (false),
-  //       autoMobileOrientation: true,
-  //       initFov: 100,
-  //       VREnable: true,
-  //       clickAndDrag: true,
-  //       NoticeMessage: (true)? "please drag and drop the video" : "please use your mouse drag and drop the video"
-  //   });
-
-  //   this.player.on("VRModeOn", function(){
-  //       this.player.controlBar.fullscreenToggle.trigger("tap");
-  //   });
-//}
   ngOnInit() {
 
    // this.initializePlayer()
+
+   console.log("ana henak" , this.mediaSamples)
       
   }    
   ionViewDidLoad() {
     console.log('ionViewDidLoad VrVideoPage');
   }
+  onMediaSampleitemClick(mediaSampleElement) {    
+    console.log("im here dude") ; 
+    window['VrView'].playVideo(
+    mediaSampleElement.url, 
+    mediaSampleElement.inputType, 
+    mediaSampleElement.inputFormat
+  );
+}
 
 }
