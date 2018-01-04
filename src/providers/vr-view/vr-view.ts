@@ -10,6 +10,7 @@ export class VrViewProvider {
     if(!window['VrView']) {
       console.log("Play");
       console.log(mediaSample);
+      alert("connot use ")
       return;
     }
 

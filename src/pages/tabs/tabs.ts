@@ -12,8 +12,8 @@ import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 import { EditCompanyPage } from '../edit-company/edit-company';
-
 //import {ExpotimerPage} from '../expotimer/expotimer';
+import {VrVideoPage} from '../vr-video/vr-video'
 
 
 @Component({
@@ -33,6 +33,8 @@ export class TabsPage {
 	connection_error_popup: any;
 	AcceptedSimulations =[]; 
 	user_simulations: any = [];
+
+	vrSubscription ; 
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
 			this.connection_error_popup = this.loadingCtrl.create({
@@ -53,13 +55,15 @@ export class TabsPage {
 			http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=" + val).subscribe(data => {
 				var res = JSON.parse(data['_body']);
 				this.superAdmin = res.company_or_not;
-				console.log(this.superAdmin);
+				this.vrSubscription = res.vr ; 
+				console.log("ya man el sub" , res.vr )
+				//console.log(this.superAdmin);
 				//this.loading=false;
 			});
 			http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id=" + val).subscribe(data => {
 				var res = JSON.parse(data['_body']);
 				this.user_simulations = res;
-				console.log(this.user_simulations);
+				//console.log(this.user_simulations);
 				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
 				
@@ -91,6 +95,9 @@ export class TabsPage {
 	}
 	switch4() {
 		this.presentAdminActionSheet();
+	}
+	switch5() {
+		this.root = VrVideoPage;
 	}
 
 

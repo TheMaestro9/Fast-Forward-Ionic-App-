@@ -104,8 +104,8 @@ export class MyApp {
           this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
           this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
-             // data => (this.handelResponse(data , val) ) 
-            data => {this.rootPage = MediaSamplePage ; }
+              data => (this.handelResponse(data , val) ) 
+          // data => {this.rootPage = VrVideoPage ; }
           );
         });
         });

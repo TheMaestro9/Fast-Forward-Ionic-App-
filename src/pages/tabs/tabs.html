@@ -19,8 +19,9 @@
 			<ion-tab [root]="tab1Root"  tabIcon="contacts" (ionSelect)="switch1()" ></ion-tab>
 			<ion-tab [root]="tab2Root"  tabIcon="videocam" (ionSelect)="switch2()"></ion-tab>
 			<ion-tab [root]="tab3Root"  tabIcon="person" (ionSelect)="switch3()"></ion-tab>
-			<ion-tab *ngIf="company_or_not && company_or_not!='-1'" [root]="tab4Root"  tabIcon="md-build" (ionSelect)="switch4()"> </ion-tab>
- <ion-tab *ngIf="expo && expo!='0'" [root]="tab5Root"  tabIcon="md-timer" (ionSelect)="switch5()"></ion-tab>
+			<ion-tab *ngIf="company_or_not && company_or_not!=-1" [root]="tab4Root"  tabIcon="md-build" (ionSelect)="switch4()"> </ion-tab>
+			<ion-tab *ngIf="vrSubscription && vrSubscription!= 0" [root]="VrVideoPage"  tabIcon="md-glasses" (ionSelect)="switch5()"> </ion-tab>
+
 </ion-tabs>
  
 </ion-toolbar>

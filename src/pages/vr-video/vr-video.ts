@@ -1,68 +1,46 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {videojs} from 'video.js' ; 
-import {panorama} from 'videojs-panorama' ; 
-/**
- * Generated class for the VrVideoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+import {  NavController } from 'ionic-angular';
+import { MediaSampleModel } from '../../models/media-sample.model';
+import { ApiProvider } from '../../providers/api/api';
+import { VrViewProvider } from '../../providers/vr-view/vr-view';
+
 @Component({
   selector: 'page-vr-video',
   templateUrl: 'vr-video.html',
 })
 export class VrVideoPage {
-  player = null ; 
-  props ={
-    "imageURL":"assets/ff.png" , 
-    "videoURL":"assets/piano.MP4"
-  }
-  constructor(public navCtrl: NavController, public navParams: NavParams  ) {
+  mediaSamples : Array<MediaSampleModel> = [];
+  errorMessage : string;
+  isLoading: boolean;
 
-  //  console.log("ya mannn") ; 
-//    console.log(videojs) ; 
+  constructor(
+    public navCtrl: NavController,
+    public api: ApiProvider,
+    public vrView: VrViewProvider
+  ) {}
 
-  }
-
-  // initializePlayer(){
-  //   var  videoInfo  = this.props;
-  //   var videoElement = this.player;
-
-  //   this.player = videojs(videoElement, {} , () => {
-  //       window.addEventListener("resize", () => {
-  //           var canvas = this.player.getChild('Canvas');
-  //           if(canvas) canvas.handleResize();
-  //       });
-  //   });
-
-  //   this.player.poster(videoInfo.imageURL);
-  //   this.player.src({src: videoInfo.videoURL, type: "video/mp4" });
-
-  //   var width = videoElement.offsetWidth;
-  //   var height = videoElement.offsetHeight;
-  //   this.player.width(width), this.player.height(height);
-  //   panorama(this.player, {
-  //       clickToToggle: (false),
-  //       autoMobileOrientation: true,
-  //       initFov: 100,
-  //       VREnable: true,
-  //       clickAndDrag: true,
-  //       NoticeMessage: (true)? "please drag and drop the video" : "please use your mouse drag and drop the video"
-  //   });
-
-  //   this.player.on("VRModeOn", function(){
-  //       this.player.controlBar.fullscreenToggle.trigger("tap");
-  //   });
-//}
-  ngOnInit() {
-
-   // this.initializePlayer()
-      
-  }    
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VrVideoPage');
+    this.loadMediaSamples();
+  }
+
+  loadMediaSamples() {
+    this.isLoading = true;
+    this.api.getMediaSamples()
+      .subscribe(
+        mediaSamples => {
+          this.isLoading = false;
+          this.mediaSamples = mediaSamples;
+          this.errorMessage = null;
+        },
+        error => {
+          this.isLoading = false;
+          this.errorMessage = error;
+        }
+      );
+  }
+
+  onMediaSampleitemClick(mediaSampleElement) {
+    this.vrView.playMediaSample(mediaSampleElement);
   }
 
 }
