@@ -26,7 +26,7 @@ export class TabsPage {
 	tab1Root = FieldsPage;
 	tab2Root = Videos;
 	tab3Root = Profile;
-	//tab5Root = ExpotimerPage;
+	tab5Root = VrVideoPage;
 	ios: boolean = false;
 	root;
 	companies = [];
@@ -97,7 +97,7 @@ export class TabsPage {
 		this.presentAdminActionSheet();
 	}
 	switch5() {
-		this.root = VrVideoPage;
+		this.root = this.tab5Root;
 	}
 
 
