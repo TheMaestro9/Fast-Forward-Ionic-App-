@@ -34,6 +34,8 @@ export class TabsPage {
 	AcceptedSimulations =[]; 
 	user_simulations: any = [];
 
+	currentColor ; 
+
 	vrSubscription ; 
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
@@ -46,6 +48,7 @@ export class TabsPage {
 		this.network.onConnect().subscribe(() => {
 			this.connection_error_popup.dismiss();
 		});
+		this.currentColor = 'danger';
 		this.store.get('user_id').then((val) => {
 
 			console.log("the Bolean:" , navParams.get("goToCompany")) ;

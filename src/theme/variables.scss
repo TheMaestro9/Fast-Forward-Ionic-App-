@@ -91,7 +91,14 @@ white: #ffffff,
 
 @import "roboto";
 @import "noto-sans";
-
+$colors: (
+	primary: #F84838 , 
+	ffPrimary: #F84838 ,
+   secondary:  #32db64,
+   danger:     #fff,
+   light:      #f4f4f4,  // the light color we're using
+   dark:          #222   // the dark color we're using
+);
 .separatingBG{
 	background: #eff0f1;
 }
