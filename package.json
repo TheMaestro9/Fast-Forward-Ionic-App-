@@ -34,6 +34,7 @@
     "cordova-android": "^6.2.3",
     "cordova-browser": "~4.1.0",
     "cordova-ios": "^4.4.0",
+    "cordova-multidex": "git+https://github.com/jwall149/cordova-multidex.git",
     "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-compat": "^1.0.0",
     "cordova-plugin-console": "^1.0.5",
@@ -104,7 +105,8 @@
         "DEEPLINK_4_HOST": " ",
         "DEEPLINK_5_SCHEME": " ",
         "DEEPLINK_5_HOST": " "
-      }
+      },
+      "me.tonny.cordova.plugins.multidex": {}
     },
     "platforms": [
       "android",
