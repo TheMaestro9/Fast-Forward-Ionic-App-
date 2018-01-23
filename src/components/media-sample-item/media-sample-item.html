@@ -2,15 +2,29 @@
   <div class="img-container">
     <img [src]="mediaSample.previewUrl"/>
     <img class="play-indicator" 
-      [src]="mediaSample.type == 'VIDEO' ? 'assets/images/play.png' : 'assets/images/panorama.png'" />
+      [src]="mediaSample.locked ? 'assets/images/Lock.png': 'assets/images/play.png'  " />
   </div>
+  <!-- 
   <ion-list>
     <ion-item>
-      <ion-icon [name]="mediaSample.type == 'VIDEO' ? 'videocam' : 'image'" color="primary" item-start></ion-icon>
       {{ mediaSample.name }}
     </ion-item>
   </ion-list>
+--> 
 
+
+
+<!--
+  <ion-row padding>
+    <ion-col col-12 padding style="color:#757575;">{{video.likes}} likes </ion-col>
+    <ion-col col-4>
+      <button ion-button clear small [color]="video.liked?'primary':'grey'" (click)="like(video)" icon-start>
+        <ion-icon name='thumbs-up'></ion-icon>
+        Like
+      </button>
+    </ion-col>
+  -->
+<!--
   <ion-row>
     <ion-col center text-center>
       <ion-note>
@@ -27,5 +41,5 @@
         {{mediaSample | mediaSampleInputFormat}}
       </ion-note>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 </ion-card>

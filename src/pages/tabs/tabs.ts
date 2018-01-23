@@ -36,7 +36,6 @@ export class TabsPage {
 
 	currentColor ; 
 
-	vrSubscription ; 
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, private store: Storage, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
 		this.network.onDisconnect().subscribe(() => {
 			this.connection_error_popup = this.loadingCtrl.create({
@@ -58,7 +57,6 @@ export class TabsPage {
 			http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=" + val).subscribe(data => {
 				var res = JSON.parse(data['_body']);
 				this.superAdmin = res.company_or_not;
-				this.vrSubscription = res.vr ; 
 				console.log("ya man el sub" , res.vr )
 				//console.log(this.superAdmin);
 				//this.loading=false;
@@ -201,7 +199,7 @@ export class TabsPage {
 	}
 	ChooseCompanyList() {
 		let alert = this.alertCtrl.create();
-		alert.setTitle('Select Gender');
+		alert.setTitle('Select Company');
 		for (var index = 0; index < this.companies.length; index++) {
 			var element = this.companies[index];
 			alert.addInput({

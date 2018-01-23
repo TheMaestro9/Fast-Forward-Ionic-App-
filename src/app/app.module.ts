@@ -55,7 +55,6 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {IonRatingPage} from '../pages/ion-rating/ion-rating';
 import {EditSimulationDatePage} from '../pages/edit-simulation-date/edit-simulation-date';
 import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
-import { MediaSamplePage } from '../pages/media-sample/media-sample'
 import { ComponentsModule } from '../components/components.module';
 import { ApiProvider } from '../providers/api/api';
 import { VrViewProvider } from '../providers/vr-view/vr-view';
@@ -104,8 +103,7 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
     FeedbackToUserPage,
     IonRatingPage,
     EditSimulationDatePage, 
-    VrVideoPage, 
-    MediaSamplePage
+    VrVideoPage
   ],
   imports: [
     BrowserModule,
@@ -151,9 +149,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
      FeedbackToUserPage,
      IonRatingPage,
      EditSimulationDatePage,
-     VrVideoPage,
-     MediaSamplePage
-  ],
+     VrVideoPage
+      ],
   providers: [
     StatusBar,
     SplashScreen,
