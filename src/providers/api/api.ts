@@ -33,7 +33,7 @@ export class ApiProvider {
       Video['type'] = "VIDEO" ; 
       Video['previewUrl'] = Video.preview_url ; 
       Video['inputType'] = "TYPE_STEREO_OVER_UNDER" ; 
-      Video['inputFormat'] = "FORMAT_DEFAULT"; 
+     // Video['inputFormat'] = "FORMAT_DEFAULT"; 
       Video.isLocal = false ; 
     
     });

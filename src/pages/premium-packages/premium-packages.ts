@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
+import {PaymentMethodPage} from '../payment-method/payment-method'
 
 /**
  * Generated class for the PremiumPackagesPage page.
@@ -14,19 +16,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PremiumPackagesPage {
 
-  items ; 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  packages ; 
+  constructor(
+    public navCtrl: NavController,
+     public navParams: NavParams,
+    public http :Http 
+  ) {
 
-    this.items=[
-      {
-        "offer": "10 simulations", 
-        "price": 400 
-      }, 
-      {
-        "offer": "2 simulations", 
-        "price": 100 
-      }
-    ]
+    this.http.get("https://ffserver.eu-gb.mybluemix.net/get-packages").subscribe(data => {
+        var res = JSON.parse(data['_body']);
+        this.packages = res ; 
+      })
+  }
+
+  packageClicked(pack) {
+
+    var passedObj = { 
+      wallet:pack.wallet , 
+      price : pack.price , 
+      orderType:'package'
+    }
+    this.navCtrl.push(PaymentMethodPage , passedObj) ;
+
   }
 
   ionViewDidLoad() {

@@ -44,6 +44,16 @@ export class VrVideoPage {
   ionViewDidLoad() {
     this.loadMediaSamples();
   }
+  ionViewWillEnter() { 
+    //console.log("ya man msh kda , " , this.userId ) ; 
+    if (typeof(this.userId)!='undefined'){ 
+    this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id=" + this.userId).subscribe(data => {
+      var res = JSON.parse(data['_body']);
+      this.wallet = res.wallet;
+
+    })
+  }
+  }
 
   selectQuality() {
 
@@ -110,9 +120,21 @@ export class VrVideoPage {
 
   }
 
-  starClicked(value) {
-    this.rate = value;
-    this.showToast();
+  starClicked(value, video) {
+    var ratingDetails = {
+      rate: value,
+      user_id: this.userId,
+      vr_video_id: video.video_id
+    }
+    console.log("in Rating", ratingDetails);
+    this.http.post("https://ffserver.eu-gb.mybluemix.net/rate-vr-video", ratingDetails).subscribe(data => {
+      var res = JSON.parse(data['_body']);
+      if (res.success == false)
+        alert(res.msg);
+      else
+        this.showToast();
+
+    });
     return value;
   }
   onMediaSampleitemClick(mediaSampleElement) {
@@ -134,26 +156,26 @@ export class VrVideoPage {
       confirm.present();
     }
     else {
-      // var toBePlayed = {
-      //   "name": mediaSampleElement.video_name,
-      //   "type": "VIDEO",
-      //   "inputType": "TYPE_MONO",
-      //   "inputFormat": "FORMAT_DEFAULT",
-      //   "url": mediaSampleElement.url,
-      //   "isLocal": false,
-      //   "previewUrl": mediaSampleElement.preview_url, 
-      // }
-
       var toBePlayed = {
-        "name": "Playhouse",
+        "name": mediaSampleElement.video_name,
         "type": "VIDEO",
         "inputType": "TYPE_MONO",
-        "inputFormat": "FORMAT_HLS",
-        "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
+        "inputFormat": mediaSampleElement.inputFormat,
+        "url": mediaSampleElement.url,
         "isLocal": false,
-        "previewUrl":"https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
-        "locked": true 
+        "previewUrl": mediaSampleElement.preview_url,
       }
+
+      // var toBePlayed = {
+      //   "name": "Playhouse",
+      //   "type": "VIDEO",
+      //   "inputType": "TYPE_MONO",
+      //   "inputFormat": "FORMAT_HLS",
+      //   "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
+      //   "isLocal": false,
+      //   "previewUrl":"https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
+      //   "locked": true 
+      // }
 
 
       // var toBePlayed = {

@@ -9,7 +9,10 @@ import {CardPaymentPage} from '../card-payment/card-payment'
 })
 export class PaymentMethodPage {
 link;
-SimulationID ; 
+SimulationID ;
+orderType ;  
+price ; 
+wallet ; 
   constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams , public alertController: AlertController) {
   
     platform.ready().then(()=>{
@@ -31,8 +34,14 @@ SimulationID ;
 
   CardPayment() { 
 
-    console.log("payment method sim id" , this.SimulationID ) ; 
-    this.navCtrl.push(CardPaymentPage , {SimulationID:this.SimulationID}) ;
+    console.log("payment method sim id" , this.SimulationID ) ;
+    var passedObj ={
+      SimulationID:this.SimulationID , 
+      orderType:this.orderType, 
+      price : this.price , 
+      wallet: this.wallet
+    } 
+    this.navCtrl.push(CardPaymentPage , passedObj) ;
   }
 
   vodafoneCashPayment(){
@@ -88,7 +97,9 @@ SimulationID ;
     // });
 
   this.SimulationID =  this.navParams.get("SimulationID");
-
+  this.orderType = this.navParams.get("orderType") ; 
+  this.price = this.navParams.get("price") ; 
+  this.wallet = this.navParams.get("wallet") ; 
 }
 
 

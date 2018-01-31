@@ -30,6 +30,7 @@ import {CardPaymentPage} from'../pages/card-payment/card-payment';
 import { VrVideoPage } from '../pages/vr-video/vr-video' ; 
 import {PremiumPackagesPage} from '../pages/premium-packages/premium-packages'
 
+import {AddPackagePage} from '../pages/add-package/add-package'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -105,7 +106,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
     IonRatingPage,
     EditSimulationDatePage, 
     VrVideoPage,
-    PremiumPackagesPage
+    PremiumPackagesPage, 
+    AddPackagePage
   ],
   imports: [
     BrowserModule,
@@ -152,7 +154,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
      IonRatingPage,
      EditSimulationDatePage,
      VrVideoPage,
-     PremiumPackagesPage
+     PremiumPackagesPage,
+     AddPackagePage
       ],
   providers: [
     StatusBar,

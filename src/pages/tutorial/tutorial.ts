@@ -42,7 +42,12 @@ export class TutorialPage {
             title: "Finish up",
             description: "Check out the company profile, apply, and book your simulation..",
             image: 'assets/tut3.png',
-          },
+          }, 
+          {
+            title: "Online Simulatoins",
+            description: "try different simulations using VR and AR ..",
+            image: 'assets/OnlineSimulatoins.png'
+          }
         ];
   }
 

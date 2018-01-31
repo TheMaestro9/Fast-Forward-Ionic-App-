@@ -7,7 +7,7 @@
     <ion-row style="text-align:center; height:100%">
 
       <ion-col col-6>
-        <div style="border-right:1px solid grey">
+        <div style="border-right:1px solid red">
           <strong style="text-align:left; font-size:1.2rem">
             <span style="margin-right:30%; font-weight:normal; color:#909090;">Unlocks</span>
             <span style="color:#404040"> {{wallet}}</span>
@@ -84,7 +84,7 @@
     <br>
 
     <div *ngIf="!media.locked" style="width:70%;margin-left:3.5rem">
-      <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event)">
+      <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event, media)">
       </ion-rating>
     </div>
     <!--

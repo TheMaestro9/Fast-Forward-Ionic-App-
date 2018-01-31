@@ -41,6 +41,8 @@
 			</ion-card>
 		</ion-list>
 
+		<p *ngIf="listLength==0" style="font-weight: bold; padding-left:3rem" > No Simulations Available for this field  </p>
+
 		<ion-list *ngSwitchCase="'filter'">
 
 			<ion-item>

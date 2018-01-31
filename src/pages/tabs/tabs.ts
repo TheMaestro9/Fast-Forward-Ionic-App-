@@ -13,8 +13,8 @@ import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 import { EditCompanyPage } from '../edit-company/edit-company';
 //import {ExpotimerPage} from '../expotimer/expotimer';
-import {VrVideoPage} from '../vr-video/vr-video'
-
+import {VrVideoPage} from '../vr-video/vr-video'; 
+import {AddPackagePage} from '../add-package/add-package'; 
 
 @Component({
 	templateUrl: 'tabs.html'
@@ -130,12 +130,19 @@ export class TabsPage {
 						}, 100);
 					}
 				},
+				
 				{
 					text: 'Accept Applicants',
 					handler: () => {
 						this.navCtrl.push(AcceptapplicantsPage);
 					}
 				},
+				{
+					text: 'Add wallet',
+					handler: () => {
+						this.navCtrl.push(AddPackagePage);
+					}
+				}, 
 
 				{
 					text: 'Cancel',
