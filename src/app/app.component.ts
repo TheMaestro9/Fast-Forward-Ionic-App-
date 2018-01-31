@@ -14,7 +14,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { Http } from '@angular/http';
 import {VrVideoPage} from '../pages/vr-video/vr-video' ; 
-import { MediaSamplePage } from '../pages/media-sample/media-sample'
 
 @Component({
   templateUrl: 'app.html',

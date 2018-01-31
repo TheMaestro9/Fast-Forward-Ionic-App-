@@ -13,8 +13,11 @@ export class IonRatingPage {
 	@Output() clicked: EventEmitter<number> = new EventEmitter<number>();
 
 	stars: string[] = [];
-
-  constructor() {}
+  starStyle; 
+  font; 
+  constructor() {
+    this.font= 5 ; 
+  }
 
   ngAfterViewInit(){
     this.calc();
