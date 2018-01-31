@@ -14,7 +14,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { Http } from '@angular/http';
 import {VrVideoPage} from '../pages/vr-video/vr-video' ; 
-import {PremiumPackagesPage} from '../pages/premium-packages/premium-packages'
 
 @Component({
   templateUrl: 'app.html',
@@ -104,8 +103,8 @@ export class MyApp {
           this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
           this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
-             data => (this.handelResponse(data , val) ) 
-          // data => {this.rootPage = PremiumPackagesPage ; }
+              data => (this.handelResponse(data , val) ) 
+          // data => {this.rootPage = VrVideoPage ; }
           );
         });
         });

@@ -48,6 +48,9 @@ this.id=navParams.get("id");
  
 resetarray(){
   this.original=this.refrence;
+       
+
+
 }
 
 

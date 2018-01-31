@@ -6,8 +6,6 @@ import { VrViewProvider } from '../../providers/vr-view/vr-view';
 import { Observable } from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
-import {PremiumPackagesPage} from '../premium-packages/premium-packages'
-
 //import { Toast } from '@ionic-native/toast';
 
 @Component({
@@ -23,7 +21,6 @@ export class VrVideoPage {
   rate;
   timer;
   userId;
-  wallet; 
   constructor(
     public navCtrl: NavController,
     public api: ApiProvider,
@@ -82,30 +79,13 @@ export class VrVideoPage {
           this.isLoading = false;
           this.mediaSamples = mediaSamples;
           this.errorMessage = null;
-          this.reloadUnlockTimers();
         },
         error => {
           this.isLoading = false;
           this.errorMessage = error;
         }
         );
-
-        this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id="+ val).subscribe(data => {
-          var res = JSON.parse(data['_body']);
-          this.wallet = res.wallet ; 
-        
-      }) 
     });
-  }
-
-  reloadUnlockTimers() {
-
-
-    this.mediaSamples.forEach(video => {
-      if (!video.locked)
-        this.addTimer(video);
-    });
-
   }
 
   starClicked(value) {
@@ -126,7 +106,19 @@ export class VrVideoPage {
           {
             text: 'Yes',
             handler: () => {
-              this.unlockVideo(mediaSampleElement);
+              var info = {
+                user_id: this.userId,
+                vr_video_id: mediaSampleElement.video_id
+              }
+              this.http.post("https://ffserver.eu-gb.mybluemix.net/unlock-video", info).subscribe(data => {
+                var res = JSON.parse(data['_body']);
+                if (res.success)
+                  mediaSampleElement.locked = false;
+                else
+                  alert(res.msg);
+              });
+//              var currentTime = new Date();
+//              this.addTimer(currentTime.setMinutes(currentTime.getMinutes() + mediaSampleElement.duration), mediaSampleElement)
             }
           }
         ]
@@ -138,25 +130,6 @@ export class VrVideoPage {
     }
   }
 
-  unlockVideo(mediaSampleElement) {
-    var info = {
-      user_id: this.userId,
-      vr_video_id: mediaSampleElement.video_id
-    }
-    this.http.post("https://ffserver.eu-gb.mybluemix.net/unlock-video", info).subscribe(data => {
-      var res = JSON.parse(data['_body']);
-      if (res.success) {
-        mediaSampleElement.locked = false;
-        var unlockDate = new Date();
-        mediaSampleElement["unlock_date"] = unlockDate;
-        console.log("the unlock Date", unlockDate)
-        this.addTimer(mediaSampleElement)
-      }
-      else
-        alert(res.msg);
-    });
-  }
-
   showToast() {
     var toastOptions = {
       message: "Thank you for your rating!",
@@ -164,10 +137,16 @@ export class VrVideoPage {
     };
     this.toast.create(toastOptions).present()
   }
-  addTimer(Video) {
-    Video.timer = Observable.interval(1000).subscribe(x => {
+  addTimer(date, Video) {
+
+    // console.log("in add timer",date)
+    Video.videoExpDate = new Date(date)
+    // console.log('date',this.StartDate);
+    Video.videoExpDate.setMilliseconds(0);
+    this.timer = Observable.interval(1000).subscribe(x => {
       this.timercal(Video);
     });
+
   }
   timercal(Video) {
     let dump = new Date();
@@ -175,28 +154,21 @@ export class VrVideoPage {
     //this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
     //	console.log("INNNN",this.StartDate);
     dump.getTimezoneOffset();
-    console.log("in timercal current", dump);
-    console.log("fucnken string", Video.unlock_date)
-    var videoExpDate = new Date(Video.unlock_date);
-    console.log("in timercal database", videoExpDate);
-    videoExpDate.setMinutes(videoExpDate.getMinutes() + Video.duration)
-    let diff = videoExpDate.getTime() - dump.getTime();
+    let diff = Video.videoExpDate.getTime() - dump.getTime();
     //	var timeDiff = Math.abs(diff);
     let timeDiff = diff;
     if (timeDiff < 0) {
-      Video.timer.unsubscribe();
-      Video.locked = true;
+      this.timer.unsubscribe();
       return;
     }
     var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
     var diffhours = Math.floor((timeDiff - diffDays * 1000 * 3600 * 24) / (1000 * 3600));
     Video.diffmins = Math.floor(((timeDiff - diffDays * 1000 * 3600 * 24) - diffhours * 1000 * 3600) / (1000 * 60));
-    console.log("i'm in the timercal", Video.diffmins)
   }
 
-  Recharge() {
+  Recharge () {
 
-    alert("welcome to premium ");
-    this.navCtrl.push(PremiumPackagesPage) ; 
+    alert("welcome to premium "); 
+  
   }
 }
