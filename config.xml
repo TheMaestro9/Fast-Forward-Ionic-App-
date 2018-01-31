@@ -116,8 +116,8 @@
     </plugin>
     <plugin name="cordova-plugin-vr-view" spec="D:\work\Fast Forward\VR Plugin\cordova-plugin-vr-view\cordova-plugin-vr-view" />
     <plugin name="me.tonny.cordova.plugins.multidex" spec="https://github.com/jwall149/cordova-multidex" />
-    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <engine name="android" spec="^6.2.3" />
     <engine name="browser" spec="~4.1.0" />
     <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
 </widget>
