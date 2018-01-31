@@ -119,5 +119,4 @@
     <engine name="android" spec="^6.2.3" />
     <engine name="browser" spec="~4.1.0" />
     <engine name="ios" spec="^4.4.0" />
-    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
 </widget>

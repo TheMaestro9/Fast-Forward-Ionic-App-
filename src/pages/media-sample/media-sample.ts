@@ -5,10 +5,10 @@ import { ApiProvider } from '../../providers/api/api';
 import { VrViewProvider } from '../../providers/vr-view/vr-view';
 
 @Component({
-  selector: 'page-vr-video',
-  templateUrl: 'vr-video.html',
+  selector: 'page-media-sample',
+  templateUrl: 'media-sample.html',
 })
-export class VrVideoPage {
+export class MediaSamplePage {
   mediaSamples : Array<MediaSampleModel> = [];
   errorMessage : string;
   isLoading: boolean;
