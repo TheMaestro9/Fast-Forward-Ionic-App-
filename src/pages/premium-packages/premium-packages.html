@@ -1,0 +1,25 @@
+<!--
+  Generated template for the PremiumPackagesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+    <ion-card *ngFor="let item of items">
+				<ion-item>
+						<div class="row" style="padding-left: 1rem;">
+							<div style="width:72.5%;float:left;">
+								<h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{item.offer}}</h2>
+							</div>
+							<div  style="width:26.5%;float:right;">
+							
+								<h3  style="color:#32db64;font-weight:bold">{{item.price}} EGP</h3>
+								
+							</div>
+						</div>
+				</ion-item>
+
+			</ion-card>
+</ion-content>
