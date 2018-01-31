@@ -6,7 +6,7 @@ import { VrViewProvider } from '../../providers/vr-view/vr-view';
 import { Observable } from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
-import { PremiumPackagesPage } from '../premium-packages/premium-packages'
+import {PremiumPackagesPage} from '../premium-packages/premium-packages'
 
 //import { Toast } from '@ionic-native/toast';
 
@@ -15,8 +15,7 @@ import { PremiumPackagesPage } from '../premium-packages/premium-packages'
   templateUrl: 'vr-video.html',
 })
 export class VrVideoPage {
-  // mediaSamples: Array<MediaSampleModel> = [];
-  mediaSamples;
+  mediaSamples: Array<MediaSampleModel> = [];
   errorMessage: string;
   isLoading: boolean;
   settingsColor;
@@ -24,8 +23,7 @@ export class VrVideoPage {
   rate;
   timer;
   userId;
-  wallet;
-  toBePlayed: MediaSampleModel;
+  wallet; 
   constructor(
     public navCtrl: NavController,
     public api: ApiProvider,
@@ -67,6 +65,7 @@ export class VrVideoPage {
       text: 'OK',
       handler: data => {
         this.videoQuality = data;
+        console.log("the quality Data", data);
       }
     });
     alert.present();
@@ -91,16 +90,15 @@ export class VrVideoPage {
         }
         );
 
-      this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id=" + val).subscribe(data => {
-        var res = JSON.parse(data['_body']);
-        this.wallet = res.wallet;
-
-      })
+        this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id="+ val).subscribe(data => {
+          var res = JSON.parse(data['_body']);
+          this.wallet = res.wallet ; 
+        
+      }) 
     });
   }
 
   reloadUnlockTimers() {
-
 
 
     this.mediaSamples.forEach(video => {
@@ -111,8 +109,10 @@ export class VrVideoPage {
   }
 
   starClicked(value) {
+    console.log("Rated :", value);
     this.rate = value;
     this.showToast();
+    console.log("Rate : ", this.rate);
     return value;
   }
   onMediaSampleitemClick(mediaSampleElement) {
@@ -134,40 +134,7 @@ export class VrVideoPage {
       confirm.present();
     }
     else {
-      // var toBePlayed = {
-      //   "name": mediaSampleElement.video_name,
-      //   "type": "VIDEO",
-      //   "inputType": "TYPE_MONO",
-      //   "inputFormat": "FORMAT_DEFAULT",
-      //   "url": mediaSampleElement.url,
-      //   "isLocal": false,
-      //   "previewUrl": mediaSampleElement.preview_url, 
-      // }
-
-      var toBePlayed = {
-        "name": "Playhouse",
-        "type": "VIDEO",
-        "inputType": "TYPE_MONO",
-        "inputFormat": "FORMAT_HLS",
-        "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
-        "isLocal": false,
-        "previewUrl":"https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
-        "locked": true 
-      }
-
-
-      // var toBePlayed = {
-      //   "name": "Playhouse",
-      //   "type": "VIDEO",
-      //   "inputType": "TYPE_MONO",
-      //   "inputFormat": "FORMAT_HLS",
-      //   "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
-      //   "isLocal": false,
-      //   "previewUrl": "https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg"
-      // }
-
-      console.log(toBePlayed);
-      this.vrView.playMediaSample(toBePlayed);
+      this.vrView.playMediaSample(mediaSampleElement);
     }
   }
 
@@ -182,6 +149,7 @@ export class VrVideoPage {
         mediaSampleElement.locked = false;
         var unlockDate = new Date();
         mediaSampleElement["unlock_date"] = unlockDate;
+        console.log("the unlock Date", unlockDate)
         this.addTimer(mediaSampleElement)
       }
       else
@@ -203,11 +171,17 @@ export class VrVideoPage {
   }
   timercal(Video) {
     let dump = new Date();
-
+    //	dump.setHours(dump.getHours()-2); 
+    //this.StartDate = new Date(dump.getTime() + 24 * 60 * 60 * 1000);
+    //	console.log("INNNN",this.StartDate);
     dump.getTimezoneOffset();
+    console.log("in timercal current", dump);
+    console.log("fucnken string", Video.unlock_date)
     var videoExpDate = new Date(Video.unlock_date);
+    console.log("in timercal database", videoExpDate);
     videoExpDate.setMinutes(videoExpDate.getMinutes() + Video.duration)
     let diff = videoExpDate.getTime() - dump.getTime();
+    //	var timeDiff = Math.abs(diff);
     let timeDiff = diff;
     if (timeDiff < 0) {
       Video.timer.unsubscribe();
@@ -217,11 +191,12 @@ export class VrVideoPage {
     var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
     var diffhours = Math.floor((timeDiff - diffDays * 1000 * 3600 * 24) / (1000 * 3600));
     Video.diffmins = Math.floor(((timeDiff - diffDays * 1000 * 3600 * 24) - diffhours * 1000 * 3600) / (1000 * 60));
+    console.log("i'm in the timercal", Video.diffmins)
   }
 
   Recharge() {
 
     alert("welcome to premium ");
-    this.navCtrl.push(PremiumPackagesPage);
+    this.navCtrl.push(PremiumPackagesPage) ; 
   }
 }
