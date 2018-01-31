@@ -6,5 +6,4 @@ export class MediaSampleModel {
     url: string;
     isLocal: boolean;
     previewUrl: string;
-    locked:boolean ; 
 }
