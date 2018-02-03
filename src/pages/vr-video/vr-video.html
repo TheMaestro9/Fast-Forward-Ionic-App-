@@ -15,7 +15,7 @@
         </div>
       </ion-col>
       <ion-col col-6>
-        <div (click)="Recharge()">
+        <div (click)="getMore()">
 
           <strong style="text-align:left; font-size:1.2rem">
             <span style="margin-right:30%; font-weight:normal; color:#909090; margin-left:-3rem">Get more</span>
@@ -23,12 +23,6 @@
           </strong>
 
         </div>
-        <!--
-          <ion-icon style="display:inline-block; font-size:2.5rem ; vertical-align:middle ; color:green" name="cash"></ion-icon>
-          <strong>
-            <span style="display:inline-block; vertical-align:middle">Recharge</span>
-          </strong>
-        </div>-->
       </ion-col>
     </ion-row>
   </ion-navbar>
@@ -44,6 +38,13 @@
       Retry
     </button>
   </div>
+
+  <ion-card>
+    <div (tap)="openVideoClick(media)">
+      <media-sample-item [mediaSample]="openVideo"></media-sample-item>
+    </div>
+  </ion-card>
+
   <ion-card *ngFor="let media of mediaSamples" style="color:#404040">
     <div style=" padding-top:1rem; padding-bottom:1.5rem">
       <p style="padding-left:1.5rem;text-align:left;float:left">
@@ -83,7 +84,7 @@
     </div>
     <br>
 
-    <div *ngIf="!media.locked" style="width:70%;margin-left:3.5rem">
+    <div *ngIf="!media.locked" style="width:70%;margin-left:4rem">
       <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event, media)">
       </ion-rating>
     </div>

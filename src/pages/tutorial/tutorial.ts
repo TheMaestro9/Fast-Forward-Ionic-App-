@@ -29,6 +29,11 @@ export class TutorialPage {
     }
         this.slides = [
           {
+            title: "Online Simulatoins",
+            description: "try different simulations using VR and AR ..",
+            image: 'assets/OnlineSimulatoins.png'
+          },
+          {
             title: "Profession",
             description: "Choose a profession you are interested in..",
             image: 'assets/tut1.png',
@@ -42,11 +47,6 @@ export class TutorialPage {
             title: "Finish up",
             description: "Check out the company profile, apply, and book your simulation..",
             image: 'assets/tut3.png',
-          }, 
-          {
-            title: "Online Simulatoins",
-            description: "try different simulations using VR and AR ..",
-            image: 'assets/OnlineSimulatoins.png'
           }
         ];
   }

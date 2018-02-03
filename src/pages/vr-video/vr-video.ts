@@ -25,6 +25,8 @@ export class VrVideoPage {
   timer;
   userId;
   wallet;
+  openVideo; 
+
   toBePlayed: MediaSampleModel;
   constructor(
     public navCtrl: NavController,
@@ -39,6 +41,17 @@ export class VrVideoPage {
     this.settingsColor = "grey";
     this.videoQuality = "High";
     this.rate = 3;
+
+    this.openVideo = { 
+        "name": "Playhouse",
+        "type": "VIDEO",
+        "inputType": "TYPE_MONO",
+        "inputFormat": "FORMAT_HLS",
+        "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
+        "isLocal": false,
+        "previewUrl":"https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
+        "locked": false 
+    }
   }
 
   ionViewDidLoad() {
@@ -67,7 +80,7 @@ export class VrVideoPage {
     });
     alert.addInput({
       type: 'radio',
-      label: "Mideum Qulity",
+      label: "Medium Qulity",
       value: "Low",
       checked: false
     });
@@ -137,12 +150,21 @@ export class VrVideoPage {
     });
     return value;
   }
+
+  openVideoClick() { 
+    
+    console.log(this.openVideo);
+    this.vrView.playMediaSample(this.openVideo);
+  }
   onMediaSampleitemClick(mediaSampleElement) {
     if (mediaSampleElement.locked) {
       let confirm = this.alertController.create({
         title: 'Confirm',
         message:
-          'Are You Sure Want To Unlock This Video?!',
+          '<p>Are you sure you want to unlock this simulation?!</p>' + 
+          '<p>- Make sure you have a stable internet connection.</p>' + 
+          '<p>- This online simulation will be available for the duration of the unlock time only.</p>' + 
+          '<p>- Make sure you have your headphones on.</p>',
         buttons: [
           { text: 'No', role: 'cancel', },
           {
@@ -241,9 +263,8 @@ export class VrVideoPage {
     Video.diffmins = Math.floor(((timeDiff - diffDays * 1000 * 3600 * 24) - diffhours * 1000 * 3600) / (1000 * 60));
   }
 
-  Recharge() {
-
-    alert("welcome to premium ");
+  getMore() {
+    //alert("welcome to premium ");
     this.navCtrl.push(PremiumPackagesPage);
   }
 }

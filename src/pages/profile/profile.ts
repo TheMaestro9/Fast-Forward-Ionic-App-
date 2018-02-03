@@ -10,6 +10,8 @@ import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CompanyPage } from '../company/company';
+import { PremiumPackagesPage } from '../premium-packages/premium-packages'
+
 @Component({
 	selector: 'page-profile',
 	templateUrl: 'profile.html',
@@ -36,7 +38,7 @@ export class Profile {
 		public actionSheetCtrl: ActionSheetController,
 		private store: Storage, public afa: AngularFireAuth) {
 
-			
+
 		this.store.get('user_id').then((val) => {
 
 
@@ -53,7 +55,7 @@ export class Profile {
 				console.log(this.user_simulations);
 				//console.log("STAT",this.user_simulations[0].status);
 				//this.loading=false;
-				
+
 			});
 
 		}, (error) => { console.log(error) });
@@ -66,7 +68,7 @@ export class Profile {
 	}
 
 	EditProfile() {
-		this.store.set('Accepted', []); 		
+		this.store.set('Accepted', []);
 		console.log("sha3'aaaaal");
 		this.navCtrl.push(EditProfilePage, this.user_info);
 	}
@@ -74,53 +76,54 @@ export class Profile {
 	removeSimulation(sim) {
 
 
-		let confirm=this.alertCtrl.create({
-			title : 'Confirm',
+		let confirm = this.alertCtrl.create({
+			title: 'Confirm',
 			message:
 				'Are You Sure Want To Remove This Simulation ?!',
 			buttons: [
-			  {text: 'No', role: 'cancel',},
-			  {text: 'Yes' ,
-			  handler: () => {
-				this.store.get('user_id').then((val) => {
-					console.log("selected", sim);
-					console.log("all", this.user_simulations);
-	
-					console.log("index", this.user_simulations.indexOf(sim));
-					this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?user_id=" + val + "&simulation_id=" + sim.simulation_date_id).subscribe(data => {
-						//	var res = JSON.parse(data['_body']);
-						console.log(data['_body']);
-						//this.loading=false;
-					});
-					console.log("user_id", val)
-				}, (error) => { console.log(error) });
-		
-				console.log("sim to be removed!" , sim.simulation_date_id) ; 
-				this.removeFromFeedArray (sim.simulation_date_id) ; 
-				this.user_simulations.splice(this.user_simulations.indexOf(sim), 1);
-				
-				  }
-			}
-		]
-	  });
-	  confirm.present();
+				{ text: 'No', role: 'cancel', },
+				{
+					text: 'Yes',
+					handler: () => {
+						this.store.get('user_id').then((val) => {
+							console.log("selected", sim);
+							console.log("all", this.user_simulations);
+
+							console.log("index", this.user_simulations.indexOf(sim));
+							this.http.get("https://ffserver.eu-gb.mybluemix.net/user_delete_simulation?user_id=" + val + "&simulation_id=" + sim.simulation_date_id).subscribe(data => {
+								//	var res = JSON.parse(data['_body']);
+								console.log(data['_body']);
+								//this.loading=false;
+							});
+							console.log("user_id", val)
+						}, (error) => { console.log(error) });
+
+						console.log("sim to be removed!", sim.simulation_date_id);
+						this.removeFromFeedArray(sim.simulation_date_id);
+						this.user_simulations.splice(this.user_simulations.indexOf(sim), 1);
+
+					}
+				}
+			]
+		});
+		confirm.present();
 
 	}
 
-	removeFromFeedArray(simId) { 
+	removeFromFeedArray(simId) {
 		this.store.get('Accepted').then((val) => {
-			if (val!=null)
-				var acceptedDates = val ; 
-			else 
-				return ; 
-			console.log("now I should be removing!!") ; 
-			for( var i=0 ; i < acceptedDates.length ; i ++) {
-				if ( acceptedDates[i].simulation_date_id == simId){
-					acceptedDates.splice(i,1) ; 
-					this.store.set('Accepted', acceptedDates);					
-					return ; 
+			if (val != null)
+				var acceptedDates = val;
+			else
+				return;
+			console.log("now I should be removing!!");
+			for (var i = 0; i < acceptedDates.length; i++) {
+				if (acceptedDates[i].simulation_date_id == simId) {
+					acceptedDates.splice(i, 1);
+					this.store.set('Accepted', acceptedDates);
+					return;
 				}
-			} 
+			}
 		}, (error) => { console.log(error) });
 	}
 
@@ -235,6 +238,25 @@ export class Profile {
 		this.diffmins = Math.floor(((timeDiff - this.diffDays * 1000 * 3600 * 24) - this.diffhours * 1000 * 3600) / (1000 * 60));
 
 		this.diffhours += (this.diffDays * 24);
+
+	}
+
+	contactUsClicked() {
+		let alert = this.alertCtrl.create({
+			title: 'Contact Information',
+			message: '<p>Email: support@fastforwardsim.com</p>' +
+				'<p>Mobile: (+2)01120055087</p>',
+			buttons: [
+				{ text: 'OK', role: 'cancel', } 
+			] 
+		
+			});
+		alert.present();
+
+	}
+
+	GoPremium() { 
+		this.navCtrl.push(PremiumPackagesPage);
 
 	}
 

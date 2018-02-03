@@ -1,117 +1,104 @@
 <ion-header>
-	
-		<ion-navbar align-title="center" color="ffPrimary">
-			<ion-title>
-				{{user_info.user_name | slice:0:20}}
-				<span (click)="EditProfile()" style="color: white!important;" class="fa-icon fa fa-pencil edit-btn"></span>
-			</ion-title>
-	
-		</ion-navbar>
-	
-	</ion-header>
-	
-	<ion-content  class="separatingBG">
-	
-		<ion-avatar class="circular-profile" style="background-image: url(http://www.fastforwardsim.com/alpha/male.png)"> </ion-avatar>
-			<!-- <div style="margin-top:15px;">
-				<a  class="description about" href="mailto:{{user_info.user_email}}"> <span class="fa fa-envelope-o"></span> <strong>Email :</strong> {{user_info.user_email}}</a> <br>
-				<a  class="description about" href="tel:{{user_info.phone_no}}"> <span class="fa fa-phone"></span> <strong>Phone :</strong> {{user_info.phone_no}}</a><br>
-				<a  class="description about" href="#"><span class="fa fa-graduation-cap"></span> <strong>Degree :</strong> {{user_info.degree}}</a><br>
-				<a  class="description about" href="#"><span class="fa fa-building-o"></span> <strong>School :</strong> {{user_info.school}}</a>
-				<br>
-				<a  class="description about" href="#"> <strong>Simulations Attended</strong></a>
-			</div>-->
-			<h3 text-center ion-text color="ffPrimary" >{{user_info.rating==-1?'Not Rated':''+user_info.rating+'/5'}} <i class="fa fa-star" aria-hidden="true"></i></h3>
-			<ion-card padding-top style="background-color:white">
-	
-				<ion-card-content>
-					<span class="fa-icon fa fa-envelope-o"></span>
-					<a  class="description about" href="mailto:{{user_info.user_email}}">
-						<i class="about-title">EMAIL</i> <br>
-						<p class="about-detail">{{user_info.user_email}}</p> 
-					<!--	<button (click)="loginToFireBase()"> upload </button> -->
-					</a>
-					<!--	<span (click)="edit_user_info('email')"  class="fa-icon fa fa-pencil edit-btn"></span> -->
-					 <br>
-					<span class="fa-icon fa fa-phone"></span>
-					<a  class="description about" href="tel:{{user_info.phone_no}}">
-						 <i class="about-title">MOBILE</i> <br>
-						 <p class="about-detail"> {{user_info.phone_no}}</p>
-					 </a>
-					<!-- <span (click)="edit_user_info('phone')" class="fa-icon fa fa-pencil edit-btn"></span> -->
-					<br>
-					<span class="fa-icon fa fa-graduation-cap"></span> <a  class="description about" href="#"> <i class="about-title">DEGREE</i>
-					<br>  <p class="about-detail">{{user_info.degree}}</p></a>
-					<!-- <span (click)="edit_user_info('degree')" class="fa-icon fa fa-pencil edit-btn"></span> -->
-					<br>
-					
-				<span class="fa-icon fa fa-building-o"></span>	 <a  class="description about" href="#"><i class="about-title">SCHOOL</i> <br> 
-					 <p class="about-detail">{{user_info.school | slice:0:20}}</p></a> 
-					 
-				<!-- <span (click)="edit_user_info('school')"  class="fa-icon fa fa-pencil edit-btn"></span> -->
-					
-					<br>
-	
-				</ion-card-content>
-			</ion-card>
-	
-	
-	
-			<ion-card padding-top >
-			<ion-card-content>
-				<span class="fa-icon sim-icon fa fa-users"></span>
-				<a  class="description sim" style="margin-left:44px;">
-					 <i class="sim-title">SIMULATIONS</i> <br>
-					 <p class="sim-detail">{{user_simulations.length}}</p></a><br> <hr> 
-			<div class="simulation" *ngFor="let sim of user_simulations; let i = index">
-					<ion-avatar class="border" item-start style="width: 40px;height: 40px;
-			display: inline-block;" [style.background-image]="'url('+sim.profile_pic_link+')'" (click)="GoToCompany(i,sim)">
-					</ion-avatar>
-					
-					<a  class="description sim" style="width: 70%;">
-						<i class="desc" (click)="GoToCompany(i,sim)">{{sim.company_name}}</i> <br>
-						<i class="desc" (click)="GoToCompany(i,sim)"> {{sim.simulation_name}}</i> <br>
-						<i class="desc" (click)="GoToCompany(i,sim)">{{sim.date}}</i><br>
-						<p style="color:#F84838; font-size:1.5rem ; text-transform:uppercase;">{{sim.status=='rejected'?'Pending Approval':sim.status}}</p>
-					<div *ngIf="status(sim)" >
-							<span>{{diffhours}} Hours,{{diffmins}} Minutes</span>
-					</div>
-					</a> <br>
 
-					<ion-icon name="close" (click)="removeSimulation(sim)"></ion-icon>
-				</div>
-	
-	
-				</ion-card-content>
-			</ion-card>
-	
-	
-		  <ion-card text-center padding-top color="primary"  style="padding-top:0rem;" (click)="logout()">
-			  <ion-card-content>
-				  <strong style="font-size:2rem;">LOG OUT</strong>
-			  </ion-card-content>
-		</ion-card>
-	
-			
-	
-			<!-- <ion-list>
-				<ion-item>
-					<ion-avatar class="border" item-start style="background-image: url(http://diylogodesigns.com/blog/wp-content/uploads/2016/04/ibm-logo-png-transparent-background.png)">
-					</ion-avatar>
-					<strong>IBM</strong>
-					<ion-note item-end>
-						27/3/2017
-					</ion-note>
-				</ion-item>
-				<ion-item>
-					<ion-avatar class="border" item-start style="background-image: url(https://itshowcasecontent.blob.core.windows.net/imagesnew/OpenGraphImg.jpg)">
-					</ion-avatar>
-					<strong>Microsoft</strong>
-					<ion-note item-end>
-						20/4/2017
-					</ion-note>
-				</ion-item>
-			</ion-list> -->
-	
-	</ion-content>
-	
+	<ion-navbar align-title="center" color="ffPrimary">
+		<ion-title>
+			{{user_info.user_name | slice:0:20}}
+			<span (click)="EditProfile()" style="color: white!important;" class="fa-icon fa fa-pencil edit-btn"></span>
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content class="separatingBG">
+
+	<ion-avatar class="circular-profile" style="background-image: url(http://www.fastforwardsim.com/alpha/male.png)"> </ion-avatar>
+	<br>
+	<div style="text-align: center;">
+		<button ion-button round style="display: inline-block;" color="ffPrimary" (click)="GoPremium()">Go Premium</button>
+		<button ion-button round style="margin-left: 5px;display: inline-block;" color="ffPrimary" (click)="contactUsClicked()">Contact Us</button>
+	</div>
+	<h3 text-center ion-text color="ffPrimary">{{user_info.rating==-1?'Not Rated':''+user_info.rating+'/5'}}
+		<i class="fa fa-star" aria-hidden="true"></i>
+	</h3>
+	<ion-card padding-top style="background-color:white">
+
+		<ion-card-content>
+			<span class="fa-icon fa fa-envelope-o"></span>
+			<a class="description about" href="mailto:{{user_info.user_email}}">
+				<i class="about-title">EMAIL</i>
+				<br>
+				<p class="about-detail">{{user_info.user_email}}</p>
+			</a>
+			<br>
+			<span class="fa-icon fa fa-phone"></span>
+			<a class="description about" href="tel:{{user_info.phone_no}}">
+				<i class="about-title">MOBILE</i>
+				<br>
+				<p class="about-detail"> {{user_info.phone_no}}</p>
+			</a>
+			<br>
+			<span class="fa-icon fa fa-graduation-cap"></span>
+			<a class="description about" href="#">
+				<i class="about-title">DEGREE</i>
+				<br>
+				<p class="about-detail">{{user_info.degree}}</p>
+			</a>
+			<br>
+
+			<span class="fa-icon fa fa-building-o"></span>
+			<a class="description about" href="#">
+				<i class="about-title">SCHOOL</i>
+				<br>
+				<p class="about-detail">{{user_info.school | slice:0:20}}</p>
+			</a>
+			<br>
+
+		</ion-card-content>
+	</ion-card>
+
+
+
+	<ion-card padding-top>
+		<ion-card-content>
+			<span class="fa-icon sim-icon fa fa-users"></span>
+			<a class="description sim" style="margin-left:44px;">
+				<i class="sim-title">SIMULATIONS</i>
+				<br>
+				<p class="sim-detail">{{user_simulations.length}}</p>
+			</a>
+			<br>
+			<hr>
+			<div class="simulation" *ngFor="let sim of user_simulations; let i = index">
+				<ion-avatar class="border" item-start style="width: 40px;height: 40px;
+			display: inline-block;" [style.background-image]="'url('+sim.profile_pic_link+')'" (click)="GoToCompany(i,sim)">
+				</ion-avatar>
+
+				<a class="description sim" style="width: 70%;">
+					<i class="desc" (click)="GoToCompany(i,sim)">{{sim.company_name}}</i>
+					<br>
+					<i class="desc" (click)="GoToCompany(i,sim)"> {{sim.simulation_name}}</i>
+					<br>
+					<i class="desc" (click)="GoToCompany(i,sim)">{{sim.date}}</i>
+					<br>
+					<p style="color:#F84838; font-size:1.5rem ; text-transform:uppercase;">{{sim.status=='rejected'?'Pending Approval':sim.status}}</p>
+					<div *ngIf="status(sim)">
+						<span>{{diffhours}} Hours,{{diffmins}} Minutes</span>
+					</div>
+				</a>
+				<br>
+
+				<ion-icon name="close" (click)="removeSimulation(sim)"></ion-icon>
+			</div>
+
+
+		</ion-card-content>
+	</ion-card>
+
+
+	<ion-card text-center padding-top color="primary" style="padding-top:0rem;" (click)="logout()">
+		<ion-card-content>
+			<strong style="font-size:2rem;">LOG OUT</strong>
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>
