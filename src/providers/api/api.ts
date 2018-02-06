@@ -28,8 +28,8 @@ export class ApiProvider {
 
   private extractJsonData(res: Response) {
     let body = res.json();
-
-    body.forEach(Video => { 
+    
+    body.videos.forEach(Video => { 
       Video['type'] = "VIDEO" ; 
       Video['previewUrl'] = Video.preview_url ; 
       Video['inputType'] = "TYPE_STEREO_OVER_UNDER" ; 

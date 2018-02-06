@@ -109,9 +109,9 @@ export class VrVideoPage {
         recivedData => {
 
           this.isLoading = false;
-          // this.mediaSamples = recivedData.videos;
-          //this.openVideo.url = recivedData.trailer_url; 
-          this.mediaSamples = recivedData;
+         this.mediaSamples = recivedData.videos;
+          this.openVideo.url = recivedData.trailer_url; 
+       //   this.mediaSamples = recivedData;
           this.errorMessage = null;
           this.reloadUnlockTimers();
         },
