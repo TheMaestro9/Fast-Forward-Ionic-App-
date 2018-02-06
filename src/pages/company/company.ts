@@ -254,7 +254,7 @@ export class CompanyPage {
 	presentActionSheet(x, event) {
 
 		if (x.status == "pending payment")
-			this.navCtrl.push(PaymentMethodPage, { SimulationID: x.simulation_id });
+			this.navCtrl.push(PaymentMethodPage, { SimulationID: x.simulation_id  , orderType:'simulation'});
 		else {
 			this.actionSheet = this.actionSheetCtrl.create({
 				// title: '',
@@ -340,6 +340,20 @@ export class CompanyPage {
 
 		this.navCtrl.push(Profile);
 	}
+	ionViewWillEnter() { 
+		var url = "https://ffserver.eu-gb.mybluemix.net/get_company_simulations2?company_id=" + this.companyid + "&user_id=" + this.userid
+		console.log(url) ; 
+		this.http.get(url).subscribe(data => {
+				var res = JSON.parse(data['_body']);
+				this.company_simulations = res;
+				for (let entry of this.read_more) {
+					entry = false;
+				}
+				console.log(this.company_simulations);
+				// this.loading=false;
+			});
+	}
+
 	ngOnInit() {
 		//console.log('timer page');
 

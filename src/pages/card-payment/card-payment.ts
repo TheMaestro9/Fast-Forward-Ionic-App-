@@ -43,6 +43,7 @@ export class CardPaymentPage {
       var PaymentData ; 
       var url ; 
       if (this.orderType == 'simulation') {
+        
        PaymentData = {
           "simulation_id": this.SimulationID,
           "user_id": user_id

@@ -30,7 +30,7 @@ export class TutorialPage {
         this.slides = [
           {
             title: "Online Simulatoins",
-            description: "try different simulations using VR and AR ..",
+            description: "Try different professions using your phone or using Virtual Reality..",
             image: 'assets/OnlineSimulatoins.png'
           },
           {

@@ -7,18 +7,18 @@
     <ion-row style="text-align:center; height:100%">
 
       <ion-col col-6>
-        <div style="border-right:1px solid red">
+        <div style="border-right:1px solid grey">
           <strong style="text-align:left; font-size:1.2rem">
             <span style="margin-right:30%; font-weight:normal; color:#909090;">Unlocks</span>
             <span style="color:#404040"> {{wallet}}</span>
           </strong>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col col-5>
         <div (click)="getMore()">
 
           <strong style="text-align:left; font-size:1.2rem">
-            <span style="margin-right:30%; font-weight:normal; color:#909090; margin-left:-3rem">Get more</span>
+            <span style="margin-right:40%; font-weight:normal; color:#909090;">Get more</span>
             <ion-icon name="unlock" style="color:#404040"></ion-icon>
           </strong>
 
@@ -50,7 +50,7 @@
       <p style="padding-left:1.5rem;text-align:left;float:left">
         <strong>{{media.video_name}}</strong>
       </p>
-      <div *ngIf="!media.locked" style="padding-right:1.5rem;text-align:right; float:right" (click)="selectQuality()">
+      <div *ngIf="!media.locked" style="padding-right:1.5rem;text-align:right; float:right" (click)="selectQuality(media)">
         <ion-icon name="settings" [color]='settingsColor' style="font-size:2.5rem;padding-bottom:0.3rem"></ion-icon>
       </div>
     </div>

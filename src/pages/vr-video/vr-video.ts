@@ -25,7 +25,7 @@ export class VrVideoPage {
   timer;
   userId;
   wallet;
-  openVideo; 
+  openVideo;
 
   toBePlayed: MediaSampleModel;
   constructor(
@@ -42,33 +42,33 @@ export class VrVideoPage {
     this.videoQuality = "High";
     this.rate = 3;
 
-    this.openVideo = { 
-        "name": "Playhouse",
-        "type": "VIDEO",
-        "inputType": "TYPE_MONO",
-        "inputFormat": "FORMAT_HLS",
-        "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
-        "isLocal": false,
-        "previewUrl":"https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
-        "locked": false 
+    this.openVideo = {
+      "name": "Playhouse",
+      "type": "VIDEO",
+      "inputType": "TYPE_MONO",
+      "inputFormat": "FORMAT_HLS",
+      "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
+      "isLocal": false,
+      "previewUrl": "https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
+      "locked": false
     }
   }
 
   ionViewDidLoad() {
     this.loadMediaSamples();
   }
-  ionViewWillEnter() { 
+  ionViewWillEnter() {
     //console.log("ya man msh kda , " , this.userId ) ; 
-    if (typeof(this.userId)!='undefined'){ 
-    this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id=" + this.userId).subscribe(data => {
-      var res = JSON.parse(data['_body']);
-      this.wallet = res.wallet;
+    if (typeof (this.userId) != 'undefined') {
+      this.http.get("https://ffserver.eu-gb.mybluemix.net/vr-user-info?user_id=" + this.userId).subscribe(data => {
+        var res = JSON.parse(data['_body']);
+        this.wallet = res.wallet;
 
-    })
-  }
+      })
+    }
   }
 
-  selectQuality() {
+  selectQuality(video) {
 
     let alert = this.alertController.create();
     alert.setTitle('Choose Quality');
@@ -89,7 +89,12 @@ export class VrVideoPage {
     alert.addButton({
       text: 'OK',
       handler: data => {
-        this.videoQuality = data;
+        if (data == "High")
+          video.url = video.high_quality_url;
+        else
+          video.url = video.low_quality_url;
+
+        // this.videoQuality = data;
       }
     });
     alert.present();
@@ -101,10 +106,12 @@ export class VrVideoPage {
       this.userId = val;
       this.api.getMediaSamples(val)
         .subscribe(
-        mediaSamples => {
+        recivedData => {
 
           this.isLoading = false;
-          this.mediaSamples = mediaSamples;
+          // this.mediaSamples = recivedData.videos;
+          //this.openVideo.url = recivedData.trailer_url; 
+          this.mediaSamples = recivedData;
           this.errorMessage = null;
           this.reloadUnlockTimers();
         },
@@ -151,8 +158,8 @@ export class VrVideoPage {
     return value;
   }
 
-  openVideoClick() { 
-    
+  openVideoClick() {
+
     console.log(this.openVideo);
     this.vrView.playMediaSample(this.openVideo);
   }
@@ -161,9 +168,9 @@ export class VrVideoPage {
       let confirm = this.alertController.create({
         title: 'Confirm',
         message:
-          '<p>Are you sure you want to unlock this simulation?!</p>' + 
-          '<p>- Make sure you have a stable internet connection.</p>' + 
-          '<p>- This online simulation will be available for the duration of the unlock time only.</p>' + 
+          '<p>Are you sure you want to unlock this simulation?</p>' +
+          '<p>- Make sure you have a stable internet connection.</p>' +
+          '<p>- This online simulation will be available for the duration of the unlock time only.</p>' +
           '<p>- Make sure you have your headphones on.</p>',
         buttons: [
           { text: 'No', role: 'cancel', },
@@ -226,7 +233,8 @@ export class VrVideoPage {
         mediaSampleElement.locked = false;
         var unlockDate = new Date();
         mediaSampleElement["unlock_date"] = unlockDate;
-        this.addTimer(mediaSampleElement)
+        this.addTimer(mediaSampleElement) ; 
+        this.wallet -- ; 
       }
       else
         alert(res.msg);
@@ -234,11 +242,19 @@ export class VrVideoPage {
   }
 
   showToast() {
+    var duration = 3000 ; 
     var toastOptions = {
-      message: "Thank you for your rating!",
-      duration: 3000
+      "message": "Thank you for your rating!",
+      "duration": duration
     };
-    this.toast.create(toastOptions).present()
+
+   let toast =  this.toast.create(toastOptions); 
+   toast.present(); 
+   //toast.dismiss() ; 
+//     var hideFooterTimeout = setTimeout( () => {
+//     dismiss(this.toast)
+//       // somecode
+//  }, duration);
   }
   addTimer(Video) {
     Video.timer = Observable.interval(1000).subscribe(x => {
