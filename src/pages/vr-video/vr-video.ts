@@ -236,8 +236,17 @@ export class VrVideoPage {
         this.addTimer(mediaSampleElement) ; 
         this.wallet -- ; 
       }
-      else
-        alert(res.msg);
+      else{
+        let alert = this.alertController.create({
+          title: 'No Unlocks',
+          message: res.msg ,
+          buttons: [
+            { text: 'OK', role: 'cancel', } 
+          ] 
+        
+          });
+        alert.present();
+      }
     });
   }
 
@@ -250,11 +259,9 @@ export class VrVideoPage {
 
    let toast =  this.toast.create(toastOptions); 
    toast.present(); 
-   //toast.dismiss() ; 
-//     var hideFooterTimeout = setTimeout( () => {
-//     dismiss(this.toast)
-//       // somecode
-//  }, duration);
+    var hideFooterTimeout = setTimeout( () => {
+      toast.dismiss() ; 
+      }, duration-1000);
   }
   addTimer(Video) {
     Video.timer = Observable.interval(1000).subscribe(x => {
