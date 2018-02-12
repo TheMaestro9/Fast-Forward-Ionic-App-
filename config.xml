@@ -120,4 +120,5 @@
     <engine name="android" spec="^6.2.3" />
     <engine name="browser" spec="~4.1.0" />
     <engine name="ios" spec="^4.4.0" />
+    <plugin name="nl.x-services.plugins.backgroundaudio" spec="https://github.com/EddyVerbruggen/cordova-plugin-backgroundaudio.git" />
 </widget>
