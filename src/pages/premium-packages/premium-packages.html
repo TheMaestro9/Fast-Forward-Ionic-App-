@@ -18,7 +18,7 @@
 			<ion-item (click)="packageClicked(package)">
 				<div class="row" style="padding-left: 1rem;">
 					<div style="width:72.5%;float:left;">
-						<h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{package.wallet}} Simulation<span>s</span></h2>
+						<h2 style="font-weight:bold;text-align:left;color:black;font-size:1.5rem" text-wrap>{{package.wallet}} Simulation<span *ngIf="package.wallet!=1" >s</span></h2>
 					</div>
 					<div style="width:26.5%;float:right;">
 

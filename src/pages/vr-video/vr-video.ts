@@ -171,6 +171,7 @@ export class VrVideoPage {
           '<p>Are you sure you want to unlock this simulation?</p>' +
           '<p>- Make sure you have a stable internet connection.</p>' +
           '<p>- This online simulation will be available for the duration of the unlock time only.</p>' +
+          '<p>- if video loading is taking alot of time, try changing the quality.</p>' +
           '<p>- Make sure you have your headphones on.</p>',
         buttons: [
           { text: 'No', role: 'cancel', },
@@ -251,17 +252,29 @@ export class VrVideoPage {
   }
 
   showToast() {
-    var duration = 3000 ; 
-    var toastOptions = {
-      "message": "Thank you for your rating!",
-      "duration": duration
-    };
 
-   let toast =  this.toast.create(toastOptions); 
-   toast.present(); 
-    var hideFooterTimeout = setTimeout( () => {
-      toast.dismiss() ; 
-      }, duration-1000);
+    let alert = this.alertController.create({
+      title: "Rating Done",
+      message: "Thank you for your rating." ,
+      buttons: [
+        { text: 'OK', role: 'cancel', } 
+      ] 
+    
+      });
+    alert.present();
+
+  //   var duration = 3000 ; 
+  //   var toastOptions = {
+  //     "message": "Thank you for your rating!",
+  //     "duration": duration,
+  //     "showCloseButton": true  
+  //   };
+
+  //  let toast =  this.toast.create(toastOptions); 
+  //  toast.present(); 
+  //   var hideFooterTimeout = setTimeout( () => {
+  //     toast.dismiss() ; 
+  //     }, duration-1000);
   }
   addTimer(Video) {
     Video.timer = Observable.interval(1000).subscribe(x => {

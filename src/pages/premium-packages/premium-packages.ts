@@ -22,7 +22,6 @@ export class PremiumPackagesPage {
      public navParams: NavParams,
     public http :Http 
   ) {
-
     this.http.get("https://ffserver.eu-gb.mybluemix.net/get-packages").subscribe(data => {
         var res = JSON.parse(data['_body']);
         this.packages = res ; 
