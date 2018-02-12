@@ -47,9 +47,7 @@ export class VrVideoPage {
       "type": "VIDEO",
       "inputType": "TYPE_MONO",
       "inputFormat": "FORMAT_HLS",
-      "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8",
       "isLocal": false,
-      "previewUrl": "https://cordovavrview.tangodev.it/resources/playhouse_preview.jpg",
       "locked": false
     }
   }
@@ -111,7 +109,7 @@ export class VrVideoPage {
           this.isLoading = false;
          this.mediaSamples = recivedData.videos;
           this.openVideo.url = recivedData.trailer_url; 
-          this.openVideo.preview_url = recivedData.trailer_pic; 
+          this.openVideo.previewUrl = recivedData.trailer_pic; 
        //   this.mediaSamples = recivedData;
           this.errorMessage = null;
           this.reloadUnlockTimers();
