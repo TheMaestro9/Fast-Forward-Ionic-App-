@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <widget id="fast.forward" version="6.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+=======
+<widget id="fast.forward" version="10.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+>>>>>>> 633fce5e720a582de06e2022585b03b5d6a3fb1a
     <name>Fast Forward</name>
     <description>An awesome app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Fast Forward</author>
