@@ -31,7 +31,7 @@
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "^2.0.1",
     "angularfire2": "^4.0.0-rc.2",
-    "cordova-android": "^6.4.0",
+    "cordova-android": "^6.2.3",
     "cordova-browser": "~4.1.0",
     "cordova-ios": "4.5.4",
     "cordova-multidex": "git+https://github.com/jwall149/cordova-multidex.git",
@@ -116,6 +116,7 @@
       "cordova-plugin-vr-view": {}
     },
     "platforms": [
+      "android",
       "browser",
       "ios"
     ]
