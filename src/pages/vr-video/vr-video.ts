@@ -46,7 +46,7 @@ export class VrVideoPage {
       "name": "Playhouse",
       "type": "VIDEO",
       "inputType": "TYPE_MONO",
-      "inputFormat": "FORMAT_HLS",
+      "inputFormat": "FORMAT_DEAFULT",
       "isLocal": false,
       "locked": false
     }
