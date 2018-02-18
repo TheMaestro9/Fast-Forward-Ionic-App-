@@ -57,8 +57,15 @@
     <div (tap)="onMediaSampleitemClick(media)">
       <media-sample-item [mediaSample]="media"></media-sample-item>
     </div>
+    <!-- 
+    <ion-row>
+      <div style="text-align:center"> 
+        <p> hell ya</p>
+        <ion-icon name="fastforward" > </ion-icon>
+      </div> 
+    </ion-row> -->
     <div style="font-size:1.2rem;">
-      <div style="padding-left:1.5rem;float:left">
+      <div style="padding-left:1.5rem;float:left" >
         <strong>Rating : </strong>{{media.avg_rating}}/5
         <br>
         <br>
@@ -77,12 +84,23 @@
           {{media.duration}}
         </span>
       </div>
+
+
     </div>
     <br>
     <div style="padding-left:1.5rem;padding-bottom:1.5rem; float:left; font-size: 1.2rem;width:100%">
       {{media.description}}
     </div>
     <br>
+
+    <div *ngIf="!media.locked" style="padding-left:1.5rem;float:left; ">
+        <button ion-button round style="display: inline-block;" color="grey" (click)="selectPart(media)">
+          <strong style="padding-right:1rem"> Jump to </strong>
+          <span style="color:white">
+            <ion-icon name="arrow-down" > </ion-icon>
+          </span>
+        </button>
+      </div>
 
     <div *ngIf="!media.locked" style="width:70%;margin-left:4rem">
       <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event, media)">

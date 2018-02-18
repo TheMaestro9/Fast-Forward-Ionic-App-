@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 export interface Slide {
   title: string;
   description: string;
+  minorDescription: string; 
   image: string;
 }
 
@@ -29,23 +30,27 @@ export class TutorialPage {
     }
         this.slides = [
           {
-            title: "Online Simulatoins",
+            title: "Online Simulations",
             description: "Try different professions using your phone or using Virtual Reality..",
+            minorDescription : "(First 50 premium subscriptions get a free VR Headset)",
             image: 'assets/OnlineSimulatoins.png'
           },
           {
-            title: "Profession",
+            title: "Offline Simulations",
             description: "Choose a profession you are interested in..",
+            minorDescription: "" , 
             image: 'assets/tut1.png',
           },
           {
             title: "Simulation/Company",
             description: "Choose a simulation you want to try out..",
+            minorDescription: "" , 
             image: 'assets/tut2.png',
           },
           {
             title: "Finish up",
             description: "Check out the company profile, apply, and book your simulation..",
+            minorDescription: "" , 
             image: 'assets/tut3.png',
           }
         ];

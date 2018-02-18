@@ -18,8 +18,111 @@ background-color: #fff;
 .toolbar-ios{
 margin-top:1rem;
 
+}
 
+.tabbar, .tabs-ios, .tabs-md , .tabs-wp{
+    .tab-button-icon {
+        background-repeat:no-repeat;
+        background-position:center;
+        height:24px;
+        width:24px;
+        background-size:contain;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        &:before {
+            display:none;
+        }
+    }
+}
 
+.tabs-ios {
+  a[aria-selected=false]{
+     .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label="VrVideoPage"] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_inactive.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_inactive.png);
+    // }
+  }
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+    .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label=VrVideoPage] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_active.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_active.png);
+    // }
+  }
+}
+
+.tabs-md {
+  a[aria-selected=false]{
+     .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label="VrVideoPage"] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_inactive.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_inactive.png);
+    // }
+  }
+
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+    .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label=VrVideoPage] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_active.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_active.png);
+    // }
+  }
+}
+
+.tabs-wp {
+  a[aria-selected=false]{
+     .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label="VrVideoPage"] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_inactive.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_inactive.png);
+    // }
+  }
+
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+    .tab-button-icon[ng-reflect-name=VrVideoPage], .tab-button-icon[aria-label=VrVideoPage] {
+      background-image: url(../assets/img/vr_active.png);
+    }
+    // .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    //   background-image: url(../assets/img/explore_active.png);
+    // }
+    // .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+    //   background-image: url(../assets/img/hot_active.png);
+    // }
+  }
 }
 
 }
