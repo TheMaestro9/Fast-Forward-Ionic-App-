@@ -26,7 +26,7 @@ export class VrVideoPage {
   userId;
   wallet;
   openVideo;
-
+  highQuality;
   toBePlayed: MediaSampleModel;
   constructor(
     public navCtrl: NavController,
@@ -41,6 +41,7 @@ export class VrVideoPage {
     this.settingsColor = "grey";
     this.videoQuality = "High";
     this.rate = 3;
+    this.highQuality = true;
 
     this.openVideo = {
       "name": "Playhouse",
@@ -66,19 +67,55 @@ export class VrVideoPage {
     }
   }
 
+  selectPart(video) {
+
+    let alert = this.alertController.create();
+    alert.setTitle('Jump to');
+    var parts = video.parts;
+    parts.forEach(element => {
+      var checked;
+      if (video.url == element.low_quality_url || video.url == element.high_quality_url)
+        checked = true;
+      else
+        checked = false;
+      alert.addInput({
+        type: 'radio',
+        label: element.part_name,
+        value: element,
+        checked: checked 
+      });
+    });
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        if (this.highQuality == true)
+          video.url = data.high_quality_url;
+        else
+          video.url = data.low_quality_url;
+
+        video.high_quality_url = data.high_quality_url;
+        video.low_quality_url = data.low_quality_url;
+        // this.videoQuality = data;
+      }
+    });
+    alert.present();
+
+  }
+
   selectQuality(video) {
 
     let alert = this.alertController.create();
     alert.setTitle('Choose Quality');
     alert.addInput({
       type: 'radio',
-      label: "High Qulity",
+      label: "High Qaulity",
       value: "High",
       checked: true
     });
     alert.addInput({
       type: 'radio',
-      label: "Medium Qulity",
+      label: "Medium Qaulity",
       value: "Low",
       checked: false
     });
@@ -87,11 +124,15 @@ export class VrVideoPage {
     alert.addButton({
       text: 'OK',
       handler: data => {
-        if (data == "High")
+        if (data == "High") {
           video.url = video.high_quality_url;
-        else
-          video.url = video.low_quality_url;
+          this.highQuality = true;
+        }
 
+        else {
+          video.url = video.low_quality_url;
+          this.highQuality = false;
+        }
         // this.videoQuality = data;
       }
     });
@@ -107,10 +148,10 @@ export class VrVideoPage {
         recivedData => {
 
           this.isLoading = false;
-         this.mediaSamples = recivedData.videos;
-          this.openVideo.url = recivedData.trailer_url; 
-          this.openVideo.previewUrl = recivedData.trailer_pic; 
-       //   this.mediaSamples = recivedData;
+          this.mediaSamples = recivedData.videos;
+          this.openVideo.url = recivedData.trailer_url;
+          this.openVideo.previewUrl = recivedData.trailer_pic;
+          //   this.mediaSamples = recivedData;
           this.errorMessage = null;
           this.reloadUnlockTimers();
         },
@@ -233,18 +274,18 @@ export class VrVideoPage {
         mediaSampleElement.locked = false;
         var unlockDate = new Date();
         mediaSampleElement["unlock_date"] = unlockDate;
-        this.addTimer(mediaSampleElement) ; 
-        this.wallet -- ; 
+        this.addTimer(mediaSampleElement);
+        this.wallet--;
       }
-      else{
+      else {
         let alert = this.alertController.create({
           title: 'No Unlocks',
-          message: res.msg ,
+          message: res.msg,
           buttons: [
-            { text: 'OK', role: 'cancel', } 
-          ] 
-        
-          });
+            { text: 'OK', role: 'cancel', }
+          ]
+
+        });
         alert.present();
       }
     });
@@ -254,26 +295,26 @@ export class VrVideoPage {
 
     let alert = this.alertController.create({
       title: "Rating Done",
-      message: "Thank you for your rating." ,
+      message: "Thank you for your rating.",
       buttons: [
-        { text: 'OK', role: 'cancel', } 
-      ] 
-    
-      });
+        { text: 'OK', role: 'cancel', }
+      ]
+
+    });
     alert.present();
 
-  //   var duration = 3000 ; 
-  //   var toastOptions = {
-  //     "message": "Thank you for your rating!",
-  //     "duration": duration,
-  //     "showCloseButton": true  
-  //   };
+    //   var duration = 3000 ; 
+    //   var toastOptions = {
+    //     "message": "Thank you for your rating!",
+    //     "duration": duration,
+    //     "showCloseButton": true  
+    //   };
 
-  //  let toast =  this.toast.create(toastOptions); 
-  //  toast.present(); 
-  //   var hideFooterTimeout = setTimeout( () => {
-  //     toast.dismiss() ; 
-  //     }, duration-1000);
+    //  let toast =  this.toast.create(toastOptions); 
+    //  toast.present(); 
+    //   var hideFooterTimeout = setTimeout( () => {
+    //     toast.dismiss() ; 
+    //     }, duration-1000);
   }
   addTimer(Video) {
     Video.timer = Observable.interval(1000).subscribe(x => {
