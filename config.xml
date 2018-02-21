@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="fast.forward" version="10.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="fast.forward" version="10.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Fast Forward</name>
     <description>An awesome app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Fast Forward</author>
@@ -114,7 +114,7 @@
         <variable name="DEEPLINK_5_SCHEME" value=" " />
         <variable name="DEEPLINK_5_HOST" value=" " />
     </plugin>
-    <plugin name="cordova-plugin-vr-view" spec="/Users/Anany/Downloads/cordova-plugin-vr-view/cordova-plugin-vr-view" />
+    <plugin name="cordova-plugin-vr-view" spec="D:\work\Fast Forward\VR Plugin\cordova-plugin-vr-view\cordova-plugin-vr-view" />
     <plugin name="me.tonny.cordova.plugins.multidex" spec="https://github.com/jwall149/cordova-multidex" />
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <plugin name="nl.x-services.plugins.backgroundaudio" spec="https://github.com/EddyVerbruggen/cordova-plugin-backgroundaudio.git" />
