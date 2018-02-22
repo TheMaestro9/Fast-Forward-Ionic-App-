@@ -45,7 +45,7 @@
     "cordova-plugin-network-information": "^1.3.3",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "^2.2.2",
-    "cordova-plugin-vr-view": "/Users/Anany/Downloads/cordova-plugin-vr-view/cordova-plugin-vr-view",
+    "cordova-plugin-vr-view": "D:\\work\\Fast Forward\\VR Plugin\\cordova-plugin-vr-view\\cordova-plugin-vr-view",
     "cordova-plugin-whitelist": "^1.3.1",
     "cordova-plugin-x-socialsharing": "^5.1.8",
     "cordova-plugin-x-toast": "^2.6.0",
