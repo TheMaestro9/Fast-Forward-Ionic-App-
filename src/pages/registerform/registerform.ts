@@ -15,7 +15,7 @@ import {TutorialPage} from '../tutorial/tutorial' ;
 })
 export class Registerform {
   company_or_not:any;  
-  interests=[];
+  interests="";
   degree = "";
   name = "";
   email = "";
@@ -80,6 +80,18 @@ export class Registerform {
     date.setHours(date.getHours()+2) ; 
     return date ; 
    }
+
+   checkPhoneNumber(phone) {
+
+    console.log("after div" , phone / 100000000) ; 
+    if (phone < 1599999999 && phone > 1000000000)
+      return true;
+    else
+      if (Math.floor(phone / 100000000) == 5) // phone is starting with 05 ie from saudi arabia 
+        return true;
+      else
+        return false;
+  }
   register(pass, school, phone,promo) {
    
 
@@ -88,10 +100,12 @@ export class Registerform {
 
     if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");
-      if(phone>1599999999 || phone<1000000000)
+      if(!this.checkPhoneNumber(phone))
         this.showAlert("Enter a valid phone number. make sure you have entered 11 numbers");
       else{
         this.presentLoading() ;
+        var interestsArr = []; 
+        interestsArr.push(this.interests) ;
         let user={
           
           degree:this.degree,
@@ -102,12 +116,12 @@ export class Registerform {
           school:school,
           phone_no:phone,
           promo_code:promo,
-          interests:this.interests,
+          interests:interestsArr,
           major:this.major        
         }
 
 
-
+        console.log("the data to send is ", user) ; 
 
       this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {
         

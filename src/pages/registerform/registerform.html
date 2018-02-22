@@ -178,7 +178,9 @@
         </ion-row>
       </ion-grid>-->
    <ion-item style="text-align:left;">
-     
+      <ion-input [(ngModel)]="interests" type="text" placeholder="Interests Like movies, swimming..." #promo></ion-input>
+
+     <!--
       <ion-select style="  width:100%; max-width: 100% !important; padding-left:6px;" [(ngModel)]="interests" multiple="true" placeholder="Interests">
           <ion-option value="Aircraft Spotting">Aircraft Spotting</ion-option>
           <ion-option value="Airbrushing">Airbrushing</ion-option>
@@ -480,6 +482,7 @@
           <ion-option value="Ziplining">Ziplining</ion-option>
           <ion-option value="Zumba">Zumba</ion-option>    
       </ion-select>
+    -->
     </ion-item>
     <ion-item style="text-align:left;">
       <ion-input [(ngModel)]="promo_code" type="text" placeholder="Promo code (optional)" #promo></ion-input>
