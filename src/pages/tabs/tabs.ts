@@ -77,7 +77,7 @@ export class TabsPage {
 			console.log(this.companies);
 			//this.loading=false;
 		});
-		this.root = this.tab1Root;
+		this.root = this.tab5Root;
 		this.company_or_not = localStorage.getItem('company_or_not');
 		if (plt.is('ios')) {
 			this.ios = true;
