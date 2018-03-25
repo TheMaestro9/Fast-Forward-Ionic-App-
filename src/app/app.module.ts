@@ -25,6 +25,7 @@ import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
+import {SideMenuPage} from '../pages/side-menu/side-menu' ; 
 //import {ExpotimerPage} from '../pages/expotimer/expotimer';
 import {CardPaymentPage} from'../pages/card-payment/card-payment'; 
 import { VrVideoPage } from '../pages/vr-video/vr-video' ; 
@@ -107,7 +108,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
     EditSimulationDatePage, 
     VrVideoPage,
     PremiumPackagesPage, 
-    AddPackagePage
+    AddPackagePage,
+    SideMenuPage
   ],
   imports: [
     BrowserModule,
@@ -155,7 +157,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
      EditSimulationDatePage,
      VrVideoPage,
      PremiumPackagesPage,
-     AddPackagePage
+     AddPackagePage,
+     SideMenuPage
       ],
   providers: [
     StatusBar,
