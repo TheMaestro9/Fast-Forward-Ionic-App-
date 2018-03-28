@@ -1,9 +1,11 @@
 <ion-header>
 
+
+  <main-nav-bar> </main-nav-bar>
+
   <ion-navbar style="min-height: 0.4px;
   height: 3.5rem;">
-    <!-- 
-    <ion-title>Samples</ion-title>-->
+
     <ion-row style="text-align:center; height:100%">
 
       <ion-col col-6>
@@ -29,7 +31,12 @@
 
 </ion-header>
 
-<ion-content class="cards-bg" class="separatingBG">
+
+<ion-content has-subheader="true" class="cards-bg" class="separatingBG">
+
+
+
+
   <div text-center>
     <ion-spinner [hidden]="!isLoading" color="primary"></ion-spinner>
     <p class="error-message" text-center [hidden]="!errorMessage">{{errorMessage}}</p>
@@ -65,7 +72,7 @@
       </div> 
     </ion-row> -->
     <div style="font-size:1.2rem;">
-      <div style="padding-left:1.5rem;float:left" >
+      <div style="padding-left:1.5rem;float:left">
         <strong>Rating : </strong>{{media.avg_rating}}/5
         <br>
         <br>
@@ -94,13 +101,13 @@
     <br>
 
     <div *ngIf="!media.locked" style="padding-left:1.5rem;float:left; ">
-        <button ion-button round style="display: inline-block;" color="grey" (click)="selectPart(media)">
-          <strong style="padding-right:1rem"> Jump to </strong>
-          <span style="color:white">
-            <ion-icon name="arrow-down" > </ion-icon>
-          </span>
-        </button>
-      </div>
+      <button ion-button round style="display: inline-block;" color="grey" (click)="selectPart(media)">
+        <strong style="padding-right:1rem"> Jump to </strong>
+        <span style="color:white">
+          <ion-icon name="arrow-down"> </ion-icon>
+        </span>
+      </button>
+    </div>
 
     <div *ngIf="!media.locked" style="width:70%;margin-left:4rem">
       <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event, media)">

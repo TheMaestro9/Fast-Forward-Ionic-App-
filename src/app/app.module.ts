@@ -61,6 +61,7 @@ import { FeedbackToUserPage } from '../pages/feedback-to-user/feedback-to-user';
 import { ComponentsModule } from '../components/components.module';
 import { ApiProvider } from '../providers/api/api';
 import { VrViewProvider } from '../providers/vr-view/vr-view';
+import { MainNavBarComponent } from '../components/main-nav-bar/main-nav-bar';
 
  var config = {
     apiKey: "AIzaSyDLdE-P0vHPTnxIpnA5-Nm3yFlabOaUE78",
@@ -109,7 +110,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
     VrVideoPage,
     PremiumPackagesPage, 
     AddPackagePage,
-    SideMenuPage
+    SideMenuPage,
+    MainNavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -158,7 +160,8 @@ import { VrViewProvider } from '../providers/vr-view/vr-view';
      VrVideoPage,
      PremiumPackagesPage,
      AddPackagePage,
-     SideMenuPage
+     SideMenuPage,
+     MainNavBarComponent
       ],
   providers: [
     StatusBar,

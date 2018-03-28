@@ -1,12 +1,14 @@
-
+<ion-header>
+  <main-nav-bar> </main-nav-bar>
+</ion-header>
 <ion-content padding>
 
 
-    <div class="row" style="margin-left:auto;margin-right:auto;">
-      <div style="width:49.7%" *ngFor="let x of fields; let i = index" (click)="nav(x.name,x.id)">
-        <img src={{x.img}} />
+  <div class="row" style="margin-left:auto;margin-right:auto;">
+    <div style="width:49.7%" *ngFor="let x of fields; let i = index" (click)="nav(x.name,x.id)">
+      <img src={{x.img}} />
 
-      </div>
     </div>
+  </div>
 
 </ion-content>

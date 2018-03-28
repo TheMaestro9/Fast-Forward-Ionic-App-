@@ -15,9 +15,10 @@ import { FeedbackPage } from '../pages/feedback/feedback';
 import { Http } from '@angular/http';
 import { VrVideoPage } from '../pages/vr-video/vr-video';
 import { PremiumPackagesPage } from '../pages/premium-packages/premium-packages';
-
-
-import {SideMenuPage} from '../pages/side-menu/side-menu' ; 
+import { Profile } from '../pages/profile/profile'
+import {FieldsPage} from '../pages/fields/fields'
+import {Videos} from '../pages/videos/videos'
+import { SideMenuPage } from '../pages/side-menu/side-menu';
 
 
 @Component({
@@ -36,9 +37,12 @@ export class MyApp {
   connection_error_popup: any;
   AcceptedSimulations = [];
   user_simulations: any = [];
+  pages: Array<{title: string, component: any}>;
+
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
     private DS: DataService, private network: Network, public store: Storage,
     public http: Http) {
+
 
 
     platform.ready().then(() => {
@@ -48,75 +52,41 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    //   this.deeplinks.route({
-    //     '/login': {},
-    //     '/company': { hello: "h" },
-    //     '/profile': {},
-    //   }).subscribe((match) => {
-    //     if (match.$link.path == "/profile") {
-    //       this.rootPage = Profile;
+    
 
-    //     }
-    //     //alert ("ya man afashtoooo") ;
-    //     else
-    //       alert("not here");
-    //     // console.log('Successfully matched route', match);
-    //   }, (nomatch) => {
-    //     //alert("ya man anna bara 5ales");
-    //     store.get('user_id').then((val) => {
-    //       console.log('store', val);
-    //       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
-    //       this.DS.load().subscribe(
-    //         data => (this.handelResponse(data, val))
-    //       );
-
-    //     });
-    //     //  console.error('Got a deeplink that didn\'t match', nomatch);
-    //   });
-
-    // });
-
-    //this.rootPage=TabsPage;this.handelResponse(data, val)
-
-
-    // deeplinks.route({
-    //   '/about-us': LoginPage,
-    //   '/company':CompanyPage
-    // }).subscribe((match) => {
-    //   // match.$route - the route we matched, which is the matched entry from the arguments to route()
-    //   // match.$args - the args passed in the link
-    //   // match.$link - the full link data
-    //   console.log('Successfully matched route', match);
-    // }, (nomatch) => {
-    //   // nomatch.$link - the full link data
-    //   console.error('Got a deeplink that didn\'t match', nomatch);
-    // });
-
+    this.pages = [
+      { title: 'Vr Videos', component: VrVideoPage },
+      { title: 'Regular Simulations', component: FieldsPage },
+      { title: 'Profile', component: Profile },
+      { title: 'Media Feed' , component:Videos }
+    ]
 
     store.get('user_id').then((val) => {
       console.log("ya naaaas", val);
 
-      if (val == null || val=="") {
+      if (val == null || val == "") {
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
         this.DS.load().subscribe(
           //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
-         // data => (this.handelResponse(data, val))
-           data => {this.rootPage = SideMenuPage ; }
+          data => (this.handelResponse(data, val))
+          //  data => {this.rootPage = VrVideoPage ; }
         );
 
       }
       else {
 
+        console.log("stored user id" , val)
+        if (val == "324"){
+          console.log ("hello")
+          this.pages.push({title: "tabs" , component: TabsPage})
+        }
+        console.log("man of men ")
+        console.log("kbeeer" , this.pages) 
         var url = "https://ffserver.eu-gb.mybluemix.net/accepted-simulation?user_id=" + val;
-        console.log(" the url is ", url);
-        console.log("hala walla");
+       
         http.get(url).subscribe(data => {
           var res = JSON.parse(data['_body']);
           this.AcceptedSimulations = res;
-          console.log(" the url is ", url);
-          console.log("Da el accepted Simulations :", this.AcceptedSimulations);
-          //console.log("STAT",this.user_simulations[0].status);
-          //this.loading=false;
           this.CheckAccepted();
 
 
@@ -124,9 +94,8 @@ export class MyApp {
           console.log('store', val);
           this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
           this.DS.load().subscribe(
-            //  data => (this.handelResponse(data, val)) this.nav.insert(0 ,TabsPage ,{"goToCompany": true})
-         //   data => (this.handelResponse(data, val))
-             data => {this.rootPage = SideMenuPage ; }
+            data => (this.handelResponse(data, val))
+            //  data => {this.rootPage = VrVideoPage ; }
           );
         });
       }
@@ -158,6 +127,11 @@ export class MyApp {
       console.log("william");
       console.log("sims", this.AcceptedSimulations);
     });
+  }
+
+  openPage(page) {
+    //this.nav.setRoot(page.component);
+    this.rootPage = page.component
   }
 
   CheckFeedExist(acceptedDates, newId) {
@@ -221,7 +195,7 @@ export class MyApp {
               this.rootPage = FeedbackPage;
             }
             else
-              this.rootPage = TabsPage;
+              this.rootPage = VrVideoPage;
 
           });
         }

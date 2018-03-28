@@ -1,4 +1,4 @@
-<ion-menu [content]="mycontent">
+<ion-menu [content]="content">
   <ion-header>
     <ion-toolbar [color]="currentColor" [style.height]="ios?'50px':''">
       <ion-title style=" width:100%;display:inline-block;" [style.margin-top]="ios?'10px':''">
@@ -17,4 +17,4 @@
   </ion-content>
 </ion-menu>
 
-<ion-nav #mycontent [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
