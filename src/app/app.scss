@@ -18,11 +18,31 @@
 @font-face {
     font-family: Ubuntu;
     font-style: medium;
-    font-weight: 200;
+   // font-weight: 200;
     src: url('../assets/ubuntu.woff2');
   }
   *{
   
   font-family:Ubuntu;
   
+  }
+
+  
+  .menuIcon{
+
+    padding-right: 2rem;
+    font-size: 2.2rem;
+    vertical-align: sub;
+    color: map-get($colors,primary);
+  }
+  .menuButtonContent {
+     
+    color: #606060;
+    text-align: left;
+    font-size: 1.3rem;
+  }
+
+  .active{ 
+   // background-color:map-get($colors, light ) 
+   background-color: #DFDFDF
   }

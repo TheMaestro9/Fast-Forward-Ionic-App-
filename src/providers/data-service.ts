@@ -18,19 +18,19 @@ export class DataService {
   }
 
 
-  seturl(st){
+  seturl(st) {
 
-this.packageurl=st;
+    this.packageurl = st;
 
-}
-load(){
+  }
+  load() {
 
-return  this.http.get(this.packageurl)
+    return this.http.get(this.packageurl)
       .map(res => res.json());
 
- 
 
-}
+
+  }
 
 
 }

@@ -6,11 +6,14 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item   color="light" *ngFor="let p of pages" (click)="openPage(p)">
-        <p style="color:black">
+    <ion-list no-lines>
+      <button menuClose ion-item [class.active]="checkActive(p)" *ngFor="let p of pages" (click)="openPage(p)">
+        <div class="menuButtonContent">
+          <ion-icon [name]='p.icon'  class="menuIcon"></ion-icon> 
+          <span>
             {{p.title}}
-        </p>
+          </span>
+        </div>
       </button>
     </ion-list>
   </ion-content>

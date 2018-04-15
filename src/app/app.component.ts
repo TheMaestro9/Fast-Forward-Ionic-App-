@@ -37,8 +37,8 @@ export class MyApp {
   connection_error_popup: any;
   AcceptedSimulations = [];
   user_simulations: any = [];
-  pages: Array<{title: string, component: any}>;
-
+  pages: Array<{title: string, component: any , icon:string}>;
+  activePage ; 
   constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen,
     private DS: DataService, private network: Network, public store: Storage,
     public http: Http) {
@@ -55,11 +55,13 @@ export class MyApp {
     
 
     this.pages = [
-      { title: 'Vr Videos', component: VrVideoPage },
-      { title: 'Regular Simulations', component: FieldsPage },
-      { title: 'Profile', component: Profile },
-      { title: 'Media Feed' , component:Videos }
+      { title: 'Vr Videos', component: VrVideoPage , icon:'md-glasses' },
+      { title: 'Regular Simulations', component: FieldsPage , icon:'contacts' },
+      { title: 'Profile', component: Profile, icon:'person' },
+      { title: 'Media Feed' , component:Videos , icon:'videocam' }
     ]
+
+    this.activePage = this.pages[0] ; 
 
     store.get('user_id').then((val) => {
       console.log("ya naaaas", val);
@@ -78,7 +80,7 @@ export class MyApp {
         console.log("stored user id" , val)
         if (val == "324"){
           console.log ("hello")
-          this.pages.push({title: "tabs" , component: TabsPage})
+          this.pages.push({title: "tabs" , component: TabsPage, icon:'md-build'})
         }
         console.log("man of men ")
         console.log("kbeeer" , this.pages) 
@@ -131,9 +133,13 @@ export class MyApp {
 
   openPage(page) {
     //this.nav.setRoot(page.component);
-    this.rootPage = page.component
+    this.rootPage = page.component; 
+    this.activePage = page ; 
   }
 
+  checkActive(page){
+    return this.activePage==page ;
+  }
   CheckFeedExist(acceptedDates, newId) {
     console.log("checking ");
     //console.log(newId) ; 
